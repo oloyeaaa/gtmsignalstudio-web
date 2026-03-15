@@ -4,11 +4,11 @@ export default function AuthorCard() {
   return (
     <div className="mt-12 flex items-start gap-4 bg-cream border border-light-border rounded-xl p-6">
       <Image
-        src="/gss-logo.png"
+        src="/oloye-profile.png"
         alt="Oloye Adeosun"
-        width={48}
-        height={48}
-        className="rounded-full flex-shrink-0"
+        width={56}
+        height={56}
+        className="rounded-full flex-shrink-0 object-cover"
       />
       <div>
         <p className="font-heading font-bold text-text-dark">Oloye Adeosun</p>

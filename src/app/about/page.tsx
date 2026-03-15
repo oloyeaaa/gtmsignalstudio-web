@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,10 +11,22 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <p className="font-mono text-orange text-sm mb-2 tracking-wider">ABOUT</p>
-      <h1 className="font-heading text-4xl font-bold text-white mb-8">
-        Oloye Adeosun
-      </h1>
+      <div className="flex flex-col sm:flex-row items-start gap-6 mb-10">
+        <Image
+          src="/oloye-profile.png"
+          alt="Oloye Adeosun"
+          width={140}
+          height={140}
+          className="rounded-2xl flex-shrink-0 object-cover"
+        />
+        <div>
+          <p className="font-mono text-orange text-sm mb-2 tracking-wider">ABOUT</p>
+          <h1 className="font-heading text-4xl font-bold text-text-dark mb-2">
+            Oloye Adeosun
+          </h1>
+          <p className="text-text-muted">Marketing Automation Specialist. Building GTM Signal Studio.</p>
+        </div>
+      </div>
 
       <div className="prose max-w-none">
         <p>

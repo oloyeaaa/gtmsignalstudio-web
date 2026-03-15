@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -175,8 +176,14 @@ export default function ResourcesPage() {
       {/* Founder */}
       <section className="border-t border-navy-border pt-16 mb-20">
         <div className="bg-navy-light border border-navy-border rounded-xl p-10 md:p-12 md:grid md:grid-cols-[1fr_2fr] gap-12 items-center">
-          <div className="bg-navy rounded-xl aspect-square flex items-center justify-center mb-6 md:mb-0">
-            <span className="font-mono text-sm text-muted">[Photo]</span>
+          <div className="flex items-center justify-center mb-6 md:mb-0">
+            <Image
+              src="/oloye-profile.png"
+              alt="Oloye Adeosun"
+              width={200}
+              height={200}
+              className="rounded-2xl object-cover"
+            />
           </div>
           <div>
             <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">Who Built This</p>
