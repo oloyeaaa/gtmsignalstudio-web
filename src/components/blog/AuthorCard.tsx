@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function AuthorCard() {
   return (
-    <div className="mt-12 flex items-start gap-4 bg-navy-light border border-navy-border rounded-xl p-6">
+    <div className="mt-12 flex items-start gap-4 bg-cream border border-light-border rounded-xl p-6">
       <Image
         src="/gss-logo.png"
         alt="Oloye Adeosun"
@@ -11,8 +11,8 @@ export default function AuthorCard() {
         className="rounded-full flex-shrink-0"
       />
       <div>
-        <p className="font-heading font-bold text-white">Oloye Adeosun</p>
-        <p className="text-muted text-sm mt-1 leading-relaxed">
+        <p className="font-heading font-bold text-text-dark">Oloye Adeosun</p>
+        <p className="text-text-muted text-sm mt-1 leading-relaxed">
           Building signal-led GTM infrastructure for B2B founders.
           Marketing Automation Specialist by day, GTM Signal Studio by night.
         </p>

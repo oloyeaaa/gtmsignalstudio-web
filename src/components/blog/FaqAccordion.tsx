@@ -15,13 +15,13 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
       {items.map((item, i) => (
         <div
           key={i}
-          className="border border-navy-border rounded-lg overflow-hidden"
+          className="border border-light-border rounded-lg overflow-hidden"
         >
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            className="w-full flex items-center justify-between p-4 text-left hover:bg-navy-light/50 transition-colors"
+            className="w-full flex items-center justify-between p-4 text-left hover:bg-cream transition-colors"
           >
-            <span className="font-heading font-semibold text-white text-sm pr-4">
+            <span className="font-heading font-semibold text-text-dark text-sm pr-4">
               {item.question}
             </span>
             <span className="text-orange text-lg flex-shrink-0">
@@ -29,8 +29,8 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
             </span>
           </button>
           {openIndex === i && (
-            <div className="px-4 pb-4 border-t border-navy-border">
-              <p className="text-muted text-sm leading-relaxed pt-3">
+            <div className="px-4 pb-4 border-t border-light-border">
+              <p className="text-text-body text-sm leading-relaxed pt-3">
                 {item.answer}
               </p>
             </div>

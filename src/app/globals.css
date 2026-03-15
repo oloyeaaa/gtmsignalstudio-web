@@ -10,6 +10,16 @@
   --color-success: #44aa66;
   --color-danger: #cc4444;
 
+  /* Light palette */
+  --color-white: #ffffff;
+  --color-cream: #f8f7f4;
+  --color-light-grey: #f0eeeb;
+  --color-mid-grey: #e2e0dc;
+  --color-text-dark: #1a1a1a;
+  --color-text-body: #3d3d3d;
+  --color-text-muted: #6b6b6b;
+  --color-light-border: #e5e3df;
+
   --font-heading: "Montserrat", sans-serif;
   --font-body: "Montserrat", sans-serif;
   --font-mono: "Roboto Mono", monospace;
@@ -56,31 +66,49 @@
 }
 
 body {
-  background-color: var(--color-navy);
-  color: #ffffff;
+  background-color: var(--color-cream);
+  color: var(--color-text-dark);
   font-family: var(--font-body);
 }
 
-/* Prose styles for blog content */
-.prose h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; margin-top: 2rem; }
-.prose h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: var(--color-orange); }
-.prose h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; margin-top: 1.5rem; }
-.prose p { margin-bottom: 1.25rem; line-height: 1.75; color: rgba(255, 255, 255, 0.9); }
+/* ─── Light section (default) ─── */
+.section-light {
+  background-color: var(--color-cream);
+  color: var(--color-text-dark);
+}
+
+/* ─── White section ─── */
+.section-white {
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+}
+
+/* ─── Dark section (hero, CTA, footer) ─── */
+.section-dark {
+  background-color: var(--color-navy);
+  color: #ffffff;
+}
+
+/* ─── Prose styles for blog content (light bg) ─── */
+.prose h1 { font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem; margin-top: 2rem; color: var(--color-text-dark); }
+.prose h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 2rem; color: var(--color-navy); }
+.prose h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; margin-top: 1.5rem; color: var(--color-text-dark); }
+.prose p { margin-bottom: 1.25rem; line-height: 1.75; color: var(--color-text-body); }
 .prose a { color: var(--color-orange); text-decoration: underline; }
 .prose a:hover { color: var(--color-orange-hover); }
-.prose strong { color: #ffffff; font-weight: 700; }
+.prose strong { color: var(--color-text-dark); font-weight: 700; }
 .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-.prose li { margin-bottom: 0.5rem; line-height: 1.75; color: rgba(255, 255, 255, 0.9); }
+.prose li { margin-bottom: 0.5rem; line-height: 1.75; color: var(--color-text-body); }
 .prose li::marker { color: var(--color-orange); }
-.prose blockquote { border-left: 3px solid var(--color-orange); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--color-muted); }
-.prose code { background: var(--color-navy-light); padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-orange); }
-.prose pre { background: var(--color-navy-light); padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; margin: 1.5rem 0; border: 1px solid var(--color-navy-border); }
+.prose blockquote { border-left: 3px solid var(--color-orange); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--color-text-muted); }
+.prose code { background: var(--color-light-grey); padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-orange); }
+.prose pre { background: var(--color-navy); padding: 1.25rem; border-radius: 0.5rem; overflow-x: auto; margin: 1.5rem 0; }
 .prose pre code { background: none; padding: 0; color: rgba(255, 255, 255, 0.9); }
-.prose hr { border-color: var(--color-navy-border); margin: 2rem 0; }
+.prose hr { border-color: var(--color-light-border); margin: 2rem 0; }
 .prose img { border-radius: 0.5rem; margin: 1.5rem 0; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--color-navy); }
-::-webkit-scrollbar-thumb { background: var(--color-navy-border); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: var(--color-mid-grey); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }

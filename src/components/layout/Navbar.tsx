@@ -15,10 +15,9 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-sm border-b border-navy-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy border-b border-navy-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <Image src="/gss-logo.png" alt="GSS" width={36} height={36} />
             <span className="font-heading font-bold text-lg text-white hidden sm:block">
@@ -26,13 +25,12 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-muted hover:text-white transition-colors font-body text-sm"
+                className="text-white/60 hover:text-white transition-colors font-body text-sm"
               >
                 {link.label}
               </Link>
@@ -45,7 +43,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="md:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -61,14 +58,13 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile menu */}
         {mobileOpen && (
           <div className="md:hidden pb-4 border-t border-navy-border mt-2 pt-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-muted hover:text-white transition-colors"
+                className="block py-2 text-white/60 hover:text-white transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
