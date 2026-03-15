@@ -20,11 +20,12 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
             className="w-full flex items-center justify-between p-4 text-left hover:bg-cream transition-colors"
+            aria-expanded={openIndex === i}
           >
-            <span className="font-heading font-semibold text-text-dark text-sm pr-4">
+            <h3 className="font-heading font-semibold text-text-dark text-sm pr-4 m-0">
               {item.question}
-            </span>
-            <span className="text-orange text-lg flex-shrink-0">
+            </h3>
+            <span className="text-orange text-lg flex-shrink-0" aria-hidden="true">
               {openIndex === i ? "−" : "+"}
             </span>
           </button>

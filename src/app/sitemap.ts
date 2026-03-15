@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getAllPostSlugs } from "@/lib/queries";
+import { getAllPostSlugs, getAllClusterSlugs } from "@/lib/queries";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://gtmsignalstudio.com";
@@ -8,6 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "daily", priority: 0.9 },
+    { url: `${baseUrl}/topics`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/work-with-me`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/audit`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
@@ -16,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/newsletter`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
   ];
 
-  // Dynamic blog posts from Supabase
+  // Dynamic blog posts
   let blogPages: MetadataRoute.Sitemap = [];
   try {
     const slugs = await getAllPostSlugs();
@@ -27,8 +28,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     }));
   } catch {
-    // Supabase not connected yet
+    // Supabase not connected
   }
 
-  return [...staticPages, ...blogPages];
+  // Dynamic topic cluster pages
+  let topicPages: MetadataRoute.Sitemap = [];
+  try {
+    const clusters = await getAllClusterSlugs();
+    topicPages = clusters.map((c) => ({
+      url: `${baseUrl}/topics/${c.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    }));
+  } catch {
+    // Supabase not connected
+  }
+
+  return [...staticPages, ...topicPages, ...blogPages];
 }

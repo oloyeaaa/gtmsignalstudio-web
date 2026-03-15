@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getPostBySlug, getRelatedPosts, getAllPostSlugs } from "@/lib/queries";
+import { getPostBySlug, getRelatedPosts, getAllPostSlugs, getPostCluster, getClusterSiblings } from "@/lib/queries";
 import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -54,6 +54,10 @@ export default async function BlogPost({ params }: Props) {
 
   const relatedPosts = await getRelatedPosts(post.id, post.category, 3);
   const faq = (post.faq || []) as { question: string; answer: string }[];
+  const clusterInfo = await getPostCluster(post.id);
+  const siblings = clusterInfo
+    ? await getClusterSiblings(post.id, clusterInfo.cluster.id)
+    : { prev: null, next: null };
 
   return (
     <>
@@ -115,7 +119,10 @@ export default async function BlogPost({ params }: Props) {
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: "https://gtmsignalstudio.com" },
               { "@type": "ListItem", position: 2, name: "Blog", item: "https://gtmsignalstudio.com/blog" },
-              { "@type": "ListItem", position: 3, name: post.title },
+              ...(clusterInfo
+                ? [{ "@type": "ListItem", position: 3, name: clusterInfo.cluster.name, item: `https://gtmsignalstudio.com/topics/${clusterInfo.cluster.slug}` }]
+                : []),
+              { "@type": "ListItem", position: clusterInfo ? 4 : 3, name: post.title },
             ],
           }),
         }}
@@ -123,14 +130,36 @@ export default async function BlogPost({ params }: Props) {
 
       <article className="bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-text-muted mb-8">
+          {/* Breadcrumb — cluster-aware */}
+          <nav className="flex items-center gap-2 text-sm text-text-muted mb-8 flex-wrap">
             <Link href="/" className="hover:text-orange transition-colors">Home</Link>
             <span>→</span>
             <Link href="/blog" className="hover:text-orange transition-colors">Blog</Link>
+            {clusterInfo && (
+              <>
+                <span>→</span>
+                <Link href={`/topics/${clusterInfo.cluster.slug}`} className="hover:text-orange transition-colors">
+                  {clusterInfo.cluster.name}
+                </Link>
+              </>
+            )}
             <span>→</span>
             <span className="text-text-dark truncate max-w-xs">{post.title}</span>
           </nav>
+
+          {/* Topic banner */}
+          {clusterInfo && (
+            <Link
+              href={`/topics/${clusterInfo.cluster.slug}`}
+              className="flex items-center gap-2 bg-cream border border-light-border rounded-lg px-4 py-2.5 mb-8 text-sm hover:border-orange/30 transition-colors group"
+            >
+              <span className="text-orange font-mono text-xs">TOPIC</span>
+              <span className="text-text-body group-hover:text-orange transition-colors">
+                Part of the <strong className="text-text-dark">{clusterInfo.cluster.name}</strong> guide
+              </span>
+              <span className="text-text-muted group-hover:text-orange ml-auto">→</span>
+            </Link>
+          )}
 
           {/* Header */}
           <header className="mb-10">
@@ -229,6 +258,39 @@ export default async function BlogPost({ params }: Props) {
           {/* Author card */}
           <AuthorCard />
         </div>
+
+        {/* Cluster sibling navigation */}
+        {clusterInfo && (siblings.prev || siblings.next) && (
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-t border-light-border">
+            <p className="font-mono text-orange text-xs mb-4 tracking-wider">
+              CONTINUE IN {clusterInfo.cluster.name.toUpperCase()}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {siblings.prev && (
+                <Link
+                  href={`/blog/${siblings.prev.slug}`}
+                  className="group bg-cream border border-light-border rounded-lg p-4 hover:border-orange/30 transition-all"
+                >
+                  <span className="text-text-muted text-xs">← Previous</span>
+                  <p className="font-heading font-bold text-text-dark text-sm mt-1 group-hover:text-orange transition-colors leading-tight">
+                    {siblings.prev.title}
+                  </p>
+                </Link>
+              )}
+              {siblings.next && (
+                <Link
+                  href={`/blog/${siblings.next.slug}`}
+                  className="group bg-cream border border-light-border rounded-lg p-4 hover:border-orange/30 transition-all sm:text-right"
+                >
+                  <span className="text-text-muted text-xs">Next →</span>
+                  <p className="font-heading font-bold text-text-dark text-sm mt-1 group-hover:text-orange transition-colors leading-tight">
+                    {siblings.next.title}
+                  </p>
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* CTA — dark section */}
         <div className="bg-navy py-16">

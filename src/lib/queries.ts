@@ -121,6 +121,148 @@ export async function getRecentPosts(limit = 3) {
   return data as Partial<Post>[];
 }
 
+// ---- TOPIC CLUSTERS ----
+
+export type TopicCluster = {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  hero_image: string;
+  cta_text: string;
+  cta_url: string;
+  pillar_post_id: string;
+};
+
+export type ClusterPost = {
+  cluster_id: string;
+  post_id: string;
+  sort_order: number;
+  is_pillar: boolean;
+};
+
+export async function getAllTopicClusters() {
+  const { data, error } = await supabase
+    .from("topic_clusters")
+    .select("*")
+    .order("name");
+
+  if (error) throw error;
+  return data as TopicCluster[];
+}
+
+export async function getTopicClusterBySlug(slug: string) {
+  const { data, error } = await supabase
+    .from("topic_clusters")
+    .select("*")
+    .eq("slug", slug)
+    .single();
+
+  if (error) return null;
+  return data as TopicCluster;
+}
+
+export async function getAllClusterSlugs() {
+  const { data, error } = await supabase
+    .from("topic_clusters")
+    .select("slug");
+
+  if (error) throw error;
+  return data as { slug: string }[];
+}
+
+export async function getClusterPosts(clusterId: string) {
+  const { data, error } = await supabase
+    .from("cluster_posts")
+    .select("post_id, sort_order, is_pillar")
+    .eq("cluster_id", clusterId)
+    .order("sort_order");
+
+  if (error) throw error;
+
+  // Fetch full post data for each
+  const posts: (Partial<Post> & { sort_order: number; is_pillar: boolean })[] = [];
+  for (const cp of data) {
+    const { data: post } = await supabase
+      .from("posts")
+      .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
+      .eq("id", cp.post_id)
+      .single();
+
+    if (post) {
+      posts.push({ ...post, sort_order: cp.sort_order, is_pillar: cp.is_pillar });
+    }
+  }
+
+  return posts;
+}
+
+export async function getClusterPostCount(clusterId: string) {
+  const { data, error } = await supabase
+    .from("cluster_posts")
+    .select("post_id")
+    .eq("cluster_id", clusterId);
+
+  if (error) return 0;
+  return data.length;
+}
+
+export async function getPostCluster(postId: string) {
+  const { data, error } = await supabase
+    .from("cluster_posts")
+    .select("cluster_id, sort_order, is_pillar")
+    .eq("post_id", postId)
+    .limit(1)
+    .maybeSingle();
+
+  if (error || !data) return null;
+
+  const { data: cluster } = await supabase
+    .from("topic_clusters")
+    .select("*")
+    .eq("id", data.cluster_id)
+    .single();
+
+  if (!cluster) return null;
+
+  return {
+    cluster: cluster as TopicCluster,
+    sort_order: data.sort_order,
+    is_pillar: data.is_pillar,
+  };
+}
+
+export async function getClusterSiblings(postId: string, clusterId: string) {
+  const { data, error } = await supabase
+    .from("cluster_posts")
+    .select("post_id, sort_order")
+    .eq("cluster_id", clusterId)
+    .order("sort_order");
+
+  if (error || !data) return { prev: null, next: null };
+
+  const currentIdx = data.findIndex((d) => d.post_id === postId);
+  if (currentIdx === -1) return { prev: null, next: null };
+
+  const prevId = currentIdx > 0 ? data[currentIdx - 1].post_id : null;
+  const nextId = currentIdx < data.length - 1 ? data[currentIdx + 1].post_id : null;
+
+  const fetchPost = async (id: string | null) => {
+    if (!id) return null;
+    const { data: post } = await supabase
+      .from("posts")
+      .select("id, title, slug")
+      .eq("id", id)
+      .single();
+    return post as { id: string; title: string; slug: string } | null;
+  };
+
+  return {
+    prev: await fetchPost(prevId),
+    next: await fetchPost(nextId),
+  };
+}
+
 // ---- PAGES ----
 
 export async function getPageBySlug(slug: string) {
