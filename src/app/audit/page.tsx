@@ -58,7 +58,7 @@ export default function AuditPage() {
       {/* Hero */}
       <div className="max-w-3xl mb-16">
         <p className="font-mono text-orange text-sm mb-2 tracking-wider">FREE GTM AUDIT</p>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 leading-tight">
           Your GTM. Scored.{" "}
           <span className="text-orange">Your gaps. Fixed.</span>
         </h1>
@@ -79,7 +79,7 @@ export default function AuditPage() {
 
       {/* 5 Dimensions */}
       <section className="mb-20">
-        <h2 className="font-heading text-2xl font-bold text-white mb-8">
+        <h2 className="font-heading text-2xl font-bold text-text-dark mb-8">
           What we score
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -104,7 +104,7 @@ export default function AuditPage() {
 
       {/* How it works */}
       <section className="mb-20">
-        <h2 className="font-heading text-2xl font-bold text-white mb-8">
+        <h2 className="font-heading text-2xl font-bold text-text-dark mb-8">
           How it works
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -114,7 +114,7 @@ export default function AuditPage() {
                 <span className="font-mono font-bold text-white text-sm">{step.number}</span>
               </div>
               <div>
-                <h3 className="font-heading font-bold text-white mb-1">{step.title}</h3>
+                <h3 className="font-heading font-bold text-text-dark mb-1">{step.title}</h3>
                 <p className="text-muted text-sm leading-relaxed">{step.description}</p>
               </div>
             </div>
@@ -124,7 +124,7 @@ export default function AuditPage() {
 
       {/* What you get */}
       <section className="mb-20">
-        <h2 className="font-heading text-2xl font-bold text-white mb-6">
+        <h2 className="font-heading text-2xl font-bold text-text-dark mb-6">
           What you get
         </h2>
         <div className="bg-navy-light border border-navy-border rounded-xl p-6">
@@ -148,7 +148,7 @@ export default function AuditPage() {
 
       {/* Bottom CTA */}
       <section className="text-center">
-        <h2 className="font-heading text-2xl font-bold text-white mb-4">
+        <h2 className="font-heading text-2xl font-bold text-text-dark mb-4">
           Ready to see your score?
         </h2>
         <p className="text-muted mb-8">

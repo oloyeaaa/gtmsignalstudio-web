@@ -69,7 +69,7 @@ export default function ResourcesPage() {
         <p className="font-mono text-orange text-xs uppercase tracking-widest mb-5">
           Open Source Resources
         </p>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 max-w-[720px] mx-auto leading-tight tracking-tight">
+        <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 max-w-[720px] mx-auto leading-tight tracking-tight">
           The tools I built because I couldn&apos;t afford to hire.
         </h1>
         <p className="text-muted text-lg max-w-[600px] mx-auto leading-relaxed">
@@ -135,7 +135,7 @@ export default function ResourcesPage() {
         <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">
           From the Playbook
         </p>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
           Numbers from live campaigns. Not theory.
         </h2>
         <p className="text-muted text-base max-w-[560px] leading-relaxed mb-10">
@@ -152,11 +152,11 @@ export default function ResourcesPage() {
       </section>
 
       {/* Proven Patterns */}
-      <section className="border-t border-navy-border pt-16 mb-20">
+      <section className="border-t border-light-border pt-16 mb-20">
         <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">
           Proven Patterns
         </p>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
           7 patterns. Each confirmed 3+ times.
         </h2>
         <p className="text-muted text-base max-w-[560px] leading-relaxed mb-10">
@@ -174,7 +174,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Founder */}
-      <section className="border-t border-navy-border pt-16 mb-20">
+      <section className="border-t border-light-border pt-16 mb-20">
         <div className="bg-navy-light border border-navy-border rounded-xl p-10 md:p-12 md:grid md:grid-cols-[1fr_2fr] gap-12 items-center">
           <div className="flex items-center justify-center mb-6 md:mb-0">
             <Image
@@ -212,8 +212,8 @@ export default function ResourcesPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="border-t border-navy-border pt-16 text-center">
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">
+      <section className="border-t border-light-border pt-16 text-center">
+        <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
           Built in public. Given away for free.
         </h2>
         <p className="text-muted text-base max-w-[480px] mx-auto leading-relaxed mb-8">
@@ -230,7 +230,7 @@ export default function ResourcesPage() {
           </a>
           <Link
             href="/audit"
-            className="border border-navy-border hover:border-orange text-white hover:text-orange font-semibold px-8 py-3.5 rounded-lg transition-colors"
+            className="border border-light-border hover:border-orange text-text-dark hover:text-orange font-semibold px-8 py-3.5 rounded-lg transition-colors"
           >
             Get a Free GTM Audit
           </Link>

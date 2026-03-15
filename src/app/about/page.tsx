@@ -102,7 +102,7 @@ export default function AboutPage() {
         </a>
         <Link
           href="/work-with-me"
-          className="border border-navy-border hover:border-muted text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
+          className="border border-light-border hover:border-orange text-text-dark px-6 py-3 rounded-lg font-semibold text-center transition-colors"
         >
           Work With Me
         </Link>
