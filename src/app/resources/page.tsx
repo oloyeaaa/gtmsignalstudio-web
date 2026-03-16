@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import EmailGate from "@/components/EmailGate";
 
 export const metadata: Metadata = {
   title: "Resources",
   description:
-    "Free tools, frameworks, and guides for B2B service companies running their own go-to-market. Built from live campaigns. No email gate.",
+    "Free tools, templates, and guides for B2B founders building GTM systems with AI. Skill file templates, outreach frameworks, and audit tools.",
 };
 
 const resources = [
@@ -67,16 +68,88 @@ export default function ResourcesPage() {
       {/* Hero */}
       <div className="text-center mb-16 pt-8">
         <p className="font-mono text-orange text-xs uppercase tracking-widest mb-5">
-          Open Source Resources
+          Builder Resources
         </p>
         <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 max-w-[720px] mx-auto leading-tight tracking-tight">
           The tools I built because I couldn&apos;t afford to hire.
         </h1>
         <p className="text-muted text-lg max-w-[600px] mx-auto leading-relaxed">
-          Skills, frameworks, and guides for B2B founders running their own go-to-market.
-          Built from live campaigns. No email gate. No sign-up. Just the system.
+          Templates, frameworks, and guides for B2B founders building GTM systems with AI.
+          Built from live campaigns. Grab what you need.
         </p>
       </div>
+
+      {/* Featured: Skill File Templates (gated) */}
+      <section className="mb-12">
+        <div className="bg-navy-light border-2 border-orange/40 rounded-xl p-10 md:grid md:grid-cols-[1fr_1fr] gap-10 items-center">
+          <div>
+            <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-3 py-1 rounded w-fit mb-5 bg-orange/10 text-orange">
+              Free Download
+            </span>
+            <h2 className="font-heading text-2xl font-bold text-white mb-4 tracking-tight">
+              AI Skill File Templates
+            </h2>
+            <p className="text-muted text-sm leading-relaxed mb-4">
+              3 ready-to-use templates that give your AI persistent expertise. Stop re-prompting
+              every session. One skill file replaces 45 minutes of context-setting.
+            </p>
+            <div className="flex flex-wrap gap-5 mb-5">
+              <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
+                <strong className="text-white font-semibold">3</strong> templates
+              </div>
+              <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
+                <strong className="text-white font-semibold">10min</strong> setup
+              </div>
+              <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
+                <strong className="text-white font-semibold">.md</strong> format
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2 mb-7">
+              {["Claude Code", "Cursor", "AI Workflow", "Productivity"].map((t) => (
+                <span key={t} className="font-mono text-xs text-muted/70 bg-white/[0.04] border border-navy-border px-2.5 py-1 rounded">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <p className="text-muted text-xs mb-4">Includes:</p>
+            <ul className="text-muted text-sm space-y-1.5 mb-7">
+              <li className="flex items-start gap-2">
+                <span className="text-orange mt-0.5">→</span>
+                Content creator template (LinkedIn, blog, newsletter)
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange mt-0.5">→</span>
+                Research agent template (audits, competitor analysis)
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange mt-0.5">→</span>
+                Blank template with 3 worked examples
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-orange mt-0.5">→</span>
+                Quick-start guide with before/after comparison
+              </li>
+            </ul>
+
+            <EmailGate
+              magnet="skill-file-templates"
+              downloadUrl="https://github.com/oloyeaaa/gtm-playbook/tree/main/skill-file-templates"
+              buttonLabel="Get the Templates"
+            />
+          </div>
+
+          <div className="hidden md:block">
+            <Image
+              src="/skill-templates-preview.png"
+              alt="AI Skill File Template — content creator template shown in code editor"
+              width={1200}
+              height={630}
+              className="rounded-lg border border-navy-border"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Resource Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
@@ -188,21 +261,20 @@ export default function ResourcesPage() {
           <div>
             <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">Who Built This</p>
             <h3 className="font-heading text-xl font-bold text-white mb-4">
-              I&apos;m Oloye. I built this because I couldn&apos;t afford the agency.
+              I build AI-powered GTM infrastructure. And I teach other founders how to do the same.
             </h3>
             <p className="text-muted text-sm leading-relaxed mb-3">
-              I run GTM Signal Studio — go-to-market diagnostics for B2B service companies.
-              I&apos;ve audited consulting firms, agencies, and recruitment companies.
-              The average score is 41 out of 100.
+              I run GTM Signal Studio. 5 departments, 33 AI skills, full pipeline.
+              One person. No team. No agency.
             </p>
             <p className="text-muted text-sm leading-relaxed mb-3">
-              I built this system on the side of a full-time job. No funding. No team.
-              Every skill, every framework, every pattern came from real campaigns — not a course or a playbook I bought.
+              I built this system on the side of a full-time job. No funding.
+              Every skill, every framework, every pattern came from real campaigns — not a course I bought.
             </p>
             <p className="text-muted text-sm leading-relaxed mb-5">
-              I&apos;m giving it away because the free audit is how I earn trust. If the system helps
-              you fix your GTM on your own, that&apos;s a win. If you want me to do it for you,
-              that conversation starts with the audit.
+              I&apos;m giving the tools away because the best way to earn trust is to prove you can build.
+              If you want to build your own system, grab the templates. If you want me to build it for you,
+              that conversation starts with the free audit.
             </p>
             <p className="font-mono text-white text-sm font-medium">
               — Oloye Adeosun, GTM Signal Studio
@@ -214,10 +286,10 @@ export default function ResourcesPage() {
       {/* Bottom CTA */}
       <section className="border-t border-light-border pt-16 text-center">
         <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
-          Built in public. Given away for free.
+          Built in public. Shared with builders.
         </h2>
         <p className="text-muted text-base max-w-[480px] mx-auto leading-relaxed mb-8">
-          No email gate. No sign-up. Grab the tools and build your own GTM system.
+          Grab the tools and build your own GTM system. Or get a free audit and let me build it for you.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <a
