@@ -2,12 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPostBySlug, getRelatedPosts, getAllPostSlugs, getPostCluster, getClusterSiblings } from "@/lib/queries";
 import type { Metadata } from "next";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import rehypeSlug from "rehype-slug";
 import FaqAccordion from "@/components/blog/FaqAccordion";
 import AuthorCard from "@/components/blog/AuthorCard";
+import BlogContent from "@/components/blog/BlogContent";
+import BlogCTA from "@/components/blog/BlogCTA";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -225,14 +223,7 @@ export default async function BlogPost({ params }: Props) {
           )}
 
           {/* Article body */}
-          <div className="prose max-w-none">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw, rehypeSlug]}
-            >
-              {post.content}
-            </ReactMarkdown>
-          </div>
+          <BlogContent content={post.content} />
 
           {/* Infographic (mid-post image) */}
           {post.infographic_image && (
@@ -293,32 +284,7 @@ export default async function BlogPost({ params }: Props) {
         )}
 
         {/* CTA — dark section */}
-        <div className="bg-navy py-16">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="font-heading text-xl font-bold text-white mb-3">
-              Want to know your GTM score?
-            </h3>
-            <p className="text-white/60 mb-6">
-              Free audit. Scored out of 100. Three things to fix this week.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/audit"
-                className="bg-orange hover:bg-orange-hover text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Get Your Free GTM Audit
-              </Link>
-              <a
-                href="https://newsletter.gtmsignalstudio.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/20 hover:border-white/40 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Subscribe to Newsletter
-              </a>
-            </div>
-          </div>
-        </div>
+        <BlogCTA />
 
         {/* Related posts — cream */}
         {relatedPosts.length > 0 && (
