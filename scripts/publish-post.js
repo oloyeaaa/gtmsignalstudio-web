@@ -1,0 +1,286 @@
+/**
+ * Publish a new blog post to Supabase + upload featured image to Storage
+ *
+ * Usage:
+ *   node scripts/publish-post.js \
+ *     --markdown "C:/path/to/post.md" \
+ *     --image "C:/path/to/image.png" \
+ *     --slug "url-slug-here"
+ *
+ * The script:
+ *   1. Uploads the featured image to Supabase Storage (blog-images bucket)
+ *   2. Parses the markdown file to extract: title, content, meta description,
+ *      short answer, FAQ items, schema markup
+ *   3. Inserts a new row into the `posts` table (status: published)
+ *   4. Calls the ISR revalidation webhook so the page goes live immediately
+ */
+
+const { createClient } = require("@supabase/supabase-js");
+const fs = require("fs");
+const path = require("path");
+
+// ── Load .env.local ──────────────────────────────────────────────────────────
+
+function loadEnv(envPath) {
+  const env = {};
+  if (!fs.existsSync(envPath)) return env;
+  const lines = fs.readFileSync(envPath, "utf-8").split("\n");
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed && !trimmed.startsWith("#") && trimmed.includes("=")) {
+      const [key, ...rest] = trimmed.split("=");
+      env[key.trim()] = rest.join("=").trim();
+    }
+  }
+  return env;
+}
+
+const localEnv = loadEnv(path.join(__dirname, "..", ".env.local"));
+const SUPABASE_URL = localEnv.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_SERVICE_KEY = localEnv.SUPABASE_SERVICE_KEY;
+const REVALIDATION_SECRET = localEnv.REVALIDATION_SECRET || "gss-revalidate-2026";
+
+if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+  console.error("❌  Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_KEY in .env.local");
+  process.exit(1);
+}
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
+
+// ── CLI args ─────────────────────────────────────────────────────────────────
+
+function getArg(flag) {
+  const idx = process.argv.indexOf(flag);
+  return idx !== -1 ? process.argv[idx + 1] : null;
+}
+
+const markdownPath = getArg("--markdown");
+const imagePath    = getArg("--image");
+const slugArg      = getArg("--slug");
+const dryRun       = process.argv.includes("--dry-run");
+
+if (!markdownPath || !slugArg) {
+  console.error("Usage: node scripts/publish-post.js --markdown <path> --slug <slug> [--image <path>] [--dry-run]");
+  process.exit(1);
+}
+
+// ── Markdown parser ───────────────────────────────────────────────────────────
+
+function extractSection(md, heading) {
+  const pattern = new RegExp(`##\\s+${heading}\\s*\\n([\\s\\S]*?)(?=\\n##\\s|$)`, "i");
+  const match = md.match(pattern);
+  return match ? match[1].trim() : null;
+}
+
+function extractShortAnswer(md) {
+  const match = md.match(/\*\*The short answer:\*\*\s+([^\n]+(?:\n(?!\n)[^\n]+)*)/);
+  if (match) return match[1].replace(/\*\*/g, "").trim();
+  const match2 = md.match(/\*\*The short answer:\*\*([^*]+)/);
+  return match2 ? match2[1].trim() : null;
+}
+
+function extractMetaDescription(md) {
+  // Looks for the recommended option under ## Meta Description
+  const match = md.match(/\*\*Option A[^:]*:\*\*\s*\n([^\n]+)/);
+  if (match) return match[1].trim().replace(/\s*\(\d+ chars?\)$/, "").trim();
+  const match2 = md.match(/\*\*Option B[^:]*:\*\*\s*\n([^\n]+)/);
+  return match2 ? match2[1].trim().replace(/\s*\(\d+ chars?\)$/, "").trim() : null;
+}
+
+function extractTitle(md) {
+  // First ## heading that looks like the post title (inside ## Blog Post section)
+  const blogSection = extractSection(md, "Blog Post");
+  if (blogSection) {
+    const match = blogSection.match(/^##?\s+(.+)/m);
+    if (match) return match[1].trim();
+  }
+  // Fallback: first # or ## heading
+  const match = md.match(/^##?\s+(.+)/m);
+  return match ? match[1].trim() : "Untitled";
+}
+
+function extractFAQ(md) {
+  const faqSection = extractSection(md, "Frequently Asked Questions");
+  if (!faqSection) return [];
+
+  const faqs = [];
+  const blocks = faqSection.split(/\n\n+/);
+  let current = null;
+
+  for (const block of blocks) {
+    const questionMatch = block.match(/^\*\*(.+?)\*\*/);
+    if (questionMatch) {
+      if (current) faqs.push(current);
+      const rest = block.replace(/^\*\*(.+?)\*\*\s*\n?/, "").trim();
+      current = { question: questionMatch[1].trim(), answer: rest };
+    } else if (current && block.trim()) {
+      current.answer += " " + block.trim();
+    }
+  }
+  if (current) faqs.push(current);
+  return faqs;
+}
+
+function extractSchemaMarkup(md) {
+  const schemas = [];
+  const scriptPattern = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+  let match;
+  while ((match = scriptPattern.exec(md)) !== null) {
+    try {
+      schemas.push(JSON.parse(match[1].trim()));
+    } catch (e) {
+      // skip malformed
+    }
+  }
+  return schemas.length > 0 ? schemas : null;
+}
+
+function extractBlogContent(md) {
+  // Find everything from ## Blog Post to ## Schema Markup (or end of file)
+  const start = md.indexOf("## Blog Post");
+  if (start === -1) return md;
+  const afterStart = md.indexOf("\n", start) + 1; // skip the "## Blog Post" line itself
+  const end = md.indexOf("\n## Schema Markup", afterStart);
+  const content = end !== -1 ? md.slice(afterStart, end) : md.slice(afterStart);
+  return content.trim();
+}
+
+function wordCount(text) {
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+function readingTime(text) {
+  return Math.ceil(wordCount(text) / 200);
+}
+
+// ── Image upload ──────────────────────────────────────────────────────────────
+
+async function uploadImage(localPath, slug) {
+  if (!localPath || !fs.existsSync(localPath)) {
+    console.log("⚠️  No image path provided or file not found — skipping image upload");
+    return null;
+  }
+
+  const fileName = `${slug}.png`;
+  const fileBuffer = fs.readFileSync(localPath);
+
+  console.log(`📤 Uploading image: ${fileName}`);
+
+  const { error } = await supabase.storage
+    .from("blog-images")
+    .upload(fileName, fileBuffer, {
+      contentType: "image/png",
+      upsert: true,
+    });
+
+  if (error) {
+    console.error("❌  Image upload failed:", error.message);
+    return null;
+  }
+
+  const { data: urlData } = supabase.storage
+    .from("blog-images")
+    .getPublicUrl(fileName);
+
+  console.log(`✅ Image uploaded: ${urlData.publicUrl}`);
+  return urlData.publicUrl;
+}
+
+// ── Revalidate ISR ────────────────────────────────────────────────────────────
+
+async function revalidate(slug) {
+  console.log(`ℹ️  Revalidate webhook: /api/revalidate?slug=${slug}&secret=${REVALIDATION_SECRET}`);
+  console.log("   Call this endpoint after deploying to trigger ISR.");
+}
+
+// ── Main ──────────────────────────────────────────────────────────────────────
+
+async function main() {
+  console.log("\n🚀 GSS Blog Publisher\n");
+
+  if (!fs.existsSync(markdownPath)) {
+    console.error(`❌  Markdown file not found: ${markdownPath}`);
+    process.exit(1);
+  }
+
+  const md = fs.readFileSync(markdownPath, "utf-8");
+  const slug = slugArg;
+
+  // Parse all fields
+  const title           = extractTitle(md);
+  const content         = extractBlogContent(md);
+  const metaDescription = extractMetaDescription(md);
+  const shortAnswer     = extractShortAnswer(md);
+  const faq             = extractFAQ(md);
+  const schemaMarkup    = extractSchemaMarkup(md);
+  const rt              = readingTime(content);
+
+  console.log(`📝 Title:       ${title}`);
+  console.log(`🔗 Slug:        ${slug}`);
+  console.log(`📊 Word count:  ${wordCount(content)}`);
+  console.log(`⏱️  Read time:   ${rt} min`);
+  console.log(`📋 FAQ items:   ${faq.length}`);
+  console.log(`🔷 Schema:      ${schemaMarkup ? schemaMarkup.length + " blocks" : "none"}`);
+  console.log(`📄 Meta desc:   ${metaDescription ? metaDescription.substring(0, 80) + "..." : "none"}`);
+
+  if (dryRun) {
+    console.log("\n⚡ DRY RUN — no data written. Remove --dry-run to publish.");
+    return;
+  }
+
+  // Upload image
+  const featuredImageUrl = await uploadImage(imagePath, slug);
+
+  // Build the post record
+  const record = {
+    title,
+    slug,
+    content,
+    excerpt: metaDescription || content.substring(0, 200),
+    meta_description: metaDescription,
+    short_answer: shortAnswer,
+    category: "AI Presence",
+    tags: ["AI Presence", "GEO", "B2B Marketing", "SEO", "AI Search"],
+    schema_markup: schemaMarkup || {},
+    faq: faq,
+    featured_image: featuredImageUrl,
+    og_image: featuredImageUrl,
+    status: "published",
+    author: "Oloye Adeosun",
+    published_at: new Date().toISOString(),
+    reading_time: rt,
+  };
+
+  console.log("\n📤 Inserting post into Supabase...");
+
+  const { data, error } = await supabase
+    .from("posts")
+    .insert([record])
+    .select("id, slug, title, status, published_at")
+    .single();
+
+  if (error) {
+    console.error("❌  Supabase insert failed:", error.message);
+    console.error("    Details:", error.details || "none");
+    process.exit(1);
+  }
+
+  console.log("\n✅ Post published successfully!");
+  console.log(`   ID:           ${data.id}`);
+  console.log(`   URL:          https://gtmsignalstudio.com/blog/${data.slug}`);
+  console.log(`   Status:       ${data.status}`);
+  console.log(`   Published at: ${data.published_at}`);
+
+  await revalidate(slug);
+
+  console.log("\n📋 Next steps:");
+  console.log("   1. Push the git repo to trigger Vercel redeploy (or use Vercel dashboard)");
+  console.log("   2. Verify the post at: https://gtmsignalstudio.com/blog/" + slug);
+  console.log("   3. Schedule the companion LinkedIn post");
+  console.log("   4. Update content-topics.md topic status to `used`\n");
+}
+
+main().catch((err) => {
+  console.error("Fatal error:", err);
+  process.exit(1);
+});
