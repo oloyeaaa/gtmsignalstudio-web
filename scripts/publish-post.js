@@ -1,5 +1,6 @@
 /**
  * Publish a new blog post to Supabase + upload featured image to Storage
+ * + push record to Airtable Content-Engine
  *
  * Usage:
  *   node scripts/publish-post.js \
@@ -12,7 +13,8 @@
  *   2. Parses the markdown file to extract: title, content, meta description,
  *      short answer, FAQ items, schema markup
  *   3. Inserts a new row into the `posts` table (status: published)
- *   4. Calls the ISR revalidation webhook so the page goes live immediately
+ *   4. Pushes content metadata to Airtable Content-Engine (status: published)
+ *   5. Logs the ISR revalidation endpoint for triggering page rebuild
  */
 
 const { createClient } = require("@supabase/supabase-js");
@@ -36,9 +38,13 @@ function loadEnv(envPath) {
 }
 
 const localEnv = loadEnv(path.join(__dirname, "..", ".env.local"));
-const SUPABASE_URL = localEnv.NEXT_PUBLIC_SUPABASE_URL;
+const gssEnv   = loadEnv(path.join(__dirname, "..", "..", "GSS", "config", ".env"));
+
+const SUPABASE_URL        = localEnv.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = localEnv.SUPABASE_SERVICE_KEY;
-const REVALIDATION_SECRET = localEnv.REVALIDATION_SECRET || "gss-revalidate-2026";
+const REVALIDATION_SECRET  = localEnv.REVALIDATION_SECRET || "gss-revalidate-2026";
+const AIRTABLE_TOKEN       = gssEnv.AIRTABLE_TOKEN;
+const AIRTABLE_BASE_ID     = gssEnv.AIRTABLE_BASE_ID;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
   console.error("❌  Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_KEY in .env.local");
@@ -186,6 +192,49 @@ async function uploadImage(localPath, slug) {
   return urlData.publicUrl;
 }
 
+// ── Airtable Content-Engine push ──────────────────────────────────────────────
+
+async function pushToAirtable(record) {
+  if (!AIRTABLE_TOKEN || !AIRTABLE_BASE_ID) {
+    console.log("⚠️  Airtable credentials not found in GSS config/.env — skipping");
+    return null;
+  }
+
+  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Content-Engine`;
+  const body = JSON.stringify({ records: [{ fields: record }], typecast: true });
+
+  return new Promise((resolve) => {
+    const req = require("https").request(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_TOKEN}`,
+        "Content-Type": "application/json",
+        "Content-Length": Buffer.byteLength(body),
+      },
+    }, (res) => {
+      let data = "";
+      res.on("data", (chunk) => (data += chunk));
+      res.on("end", () => {
+        if (res.statusCode === 200 || res.statusCode === 201) {
+          const result = JSON.parse(data);
+          const id = result.records?.[0]?.id;
+          console.log(`✅ Airtable Content-Engine updated → ${id}`);
+          resolve(id);
+        } else {
+          console.error(`❌  Airtable push failed: ${res.statusCode} ${data.slice(0, 200)}`);
+          resolve(null);
+        }
+      });
+    });
+    req.on("error", (e) => {
+      console.error("❌  Airtable push error:", e.message);
+      resolve(null);
+    });
+    req.write(body);
+    req.end();
+  });
+}
+
 // ── Revalidate ISR ────────────────────────────────────────────────────────────
 
 async function revalidate(slug) {
@@ -270,6 +319,18 @@ async function main() {
   console.log(`   URL:          https://gtmsignalstudio.com/blog/${data.slug}`);
   console.log(`   Status:       ${data.status}`);
   console.log(`   Published at: ${data.published_at}`);
+
+  // Push to Airtable Content-Engine
+  console.log("\n📤 Updating Airtable Content-Engine...");
+  await pushToAirtable({
+    "Title": title,
+    "Content Type": "blog",
+    "Topic": metaDescription || title,
+    "Date Created": new Date().toISOString().split("T")[0],
+    "Word Count": wordCount(content),
+    "Status": "published",
+    "Meta Description": metaDescription,
+  });
 
   await revalidate(slug);
 
