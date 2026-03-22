@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getPublishedPosts } from "@/lib/queries";
 import type { Metadata } from "next";
 
@@ -71,9 +72,11 @@ export default async function BlogPage() {
               >
                 {post.featured_image && (
                   <div className="aspect-video bg-cream overflow-hidden">
-                    <img
+                    <Image
                       src={post.featured_image}
                       alt={post.title}
+                      width={600}
+                      height={338}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>

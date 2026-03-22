@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getPostBySlug, getRelatedPosts, getAllPostSlugs, getPostCluster, getClusterSiblings } from "@/lib/queries";
 import type { Metadata } from "next";
 import FaqAccordion from "@/components/blog/FaqAccordion";
@@ -213,10 +214,13 @@ export default async function BlogPost({ params }: Props) {
           {/* Featured image */}
           {post.featured_image && (
             <div className="rounded-xl overflow-hidden mb-10">
-              <img
+              <Image
                 src={post.featured_image}
                 alt={post.title}
+                width={1200}
+                height={630}
                 className="w-full"
+                priority
               />
             </div>
           )}
@@ -235,9 +239,11 @@ export default async function BlogPost({ params }: Props) {
           {/* Infographic (mid-post image) */}
           {post.infographic_image && (
             <div className="rounded-xl overflow-hidden my-10">
-              <img
+              <Image
                 src={post.infographic_image}
                 alt={`${post.title} infographic`}
+                width={1200}
+                height={630}
                 className="w-full"
               />
             </div>

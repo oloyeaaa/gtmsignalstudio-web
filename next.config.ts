@@ -34,6 +34,11 @@ const nextConfig: NextConfig = {
             key: "Strict-Transport-Security",
             value: "max-age=63072000; includeSubDomains; preload",
           },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
+          },
         ],
       },
       {
