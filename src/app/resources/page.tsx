@@ -341,6 +341,48 @@ export default function ResourcesPage() {
           </Link>
         </div>
       </section>
+      {/* Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "GTM Signal Studio Resources",
+            description:
+              "Free tools, templates, and guides for B2B founders building GTM systems with AI.",
+            url: "https://gtmsignalstudio.com/resources",
+            publisher: {
+              "@type": "Organization",
+              name: "GTM Signal Studio",
+              url: "https://gtmsignalstudio.com",
+            },
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "AI Visibility Signal Scorecard",
+                  url: "https://gtmsignalstudio.com/resources/ai-visibility-scorecard",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "7 Signals That Make AI Cite Your Company",
+                  url: "https://gtmsignalstudio.com/resources/ai-citation-signals",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: "GTM Tools Stack",
+                  url: "https://gtmsignalstudio.com/resources/tools",
+                },
+              ],
+            },
+          }),
+        }}
+      />
     </div>
   );
 }

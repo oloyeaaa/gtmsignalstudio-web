@@ -50,6 +50,32 @@ export default function NewsletterPage() {
           ))}
         </div>
       </div>
+      {/* Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Periodical",
+            name: "The GTM Signal",
+            description:
+              "Weekly signal-led GTM insights from real campaigns. Frameworks, data, and patterns delivered every Tuesday.",
+            url: "https://newsletter.gtmsignalstudio.com",
+            publisher: {
+              "@type": "Organization",
+              name: "GTM Signal Studio",
+              url: "https://gtmsignalstudio.com",
+            },
+            author: {
+              "@type": "Person",
+              name: "Oloye Adeosun",
+              url: "https://gtmsignalstudio.com/about",
+            },
+            isAccessibleForFree: true,
+            periodicity: "weekly",
+          }),
+        }}
+      />
     </div>
   );
 }

@@ -161,6 +161,9 @@ export default function ToolsPage() {
       </div>
 
       {/* Tool Grid */}
+      <h2 className="font-heading text-xl font-bold text-text-dark mb-6">
+        {activeFilter === "All" ? "All tools" : activeFilter}
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
         {filtered.map((tool) => (
           <div
