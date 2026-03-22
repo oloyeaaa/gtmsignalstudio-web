@@ -42,10 +42,10 @@ export default function PrivacyPage() {
           <p className="leading-relaxed mt-2">
             For data protection enquiries, contact us at{" "}
             <a
-              href="mailto:oloye@gtmsignalstudio.com"
+              href="mailto:thegtmsignalstudio@gmail.com"
               className="text-orange hover:underline"
             >
-              oloye@gtmsignalstudio.com
+              thegtmsignalstudio@gmail.com
             </a>
             .
           </p>
@@ -191,10 +191,10 @@ export default function PrivacyPage() {
           <p className="leading-relaxed mt-3">
             To exercise any of these rights, email{" "}
             <a
-              href="mailto:oloye@gtmsignalstudio.com"
+              href="mailto:thegtmsignalstudio@gmail.com"
               className="text-orange hover:underline"
             >
-              oloye@gtmsignalstudio.com
+              thegtmsignalstudio@gmail.com
             </a>
             .
           </p>

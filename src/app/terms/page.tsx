@@ -215,10 +215,10 @@ export default function TermsPage() {
           <p className="leading-relaxed">
             For questions about these terms, email{" "}
             <a
-              href="mailto:oloye@gtmsignalstudio.com"
+              href="mailto:thegtmsignalstudio@gmail.com"
               className="text-orange hover:underline"
             >
-              oloye@gtmsignalstudio.com
+              thegtmsignalstudio@gmail.com
             </a>
             .
           </p>
