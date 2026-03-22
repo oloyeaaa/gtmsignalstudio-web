@@ -11,9 +11,41 @@ export const metadata: Metadata = {
 
 const resources = [
   {
+    title: "AI Visibility Signal Scorecard",
+    badge: "Free Tool",
+    badgeClass: "bg-green-400/10 text-green-400",
+    description:
+      "Can AI find your business? Self-assess across 4 dimensions — AI Citation, Entity Recognition, Content Structure, Citation Breadth. Takes 5 minutes. Real-time scoring.",
+    stats: [
+      { value: "4", label: "dimensions" },
+      { value: "5min", label: "to complete" },
+      { value: "60", label: "max score" },
+    ],
+    tags: ["AI Visibility", "Signal Detection", "Self-Assessment", "B2B"],
+    link: "/resources/ai-visibility-scorecard",
+    cta: "Take the Scorecard",
+    primary: true,
+  },
+  {
+    title: "7 Signals That Make AI Cite Your Company",
+    badge: "Free Guide",
+    badgeClass: "bg-orange/10 text-orange",
+    description:
+      "The structural changes that move your company from invisible to recommended by AI. Each signal includes the fix and why it works. Implementation guide for the scorecard.",
+    stats: [
+      { value: "7", label: "signals" },
+      { value: "3", label: "priority fixes" },
+      { value: "30 days", label: "to see shift" },
+    ],
+    tags: ["AI Visibility", "Content Strategy", "SEO to AI", "B2B"],
+    link: "/resources/ai-citation-signals",
+    cta: "Read the Guide",
+    primary: false,
+  },
+  {
     title: "The GTM Playbook",
     badge: "GitHub Repo",
-    badgeClass: "bg-orange/10 text-orange",
+    badgeClass: "bg-sky-400/10 text-sky-400",
     description:
       "18 Claude Code skills, 7 proven outreach patterns, and the full campaign framework. ICP research to pipeline forecast. Built from 900+ emails and 6 live audit deliveries.",
     stats: [
@@ -25,7 +57,7 @@ const resources = [
     tags: ["Claude Code", "Cold Outreach", "GTM Audit", "Pipeline"],
     link: "https://github.com/oloyeaaa/gtm-playbook",
     cta: "View on GitHub",
-    primary: true,
+    primary: false,
   },
   {
     title: "Claude Code Second Brain",
