@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "AI Visibility Signal Scorecard — GTM Signal Studio",
   description:
     "Check if AI platforms recommend your business. Free self-assessment across 4 dimensions — AI Citation, Entity Recognition, Content Structure, Citation Breadth. Takes 5 minutes.",
+  keywords: ["AI visibility scorecard", "AI presence self-assessment", "AI citation check", "AI visibility signal score", "free AI audit tool"],
 };
 
 export default function AiVisibilityScorecardPage() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Oloye Adeosun — building signal-led GTM infrastructure for B2B founders. Marketing Automation Specialist by day, GTM Signal Studio by night.",
+  keywords: ["Oloye Adeosun", "GTM Signal Studio founder", "signal-led marketing", "B2B GTM consultant", "marketing automation"],
 };
 
 export default function AboutPage() {

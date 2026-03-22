@@ -25,9 +25,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(slug);
   if (!post) return { title: "Post Not Found" };
 
+  const titleWords = post.title
+    .split(/\s+/)
+    .filter((w: string) => w.length > 3)
+    .slice(0, 3);
+  const keywords = ["B2B GTM", "signal-led outreach", "go-to-market strategy", ...titleWords];
+
   return {
     title: post.title,
     description: post.meta_description || post.excerpt,
+    keywords,
     openGraph: {
       title: post.title,
       description: post.meta_description || post.excerpt,

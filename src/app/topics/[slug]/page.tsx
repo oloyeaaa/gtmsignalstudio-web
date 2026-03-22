@@ -25,9 +25,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cluster = await getTopicClusterBySlug(slug);
   if (!cluster) return { title: "Topic Not Found" };
 
+  const clusterWords = cluster.name
+    .split(/\s+/)
+    .filter((w: string) => w.length > 3)
+    .slice(0, 3);
+  const keywords = ["GTM topics", "B2B go-to-market", "signal-led outreach", ...clusterWords];
+
   return {
     title: cluster.name,
     description: cluster.description,
+    keywords,
     openGraph: {
       title: `${cluster.name} — GTM Signal Studio`,
       description: cluster.description,

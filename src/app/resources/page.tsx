@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Resources",
   description:
     "Free tools, templates, and guides for B2B founders building GTM systems with AI. Skill file templates, outreach frameworks, and audit tools.",
+  keywords: ["B2B GTM resources", "free GTM templates", "outreach frameworks", "AI visibility tools", "signal-led tools"],
 };
 
 const resources = [

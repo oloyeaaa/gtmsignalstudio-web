@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Topics",
   description:
     "Explore signal-led GTM topics: ICP definition, buying signals, cold email infrastructure, outreach tactics, and build-in-public stories.",
+  keywords: ["GTM topics", "signal-led outreach topics", "B2B go-to-market", "ICP definition", "buying signals"],
 };
 
 export const revalidate = 3600;

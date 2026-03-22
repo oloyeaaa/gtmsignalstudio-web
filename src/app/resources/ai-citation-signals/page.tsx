@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "7 Signals That Make AI Cite Your Company — GTM Signal Studio",
   description:
     "The structural changes that move your company from invisible to recommended by AI. Answer buyer questions, name your methodology, publish original data, and more.",
+  keywords: ["AI citation signals", "how to get cited by AI", "AI visibility signals", "AI content structure", "AI recommendation factors"],
 };
 
 const signals = [

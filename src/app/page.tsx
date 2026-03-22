@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { getPublishedPosts } from "@/lib/queries";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "GTM Signal Studio | Signal-Led Go-To-Market for B2B",
+  description:
+    "Signal-led go-to-market strategies for B2B founders. Stop spray-and-pray. Start signal-led. Free GTM audits, frameworks, and tools.",
+  keywords: ["GTM Signal Studio", "signal-led go-to-market", "B2B GTM strategy", "buying signals", "go-to-market audit", "B2B pipeline", "cold email infrastructure"],
+};
 
 export default async function Home() {
   const posts = await getPublishedPosts(3, 0);

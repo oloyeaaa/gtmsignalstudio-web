@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Work With Me",
   description:
     "Signal-led GTM sprints for B2B founders. Positioning Sprint (£497), GTM Fix Sprint (£997), Outreach Setup (£997). Start with a free audit.",
+  keywords: ["GTM consulting", "B2B positioning sprint", "GTM fix sprint", "outreach setup", "signal-led GTM services"],
 };
 
 const offers = [

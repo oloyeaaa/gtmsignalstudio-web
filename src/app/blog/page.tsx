@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Signal-led GTM strategies, cold outreach infrastructure, and B2B pipeline insights from real campaigns — not recycled theory.",
+  keywords: ["B2B GTM blog", "signal-led outreach", "go-to-market strategy", "cold email infrastructure", "B2B pipeline insights"],
 };
 
 export const revalidate = 3600;

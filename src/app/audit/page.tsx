@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: "Free GTM Audit",
   description:
     "Get your go-to-market scored out of 100. We audit ICP clarity, messaging, channel mix, content fit, and signal detection. Free. No strings.",
+  keywords: ["free GTM audit", "go-to-market audit", "B2B website audit", "GTM score", "marketing audit tool"],
 };
 
 const dimensions = [

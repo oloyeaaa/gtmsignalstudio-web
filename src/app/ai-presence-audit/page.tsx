@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "AI Presence Audit — GTM Signal Studio",
   description:
     "Find out if AI platforms recommend your business for your category keyword. Scored report across 4 dimensions, prioritised fix plan. Delivered in 48 hours. £297.",
+  keywords: ["AI presence audit", "AI visibility score", "AI citation check", "AI Mode visibility", "B2B AI discovery"],
 };
 
 const dimensions = [
