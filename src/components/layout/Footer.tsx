@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -71,9 +73,25 @@ export default function Footer() {
           <p className="text-white/40 text-xs">
             &copy; {new Date().getFullYear()} GTM Signal Studio. All rights reserved.
           </p>
-          <p className="text-white/40 text-xs font-mono">
-            Volume is noise. Precision is signal.
-          </p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy" className="text-white/40 hover:text-white/70 text-xs transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-white/40 hover:text-white/70 text-xs transition-colors">
+              Terms
+            </Link>
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  localStorage.removeItem("cookie_consent");
+                  window.location.reload();
+                }
+              }}
+              className="text-white/40 hover:text-white/70 text-xs transition-colors"
+            >
+              Cookie Settings
+            </button>
+          </div>
         </div>
       </div>
     </footer>

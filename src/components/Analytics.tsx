@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -65,19 +65,29 @@ export function trackBlogRead(postSlug: string, category: string, readingTime: n
   });
 }
 
+function hasConsent(): boolean {
+  if (typeof window === "undefined") return false;
+  return localStorage.getItem("cookie_consent") === "granted";
+}
+
 export default function Analytics() {
   const pathname = usePathname();
+  const [consentGiven, setConsentGiven] = useState(false);
+
+  useEffect(() => {
+    setConsentGiven(hasConsent());
+  }, []);
 
   // Track page views on route change
   useEffect(() => {
-    if (GA_ID && typeof window !== "undefined" && window.gtag) {
+    if (GA_ID && consentGiven && typeof window !== "undefined" && window.gtag) {
       window.gtag("config", GA_ID, {
         page_path: pathname,
       });
     }
-  }, [pathname]);
+  }, [pathname, consentGiven]);
 
-  if (!GA_ID) return null;
+  if (!GA_ID || !consentGiven) return null;
 
   return (
     <>
