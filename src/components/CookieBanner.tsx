@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { updateGtagConsent } from "./Analytics";
 
 type Consent = "granted" | "denied" | null;
 
@@ -10,10 +11,6 @@ function getStoredConsent(): Consent {
   const value = localStorage.getItem("cookie_consent");
   if (value === "granted" || value === "denied") return value;
   return null;
-}
-
-export function hasAnalyticsConsent(): boolean {
-  return getStoredConsent() === "granted";
 }
 
 export default function CookieBanner() {
@@ -29,13 +26,13 @@ export default function CookieBanner() {
   function handleAccept() {
     localStorage.setItem("cookie_consent", "granted");
     setConsent("granted");
-    // Reload to activate analytics
-    window.location.reload();
+    updateGtagConsent(true);
   }
 
   function handleDecline() {
     localStorage.setItem("cookie_consent", "denied");
     setConsent("denied");
+    updateGtagConsent(false);
   }
 
   // Don't render until client-side check is done

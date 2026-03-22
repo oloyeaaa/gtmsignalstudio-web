@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -65,32 +65,54 @@ export function trackBlogRead(postSlug: string, category: string, readingTime: n
   });
 }
 
-function hasConsent(): boolean {
-  if (typeof window === "undefined") return false;
-  return localStorage.getItem("cookie_consent") === "granted";
+/**
+ * Update consent state in gtag when user accepts/declines cookies.
+ * Called from CookieBanner component.
+ */
+export function updateGtagConsent(granted: boolean) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("consent", "update", {
+      analytics_storage: granted ? "granted" : "denied",
+    });
+  }
 }
 
 export default function Analytics() {
   const pathname = usePathname();
-  const [consentGiven, setConsentGiven] = useState(false);
-
-  useEffect(() => {
-    setConsentGiven(hasConsent());
-  }, []);
 
   // Track page views on route change
   useEffect(() => {
-    if (GA_ID && consentGiven && typeof window !== "undefined" && window.gtag) {
+    if (GA_ID && typeof window !== "undefined" && window.gtag) {
       window.gtag("config", GA_ID, {
         page_path: pathname,
       });
     }
-  }, [pathname, consentGiven]);
+  }, [pathname]);
 
-  if (!GA_ID || !consentGiven) return null;
+  if (!GA_ID) return null;
+
+  // Determine initial consent state from localStorage
+  const consentDefault =
+    typeof window !== "undefined" &&
+    localStorage.getItem("cookie_consent") === "granted"
+      ? "granted"
+      : "denied";
 
   return (
     <>
+      {/* Set default consent BEFORE gtag loads */}
+      <Script id="gtag-consent-default" strategy="beforeInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            'analytics_storage': '${consentDefault}',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        `}
+      </Script>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
