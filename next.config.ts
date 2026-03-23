@@ -82,6 +82,11 @@ const nextConfig: NextConfig = {
         destination: "/blog/spf-dkim-dmarc-cold-email-2026",
         permanent: true,
       },
+      {
+        source: "/ai-presence-audit",
+        destination: "/ai-visibility-audit",
+        permanent: true,
+      },
     ];
   },
 };

@@ -7,7 +7,7 @@ import rehypeSlug from "rehype-slug";
 import { usePathname } from "next/navigation";
 import { trackCTAClick, trackNewsletterClick } from "@/components/Analytics";
 
-const AI_PRESENCE_AUDIT_PATHS = ["/ai-presence-audit", "gtmsignalstudio.com/ai-presence-audit"];
+const AI_PRESENCE_AUDIT_PATHS = ["/ai-visibility-audit", "gtmsignalstudio.com/ai-visibility-audit", "/ai-presence-audit", "gtmsignalstudio.com/ai-presence-audit"];
 const NEWSLETTER_PATHS = ["newsletter.gtmsignalstudio.com", "/newsletter"];
 
 function isAiPresenceAuditLink(href: string) {
