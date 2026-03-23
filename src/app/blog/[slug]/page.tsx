@@ -40,10 +40,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.meta_description || post.excerpt,
       type: "article",
+      url: `https://gtmsignalstudio.com/blog/${slug}`,
       publishedTime: post.published_at,
       modifiedTime: post.updated_at,
       authors: [post.author],
-      images: post.featured_image ? [post.featured_image] : [],
+      images: post.featured_image
+        ? [{ url: post.featured_image, width: 1200, height: 630, alt: post.title }]
+        : [{ url: "https://gtmsignalstudio.com/og-default.png", width: 1200, height: 630, alt: "GTM Signal Studio" }],
     },
     alternates: {
       canonical: `/blog/${slug}`,
