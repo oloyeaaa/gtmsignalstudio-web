@@ -6,6 +6,21 @@ export const metadata: Metadata = {
   description:
     "Check if AI platforms recommend your business. Free self-assessment across 4 dimensions — AI Citation, Entity Recognition, Content Structure, Citation Breadth. Takes 5 minutes.",
   keywords: ["AI visibility scorecard", "AI presence self-assessment", "AI citation check", "AI visibility signal score", "free AI audit tool"],
+  openGraph: {
+    title: "AI Visibility Signal Scorecard — GTM Signal Studio",
+    description:
+      "Check if AI platforms recommend your business. Free self-assessment across 4 dimensions. Takes 5 minutes.",
+    url: "https://gtmsignalstudio.com/resources/ai-visibility-scorecard",
+    type: "website",
+    images: [{ url: "https://gtmsignalstudio.com/og-default.png", width: 1200, height: 630, alt: "AI Visibility Signal Scorecard" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Visibility Signal Scorecard — GTM Signal Studio",
+    description:
+      "Check if AI platforms recommend your business. Free self-assessment across 4 dimensions. Takes 5 minutes.",
+    images: ["https://gtmsignalstudio.com/og-default.png"],
+  },
 };
 
 export default function AiVisibilityScorecardPage() {
