@@ -7,6 +7,7 @@ interface EmailGateProps {
   source?: string;
   downloadUrl: string;
   buttonLabel?: string;
+  successLabel?: string;
   buttonClass?: string;
 }
 
@@ -15,6 +16,7 @@ export default function EmailGate({
   source,
   downloadUrl,
   buttonLabel = "Get Free Download",
+  successLabel = "Download Now",
   buttonClass = "bg-orange hover:bg-orange-hover text-white",
 }: EmailGateProps) {
   const [state, setState] = useState<"idle" | "form" | "loading" | "done">(
@@ -72,7 +74,7 @@ export default function EmailGate({
           rel="noopener noreferrer"
           className={`inline-block font-semibold text-sm px-7 py-3 rounded-lg transition-colors ${buttonClass}`}
         >
-          Download Now
+          {successLabel}
         </a>
       </div>
     );

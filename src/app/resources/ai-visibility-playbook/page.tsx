@@ -436,14 +436,15 @@ export default function AiVisibilityPlaybookPage() {
 
           <div className="mt-12 pt-8 border-t border-light-border">
             <p className="text-text-muted text-sm mb-4">
-              Get the playbook as a PDF and subscribe to enterprise marketing insights.
+              Get weekly enterprise marketing insights. Research-backed. No fluff.
             </p>
             <div className="flex justify-center">
               <EmailGate
                 magnet="ai-visibility-playbook"
                 source="ai-visibility-playbook"
-                downloadUrl="/ai-visibility-playbook.pdf"
-                buttonLabel="Download PDF Version"
+                downloadUrl="https://newsletter.gtmsignalstudio.com/"
+                buttonLabel="Subscribe to The GTM Signal"
+                successLabel="View Newsletter Archive"
                 buttonClass="bg-navy hover:bg-navy-light text-white border border-navy-border"
               />
             </div>
