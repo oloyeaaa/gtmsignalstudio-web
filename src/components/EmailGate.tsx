@@ -4,6 +4,7 @@ import { useState } from "react";
 
 interface EmailGateProps {
   magnet: string;
+  source?: string;
   downloadUrl: string;
   buttonLabel?: string;
   buttonClass?: string;
@@ -11,6 +12,7 @@ interface EmailGateProps {
 
 export default function EmailGate({
   magnet,
+  source,
   downloadUrl,
   buttonLabel = "Get Free Download",
   buttonClass = "bg-orange hover:bg-orange-hover text-white",
@@ -30,7 +32,7 @@ export default function EmailGate({
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, magnet }),
+        body: JSON.stringify({ email, magnet, source }),
       });
 
       if (!res.ok) {

@@ -136,7 +136,7 @@ export default function AiVisibilityScorecard() {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: gateEmail, magnet: "ai-visibility-scorecard" }),
+        body: JSON.stringify({ email: gateEmail, magnet: "ai-visibility-scorecard", source: "ai-visibility-scorecard" }),
       });
       if (!res.ok) {
         const data = await res.json();

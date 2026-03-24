@@ -167,6 +167,7 @@ export default function ResourcesPage() {
 
             <EmailGate
               magnet="skill-file-templates"
+              source="skill-file-templates"
               downloadUrl="https://github.com/oloyeaaa/gtm-playbook/tree/main/skill-file-templates"
               buttonLabel="Get the Templates"
             />
