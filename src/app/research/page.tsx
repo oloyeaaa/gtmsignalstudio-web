@@ -29,11 +29,11 @@ const studies = [
   {
     title: "AI Visibility Benchmark 2026: Enterprise Edition",
     slug: "ai-visibility-benchmark-2026",
-    status: "In progress",
+    status: "Published",
     description:
-      "50 enterprise B2B companies scored across 4 dimensions of AI visibility. Which sectors are visible? What separates the companies AI recommends from those it ignores?",
+      "50 enterprise B2B companies scored across 4 dimensions of AI visibility. 44% scored 2/25 on citation presence. AI knows who they are but does not recommend them.",
     stats: "50 companies, 5 sectors, 3 AI platforms",
-    date: "April 2026",
+    date: "March 2026",
   },
 ];
 
@@ -81,9 +81,10 @@ export default function ResearchPage() {
 
           <div className="space-y-4">
             {studies.map((study) => (
-              <div
+              <Link
                 key={study.slug}
-                className="bg-white border border-light-border rounded-xl p-6"
+                href={`/research/${study.slug}`}
+                className="block bg-white border border-light-border rounded-xl p-6 hover:border-orange transition-colors"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="bg-orange/10 text-orange font-mono text-xs px-2 py-1 rounded">
@@ -102,7 +103,7 @@ export default function ResearchPage() {
                 <p className="text-text-muted text-xs font-mono">
                   {study.stats}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
