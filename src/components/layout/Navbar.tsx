@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
-  { href: "/blog", label: "Blog" },
-  { href: "/topics", label: "Topics" },
+  { href: "/research", label: "Research" },
   { href: "/resources", label: "Resources" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/work-with-me", label: "Work With Me" },
 ];
@@ -37,10 +37,10 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/audit"
+              href="/ai-visibility-audit"
               className="bg-orange hover:bg-orange-hover text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
             >
-              Free GTM Audit
+              AI Visibility Audit
             </Link>
           </div>
 
@@ -72,11 +72,11 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/audit"
+              href="/ai-visibility-audit"
               className="block mt-3 bg-orange hover:bg-orange-hover text-white px-4 py-2 rounded-lg font-semibold text-sm text-center transition-colors"
               onClick={() => setMobileOpen(false)}
             >
-              Free GTM Audit
+              AI Visibility Audit
             </Link>
           </div>
         )}
