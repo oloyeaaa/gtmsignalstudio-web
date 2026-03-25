@@ -2,152 +2,214 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Work With Me",
+  title: "Work With Me | AI Visibility Audit for Enterprise",
   description:
-    "Signal-led GTM sprints for enterprise marketing teams. Positioning Sprint (£497), GTM Fix Sprint (£997), Outreach Setup (£997). Start with a free audit.",
-  keywords: ["GTM consulting", "B2B positioning sprint", "GTM fix sprint", "outreach setup", "signal-led GTM services"],
+    "Get your AI Visibility Audit. 4 dimensions, scored 0-100, prioritised fix plan, PDF delivered within 48 hours. £297.",
+  keywords: [
+    "AI visibility audit",
+    "enterprise marketing audit",
+    "AI search visibility",
+    "B2B AI visibility",
+    "GTM Signal Studio",
+  ],
+  openGraph: {
+    title: "Work With Me | GTM Signal Studio",
+    description:
+      "AI Visibility Audit: 4 dimensions, scored 0-100, prioritised fix plan. £297.",
+    type: "website",
+    url: "https://gtmsignalstudio.com/work-with-me",
+  },
+  alternates: {
+    canonical: "https://gtmsignalstudio.com/work-with-me",
+  },
 };
-
-const offers = [
-  {
-    name: "Positioning Sprint",
-    price: "£497",
-    duration: "1 week",
-    description: "Clarify who you serve, why they buy, and what to say. Rebuild your positioning from the ground up.",
-    includes: [
-      "ICP definition workshop (async)",
-      "Messaging framework document",
-      "Homepage wireframe with conversion logic",
-      "Competitive positioning map",
-      "3 pillar service structure",
-    ],
-    ideal: "You have clients but struggle to articulate why they chose you over competitors.",
-  },
-  {
-    name: "GTM Fix Sprint",
-    price: "£997",
-    duration: "2 weeks",
-    featured: true,
-    description: "Full GTM audit + implementation plan. We find the infrastructure gaps and fix the ones costing you pipeline.",
-    includes: [
-      "Full GTM audit scored out of 100",
-      "5-category diagnostic (ICP, Messaging, Channels, Content, Signals)",
-      "Website restructure plan",
-      "Content-market fit analysis",
-      "Signal detection setup",
-      "3-month action plan with priorities",
-    ],
-    ideal: "You are doing outreach but reply rates are below 3% and you do not know what is broken.",
-  },
-  {
-    name: "Outreach Setup",
-    price: "£997",
-    duration: "2 weeks",
-    description: "Signal-led outreach system built and launched. Domains, sequences, and buying signal detection — all configured.",
-    includes: [
-      "Domain + subdomain setup for cold outreach",
-      "Mailbox configuration + warmup",
-      "3 signal-triggered email sequences",
-      "Gmail outreach setup and signal detection",
-      "Buying signal detection routine",
-      "14-day launch support",
-    ],
-    ideal: "You know your ICP but have no outbound infrastructure. Your team is sending from Gmail.",
-  },
-];
 
 export default function WorkWithMePage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="max-w-2xl mb-16">
-        <p className="font-mono text-orange text-sm mb-2 tracking-wider">WORK WITH ME</p>
-        <h1 className="font-heading text-4xl font-bold text-text-dark mb-4">
-          GTM infrastructure sprints.
-        </h1>
-        <p className="text-muted text-lg leading-relaxed">
-          Three focused sprints. Each one fixes a specific layer of your go-to-market.
-          Start with a free audit to find your biggest gap, then pick the sprint that matches.
-        </p>
-      </div>
+    <>
+      {/* Hero - Dark */}
+      <section className="section-dark py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="font-mono text-orange text-sm mb-4 tracking-wider">
+            WORK WITH ME
+          </p>
+          <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Find out if AI recommends your company to buyers.
+          </h1>
+          <p className="text-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+            Most enterprise companies are invisible to AI search. The AI
+            Visibility Audit tells you exactly where you stand and what to fix.
+          </p>
+        </div>
+      </section>
 
-      {/* Offer cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-        {offers.map((offer) => (
-          <div
-            key={offer.name}
-            className={`rounded-xl p-6 border flex flex-col ${
-              offer.featured
-                ? "border-orange bg-navy-light"
-                : "border-navy-border bg-navy-light/50"
-            }`}
-          >
-            {offer.featured && (
-              <span className="inline-block bg-orange text-white text-xs font-mono px-2 py-1 rounded mb-4 self-start">
-                MOST POPULAR
-              </span>
-            )}
-            <h2 className="font-heading text-xl font-bold text-white mb-1">
-              {offer.name}
-            </h2>
-            <div className="flex items-baseline gap-2 mb-4">
-              <span className="text-orange text-3xl font-bold">{offer.price}</span>
-              <span className="text-muted text-sm">/ {offer.duration}</span>
+      {/* The Offer - Light */}
+      <section className="section-light py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white border border-light-border rounded-xl overflow-hidden">
+            <div className="bg-orange px-6 py-3">
+              <p className="text-white font-mono text-sm tracking-wider text-center">
+                AI VISIBILITY AUDIT
+              </p>
             </div>
-            <p className="text-muted text-sm leading-relaxed mb-6">
-              {offer.description}
-            </p>
+            <div className="p-8 md:p-10 text-center">
+              <p className="text-text-dark text-4xl font-bold mb-2">£297</p>
+              <p className="text-text-muted mb-8">
+                One-off. No subscription. No ongoing commitment.
+              </p>
 
-            <div className="mb-6 flex-1">
-              <p className="text-white text-sm font-semibold mb-3">Includes:</p>
-              <ul className="space-y-2">
-                {offer.includes.map((item) => (
-                  <li key={item} className="text-sm text-white/80 flex items-start gap-2">
-                    <span className="text-orange mt-0.5">→</span>
+              <div className="text-left max-w-md mx-auto mb-8">
+                <p className="font-semibold text-text-dark mb-4">
+                  What you get:
+                </p>
+                <ul className="space-y-3">
+                  {[
+                    "4-dimension audit: Citation Presence, Entity Recognition, Content Structure, Citation Breadth",
+                    "Scored 0-100 with per-dimension breakdown",
+                    "Tested across Google AI Mode, ChatGPT, and Perplexity",
+                    "Prioritised fix plan specific to your company",
+                    "Branded PDF report delivered within 48 hours",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="text-text-body text-sm flex items-start gap-2"
+                    >
+                      <span className="text-orange mt-0.5 flex-shrink-0">
+                        &rarr;
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Link
+                href="/ai-visibility-audit"
+                className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
+              >
+                Get Your AI Visibility Audit
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works - White */}
+      <section className="section-white py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="font-mono text-orange text-sm mb-2 tracking-wider">
+            HOW IT WORKS
+          </p>
+          <h2 className="font-heading text-3xl font-bold text-text-dark mb-8">
+            Three steps. 48 hours.
+          </h2>
+
+          <div className="space-y-6">
+            {[
+              {
+                step: "1",
+                title: "You send your details",
+                text: "Company name, website, and the keywords your buyers would search. That is all I need.",
+              },
+              {
+                step: "2",
+                title: "I run the audit",
+                text: "I check your company across Google AI Mode, ChatGPT, and Perplexity. I score each of the 4 dimensions and identify exactly where the gaps are.",
+              },
+              {
+                step: "3",
+                title: "You get the report",
+                text: "A branded PDF with your score, per-dimension breakdown, and a prioritised list of fixes ranked by impact. Delivered within 48 hours.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="flex gap-4">
+                <div className="flex-shrink-0 w-10 h-10 bg-orange text-white rounded-full flex items-center justify-center font-bold text-lg">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 className="font-heading font-bold text-text-dark mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-text-body text-sm leading-relaxed">
+                    {item.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* This Is For You - Dark */}
+      <section className="section-dark py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <p className="font-mono text-orange text-sm mb-2 tracking-wider">
+                THIS IS FOR YOU IF
+              </p>
+              <ul className="space-y-3 mt-4">
+                {[
+                  "You suspect your competitors appear in AI answers but you do not",
+                  "You have strong content and brand but AI platforms ignore you",
+                  "You want a clear, scored baseline before investing in fixes",
+                  "Your team needs a prioritised action plan, not a generic checklist",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="text-muted text-sm flex items-start gap-2"
+                  >
+                    <span className="text-orange mt-0.5">&rarr;</span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-
-            <div className="bg-navy/50 rounded-lg p-3 mb-6">
-              <p className="text-xs text-muted">
-                <span className="text-orange font-semibold">Ideal if:</span> {offer.ideal}
+            <div>
+              <p className="font-mono text-text-muted text-sm mb-2 tracking-wider">
+                THIS IS NOT FOR YOU IF
               </p>
+              <ul className="space-y-3 mt-4">
+                {[
+                  "You are looking for traditional SEO services",
+                  "You want someone to manage your marketing ongoing",
+                  "You need a full website rebuild (this is a diagnostic, not implementation)",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="text-muted text-sm flex items-start gap-2"
+                  >
+                    <span className="text-muted mt-0.5">&times;</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <a
-              href="https://calendly.com/oloye-gtmsignalstudio/audit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`block text-center py-3 rounded-lg font-semibold text-sm transition-colors ${
-                offer.featured
-                  ? "bg-orange hover:bg-orange-hover text-white"
-                  : "border border-navy-border hover:border-muted text-white"
-              }`}
-            >
-              Book a Call
-            </a>
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-      {/* Free audit bridge */}
-      <div className="bg-navy-light border border-navy-border rounded-xl p-8 md:p-12 text-center">
-        <p className="font-mono text-orange text-sm mb-2 tracking-wider">NOT SURE WHERE TO START?</p>
-        <h2 className="font-heading text-2xl font-bold text-white mb-4">
-          Start with a free GTM audit.
-        </h2>
-        <p className="text-muted text-lg mb-8 max-w-xl mx-auto">
-          We score your go-to-market out of 100 across 5 dimensions. You get a branded PDF
-          with your score and three things to fix this week. No pitch. No strings.
-        </p>
-        <Link
-          href="/audit"
-          className="inline-block bg-orange hover:bg-orange-hover text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-        >
-          Get Your Free GTM Audit
-        </Link>
-      </div>
+      {/* Free Check - Light */}
+      <section className="section-light py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="font-mono text-orange text-sm mb-2 tracking-wider">
+            NOT READY TO BUY?
+          </p>
+          <h2 className="font-heading text-3xl font-bold text-text-dark mb-4">
+            Check your AI visibility for free.
+          </h2>
+          <p className="text-text-body text-lg mb-8 max-w-xl mx-auto">
+            The AI Visibility Scorecard scores your company across all 4
+            dimensions in under 5 minutes. No cost. No email required to start.
+          </p>
+          <Link
+            href="/resources/ai-visibility-scorecard"
+            className="inline-block border border-light-border hover:border-orange text-text-dark font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
+          >
+            Take the Free Scorecard
+          </Link>
+        </div>
+      </section>
 
       {/* Service schema */}
       <script
@@ -161,18 +223,19 @@ export default function WorkWithMePage() {
               name: "GTM Signal Studio",
               url: "https://gtmsignalstudio.com",
             },
-            name: "Signal-Led GTM Sprints",
-            description: "Go-to-market infrastructure sprints for enterprise marketing teams.",
-            offers: offers.map((o) => ({
+            name: "AI Visibility Audit",
+            description:
+              "Professional AI visibility audit scored across 4 dimensions (0-100). Prioritised fix plan. PDF report delivered within 48 hours.",
+            offers: {
               "@type": "Offer",
-              name: o.name,
-              price: o.price.replace("£", ""),
+              price: "297",
               priceCurrency: "GBP",
-              description: o.description,
-            })),
+              description:
+                "4-dimension AI Visibility Audit with branded PDF report and prioritised fix plan.",
+            },
           }),
         }}
       />
-    </div>
+    </>
   );
 }
