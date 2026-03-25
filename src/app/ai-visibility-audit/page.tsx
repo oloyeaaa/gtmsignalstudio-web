@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import AiPresenceCTAButton from "@/components/AiPresenceCTAButton";
 
 export const metadata: Metadata = {
@@ -89,6 +90,7 @@ export default function AiVisibilityAuditPage() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Hero */}
       <div className="max-w-3xl mb-16">
+        <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
         <p className="font-mono text-orange text-sm mb-2 tracking-wider">AI VISIBILITY AUDIT — £297</p>
         <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 leading-tight">
           Does AI recommend{" "}
@@ -190,6 +192,9 @@ export default function AiVisibilityAuditPage() {
             Each dimension is scored independently. A company can rank well on Google and score 0 on AI Citation.
           </p>
         </div>
+        <p className="text-text-muted text-sm mt-4">
+          <Link href="/ai-visibility" className="text-orange hover:underline">Learn more about AI visibility and the 4 dimensions</Link> that determine whether AI platforms recommend your business.
+        </p>
       </section>
 
       {/* What you get */}

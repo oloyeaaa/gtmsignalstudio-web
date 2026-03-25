@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import AiVisibilityScorecard from "@/components/AiVisibilityScorecard";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function AiVisibilityScorecardPage() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Hero */}
       <div className="max-w-3xl mb-12">
+        <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
         <p className="font-mono text-orange text-sm mb-2 tracking-wider">
           FREE TOOL
         </p>
@@ -102,6 +104,9 @@ export default function AiVisibilityScorecardPage() {
           <p className="text-text-body text-sm leading-relaxed">
             The question is not &ldquo;How do we rank higher?&rdquo; It
             is &ldquo;Does AI know we exist?&rdquo;
+          </p>
+          <p className="text-text-body text-sm leading-relaxed mt-4">
+            <Link href="/ai-visibility" className="text-orange hover:underline">Learn more about AI visibility and the 4 dimensions</Link> that determine whether AI platforms recommend your business.
           </p>
         </div>
       </section>

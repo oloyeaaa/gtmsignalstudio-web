@@ -110,6 +110,7 @@ export default function AiVisibilityPlaybookPage() {
       <section className="section-dark py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
+            <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
             <p className="font-mono text-orange text-sm mb-4 tracking-wider">
               FREE PLAYBOOK
             </p>
@@ -160,6 +161,9 @@ export default function AiVisibilityPlaybookPage() {
           <p className="text-text-body text-lg leading-relaxed font-semibold">
             You can rank #1 on Google and still not appear in any AI-generated
             answer.
+          </p>
+          <p className="text-text-body text-lg leading-relaxed mt-4">
+            <Link href="/ai-visibility" className="text-orange hover:underline">Explore the full AI visibility framework and the 4 dimensions</Link> that determine whether AI recommends your company.
           </p>
         </div>
       </section>

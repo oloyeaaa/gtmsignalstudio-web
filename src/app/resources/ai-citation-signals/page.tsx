@@ -72,6 +72,7 @@ export default function AiCitationSignalsPage() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Hero */}
       <div className="max-w-3xl mb-12">
+        <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
         <p className="font-mono text-orange text-sm mb-2 tracking-wider">
           FREE RESOURCE
         </p>
@@ -186,6 +187,9 @@ export default function AiCitationSignalsPage() {
         <p className="text-muted text-sm mt-4">
           The rest compound over time. Start with these three and you will see a
           shift within 30–60 days.
+        </p>
+        <p className="text-muted text-sm mt-4">
+          These signals map directly to the <Link href="/ai-visibility" className="text-orange hover:underline">4 dimensions of AI visibility</Link> that determine whether AI platforms recommend your company.
         </p>
       </section>
 
