@@ -36,6 +36,16 @@ export type Page = {
 
 // ---- POSTS ----
 
+export async function getPublishedPostCount() {
+  const { count, error } = await supabase
+    .from("posts")
+    .select("*", { count: "exact", head: true })
+    .eq("status", "published");
+
+  if (error) throw error;
+  return count ?? 0;
+}
+
 export async function getPublishedPosts(limit = 50, offset = 0) {
   const { data, error } = await supabase
     .from("posts")
