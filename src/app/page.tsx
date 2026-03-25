@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getPublishedPosts } from "@/lib/queries";
 import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "GTM Signal Studio | Enterprise Marketing Insights & Signal-Led GTM",
@@ -15,42 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      {/* 1. Header */}
-      <section className="bg-navy relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-          <div className="max-w-3xl">
-            <p className="font-mono text-orange text-sm mb-4 tracking-wider">
-              GTM SIGNAL STUDIO
-            </p>
-            <h1 className="font-heading text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-              We help B2B companies get{" "}
-              <span className="text-orange">found by AI.</span>
-            </h1>
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed mb-4 max-w-2xl">
-              94% of B2B buyers now use AI to research vendors. Google AI Mode,
-              Perplexity, ChatGPT. If AI does not recommend your company, buyers
-              never reach your website.
-            </p>
-            <p className="text-white/60 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
-              We detect the signal, diagnose the gap, and build the fix.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/audit"
-                className="bg-orange hover:bg-orange-hover text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
-              >
-                Get Your Free GTM Audit
-              </Link>
-              <Link
-                href="/resources/ai-visibility-scorecard"
-                className="border border-white/20 hover:border-white/40 text-white px-6 py-3 rounded-lg font-semibold text-center transition-colors"
-              >
-                Check Your AI Visibility
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader tagline="GTM SIGNAL STUDIO" title="Is AI recommending your company to buyers?" subtitle="94% of B2B buyers now use AI to research vendors. Google AI Mode, Perplexity, ChatGPT. If AI does not recommend your company, buyers never reach your website." />
 
       {/* 2. Negative Stakes */}
       <section className="bg-cream">

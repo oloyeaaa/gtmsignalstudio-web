@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AiVisibilityScorecard from "@/components/AiVisibilityScorecard";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "AI Visibility Signal Scorecard — GTM Signal Studio",
@@ -26,48 +27,10 @@ export const metadata: Metadata = {
 
 export default function AiVisibilityScorecardPage() {
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      {/* Hero */}
-      <div className="max-w-3xl mb-12">
-        <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
-        <p className="font-mono text-orange text-sm mb-2 tracking-wider">
-          FREE TOOL
-        </p>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 leading-tight">
-          Can AI find{" "}
-          <span className="text-orange">your business?</span>
-        </h1>
-        <p className="text-muted text-lg leading-relaxed mb-4">
-          94% of B2B buyers now use AI in their research. Google AI Mode,
-          Perplexity, ChatGPT — they are not searching for you. They are asking
-          about your category. If AI does not mention your company in the answer,
-          the buyer never reaches your website.
-        </p>
-        <p className="text-muted text-lg leading-relaxed">
-          This scorecard checks your AI Visibility Signal in 5 minutes. Four
-          dimensions. Self-assessment. No tools required.
-        </p>
-      </div>
+    <>
+      <PageHeader tagline="FREE TOOL" title="Can AI find your business?" subtitle="This scorecard checks your AI Visibility Signal in 5 minutes. Four dimensions. Self-assessment. No tools required." breadcrumb={{ label: "AI Visibility", href: "/ai-visibility" }} stats={[{ stat: "94%", label: "of B2B buyers use AI in research" }, { stat: "48%", label: "of searches show an AI answer" }, { stat: "82%", label: "of B2B tech queries trigger AI Mode" }, { stat: "5 min", label: "to check your signal" }]} />
 
-      {/* Stats bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-        {[
-          { stat: "94%", label: "of B2B buyers use AI in their research" },
-          { stat: "48%", label: "of Google searches now show an AI answer" },
-          { stat: "82%", label: "of B2B tech queries trigger AI Mode" },
-          { stat: "5 min", label: "to check your signal" },
-        ].map((item) => (
-          <div
-            key={item.stat}
-            className="bg-navy-light border border-navy-border rounded-xl p-5 text-center"
-          >
-            <p className="font-heading text-3xl font-bold text-orange mb-1">
-              {item.stat}
-            </p>
-            <p className="text-muted text-xs leading-relaxed">{item.label}</p>
-          </div>
-        ))}
-      </div>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
       {/* Interactive scorecard */}
       <section className="mb-20">
@@ -137,5 +100,6 @@ export default function AiVisibilityScorecardPage() {
         }}
       />
     </div>
+    </>
   );
 }

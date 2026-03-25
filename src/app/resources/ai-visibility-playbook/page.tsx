@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import EmailGate from "@/components/EmailGate";
 import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "The AI Visibility Playbook for Enterprise Marketers — GTM Signal Studio",
@@ -106,39 +107,7 @@ function DimensionCard({
 export default function AiVisibilityPlaybookPage() {
   return (
     <>
-      {/* Hero - Dark */}
-      <section className="section-dark py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
-            <p className="font-mono text-orange text-sm mb-4 tracking-wider">
-              FREE PLAYBOOK
-            </p>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              The AI Visibility Playbook{" "}
-              <span className="text-orange">for Enterprise Marketers</span>
-            </h1>
-            <p className="text-muted text-lg leading-relaxed mb-4">
-              Your buyers ask AI before they Google you. 48% of B2B searches now
-              trigger AI-generated answers. If your company does not appear in
-              those answers, you are not on the shortlist.
-            </p>
-            <p className="text-muted text-lg leading-relaxed">
-              This playbook shows you how to check your AI visibility in 60
-              seconds, score yourself across 4 dimensions, and fix the gaps that
-              keep you invisible.
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
-            <StatCard stat="48%" label="of B2B searches trigger AI answers" />
-            <StatCard stat="94%" label="of B2B buyers use AI in research" />
-            <StatCard stat="15-25" label="average B2B company AI visibility score" />
-            <StatCard stat="60s" label="to check if AI recommends you" />
-          </div>
-        </div>
-      </section>
+      <PageHeader tagline="FREE PLAYBOOK" title="The AI Visibility Playbook for Enterprise Marketers." subtitle="Your buyers ask AI before they Google you. Here is how to check, score, and fix your AI visibility." breadcrumb={{ label: "AI Visibility", href: "/ai-visibility" }} stats={[{ stat: "48%", label: "of B2B searches trigger AI answers" }, { stat: "94%", label: "of buyers use AI during research" }, { stat: "7/10", label: "companies invisible to AI" }, { stat: "15-25", label: "average AI visibility score" }]} />
 
       {/* The Shift - Cream */}
       <section className="section-light py-16 md:py-20">

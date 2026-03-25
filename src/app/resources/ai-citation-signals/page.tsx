@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "7 Signals That Make AI Cite Your Company — GTM Signal Studio",
@@ -69,26 +70,10 @@ const signals = [
 
 export default function AiCitationSignalsPage() {
   return (
+    <>
+      <PageHeader tagline="FREE RESOURCE" title="7 signals that make AI cite your company." subtitle="AI platforms use specific signals to decide who to recommend. These are the 7 that matter most, prioritised by impact." breadcrumb={{ label: "AI Visibility", href: "/ai-visibility" }} />
+
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      {/* Hero */}
-      <div className="max-w-3xl mb-12">
-        <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
-        <p className="font-mono text-orange text-sm mb-2 tracking-wider">
-          FREE RESOURCE
-        </p>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 leading-tight">
-          7 signals that make AI{" "}
-          <span className="text-orange">cite your company</span>
-        </h1>
-        <p className="text-muted text-lg leading-relaxed mb-4">
-          AI does not rank pages. It recommends companies. The signals AI uses to
-          decide who to recommend are not the same signals Google uses to rank
-          websites. You can have perfect SEO and still be invisible to AI.
-        </p>
-        <p className="text-muted text-lg leading-relaxed">
-          These 7 structural changes fix that.
-        </p>
-      </div>
 
       {/* Signal cards */}
       <section className="mb-20 space-y-6">
@@ -265,5 +250,6 @@ export default function AiCitationSignalsPage() {
         }}
       />
     </div>
+    </>
   );
 }

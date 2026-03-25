@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 
 const categories = ["All", "Outreach", "Content", "CRM", "Intelligence", "Infrastructure", "AI"];
 
@@ -97,27 +98,10 @@ export default function ToolsPage() {
     : tools.filter((t) => t.category === activeFilter);
 
   return (
-    <div className="max-w-[1080px] mx-auto px-6 py-16">
-      {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-sm text-muted mb-8">
-        <Link href="/resources" className="hover:text-text-dark transition-colors">Resources</Link>
-        <span>→</span>
-        <span className="text-text-dark">GTM Tools</span>
-      </nav>
+    <>
+      <PageHeader tagline="TOOLS" title="The tools behind the studio." subtitle="Every tool we use to research, write, build, and ship. No affiliates. Just what works." breadcrumb={{ label: "Resources", href: "/resources" }} />
 
-      {/* Hero */}
-      <div className="text-center mb-12 pt-4">
-        <p className="font-mono text-orange text-xs uppercase tracking-widest mb-5">
-          Curated Stack
-        </p>
-        <h1 className="font-heading text-3xl md:text-4xl font-bold text-text-dark mb-5 max-w-[660px] mx-auto leading-tight tracking-tight">
-          The GTM tools I actually use.
-        </h1>
-        <p className="text-muted text-base max-w-[560px] mx-auto leading-relaxed">
-          No affiliate links. No sponsorships. These are the tools that run my outreach, content,
-          pipeline, and intelligence. Curated from experience.
-        </p>
-      </div>
+    <div className="max-w-[1080px] mx-auto px-6 py-16">
 
       {/* Filters */}
       <div className="flex flex-wrap gap-2 justify-center mb-12">
@@ -180,5 +164,6 @@ export default function ToolsPage() {
         Listed because they work, not because I get paid to say so.
       </p>
     </div>
+    </>
   );
 }

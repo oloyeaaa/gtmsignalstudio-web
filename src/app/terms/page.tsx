@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions",
@@ -15,17 +16,10 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <p className="font-mono text-orange text-xs uppercase tracking-widest mb-4">
-        Legal
-      </p>
-      <h1 className="font-heading text-3xl font-bold text-text-dark mb-2">
-        Terms and Conditions
-      </h1>
-      <p className="text-muted text-sm mb-10">
-        Last updated: 22 March 2026
-      </p>
+    <>
+      <PageHeader tagline="LEGAL" title="Terms and Conditions" subtitle="Last updated: 22 March 2026" />
 
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="prose prose-sm max-w-none text-text-body space-y-8">
         <section>
           <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
@@ -225,5 +219,6 @@ export default function TermsPage() {
         </section>
       </div>
     </div>
+    </>
   );
 }

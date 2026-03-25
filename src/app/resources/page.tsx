@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import EmailGate from "@/components/EmailGate";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Resources",
@@ -97,20 +98,10 @@ const patterns = [
 
 export default function ResourcesPage() {
   return (
+    <>
+      <PageHeader tagline="RESOURCES" title="Enterprise marketing frameworks and tools." subtitle="Templates, frameworks, and tools from real campaigns. Built for enterprise marketing teams." />
+
     <div className="max-w-[1080px] mx-auto px-6 py-16">
-      {/* Hero */}
-      <div className="text-center mb-16 pt-8">
-        <p className="font-mono text-orange text-xs uppercase tracking-widest mb-5">
-          Builder Resources
-        </p>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 max-w-[720px] mx-auto leading-tight tracking-tight">
-          The tools I built because I couldn&apos;t afford to hire.
-        </h1>
-        <p className="text-muted text-lg max-w-[600px] mx-auto leading-relaxed">
-          Templates, frameworks, and guides for enterprise marketing teams building GTM systems with AI.
-          Built from live campaigns. Grab what you need.
-        </p>
-      </div>
 
       {/* Featured: Skill File Templates (gated) */}
       <section className="mb-12">
@@ -385,5 +376,6 @@ export default function ResourcesPage() {
         }}
       />
     </div>
+    </>
   );
 }

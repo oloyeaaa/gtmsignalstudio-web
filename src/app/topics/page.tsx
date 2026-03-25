@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllTopicClusters, getClusterPostCount } from "@/lib/queries";
 import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Topics",
@@ -25,18 +26,11 @@ export default async function TopicsPage() {
   }
 
   return (
+    <>
+      <PageHeader tagline="TOPICS" title="Learn signal-led GTM by topic." subtitle="Each topic is a structured guide. Start with the pillar article, then work through the supporting posts in order." />
+
     <div className="bg-cream min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="mb-12">
-          <p className="font-mono text-orange text-sm mb-2 tracking-wider">TOPICS</p>
-          <h1 className="font-heading text-4xl font-bold text-text-dark mb-4">
-            Learn signal-led GTM by topic.
-          </h1>
-          <p className="text-text-muted text-lg max-w-2xl">
-            Each topic is a structured guide — start with the pillar article, then work through
-            the supporting posts in order. Built from real campaigns, not theory.
-          </p>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {clusters.map((cluster) => (
@@ -77,5 +71,6 @@ export default async function TopicsPage() {
         }}
       />
     </div>
+    </>
   );
 }

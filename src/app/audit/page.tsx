@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Free GTM Audit",
@@ -55,28 +56,10 @@ const steps = [
 
 export default function AuditPage() {
   return (
+    <>
+      <PageHeader tagline="FREE GTM AUDIT" title="Your GTM. Scored. Your gaps. Fixed." subtitle="We score your go-to-market out of 100 across 5 dimensions. You get a branded PDF with your score, your hidden differentiators, and three things to fix this week." />
+
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      {/* Hero */}
-      <div className="max-w-3xl mb-16">
-        <p className="font-mono text-orange text-sm mb-2 tracking-wider">FREE GTM AUDIT</p>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 leading-tight">
-          Your GTM. Scored.{" "}
-          <span className="text-orange">Your gaps. Fixed.</span>
-        </h1>
-        <p className="text-muted text-lg leading-relaxed mb-8">
-          We score your go-to-market out of 100 across 5 dimensions. You get a branded PDF
-          with your score, your hidden differentiators, and three things to fix this week.
-          Free. No pitch. No strings.
-        </p>
-        <a
-          href="https://calendly.com/oloye-gtmsignalstudio/audit"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-orange hover:bg-orange-hover text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-        >
-          Book Your Free Audit
-        </a>
-      </div>
 
       {/* 5 Dimensions */}
       <section className="mb-20">
@@ -180,5 +163,6 @@ export default function AuditPage() {
         }}
       />
     </div>
+    </>
   );
 }

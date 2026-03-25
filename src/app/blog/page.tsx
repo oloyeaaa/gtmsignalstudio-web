@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getPublishedPosts, getPublishedPostCount } from "@/lib/queries";
 import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Blog | Enterprise Marketing, AI Visibility, Signal-Led GTM",
@@ -44,22 +45,11 @@ export default async function BlogPage({
   const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
   return (
+    <>
+      <PageHeader tagline="BLOG" title="From the Studio" subtitle="Enterprise marketing insights from real campaigns. Research-backed. No fluff." />
+
     <div className="bg-cream min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Header */}
-        <div className="mb-12">
-          <p className="font-mono text-orange text-sm mb-2 tracking-wider">
-            BLOG
-          </p>
-          <h1 className="font-heading text-4xl font-bold text-text-dark mb-4">
-            From the Studio
-          </h1>
-          <p className="text-text-muted text-lg max-w-2xl">
-            Enterprise marketing insights from real campaigns. Research-backed.
-            No fluff.
-          </p>
-        </div>
-
         {/* Post grid */}
         {posts.length === 0 ? (
           <div className="bg-white border border-light-border rounded-xl p-12 text-center">
@@ -184,5 +174,6 @@ export default async function BlogPage({
         )}
       </div>
     </div>
+    </>
   );
 }

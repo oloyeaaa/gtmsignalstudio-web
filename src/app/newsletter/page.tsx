@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Newsletter — The GTM Signal",
@@ -9,19 +10,10 @@ export const metadata: Metadata = {
 
 export default function NewsletterPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <p className="font-mono text-orange text-sm mb-2 tracking-wider">THE GTM SIGNAL</p>
-      <h1 className="font-heading text-4xl font-bold text-text-dark mb-4">
-        Weekly frameworks. Real data. No fluff.
-      </h1>
-      <p className="text-muted text-lg leading-relaxed mb-4 max-w-xl mx-auto">
-        Every Tuesday — signal-led GTM insights extracted from real campaigns,
-        not recycled marketing theory. Frameworks you can deploy this week.
-      </p>
-      <p className="text-muted text-sm mb-8 max-w-md mx-auto">
-        Join enterprise marketing leaders and GTM practitioners.
-      </p>
+    <>
+      <PageHeader tagline="THE GTM SIGNAL" title="Weekly frameworks. Real data. No fluff." subtitle="Every Tuesday — signal-led GTM insights from real enterprise campaigns. Frameworks you can deploy this week. Join enterprise marketing leaders and GTM practitioners." centered />
 
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
       <a
         href="https://newsletter.gtmsignalstudio.com"
         target="_blank"
@@ -77,5 +69,6 @@ export default function NewsletterPage() {
         }}
       />
     </div>
+    </>
   );
 }
