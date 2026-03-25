@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Work With Me",
   description:
-    "Signal-led GTM sprints for B2B founders. Positioning Sprint (£497), GTM Fix Sprint (£997), Outreach Setup (£997). Start with a free audit.",
+    "Signal-led GTM sprints for enterprise marketing teams. Positioning Sprint (£497), GTM Fix Sprint (£997), Outreach Setup (£997). Start with a free audit.",
   keywords: ["GTM consulting", "B2B positioning sprint", "GTM fix sprint", "outreach setup", "signal-led GTM services"],
 };
 
@@ -48,7 +48,7 @@ const offers = [
       "Domain + subdomain setup for cold outreach",
       "Mailbox configuration + warmup",
       "3 signal-triggered email sequences",
-      "SmartLead or Instantly configuration",
+      "Gmail outreach setup and signal detection",
       "Buying signal detection routine",
       "14-day launch support",
     ],
@@ -116,7 +116,7 @@ export default function WorkWithMePage() {
             </div>
 
             <a
-              href="https://calendly.com/oloye-getclarioiq/audit"
+              href="https://calendly.com/oloye-gtmsignalstudio/audit"
               target="_blank"
               rel="noopener noreferrer"
               className={`block text-center py-3 rounded-lg font-semibold text-sm transition-colors ${
@@ -162,7 +162,7 @@ export default function WorkWithMePage() {
               url: "https://gtmsignalstudio.com",
             },
             name: "Signal-Led GTM Sprints",
-            description: "Go-to-market infrastructure sprints for B2B founders.",
+            description: "Go-to-market infrastructure sprints for enterprise marketing teams.",
             offers: offers.map((o) => ({
               "@type": "Offer",
               name: o.name,

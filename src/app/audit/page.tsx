@@ -69,7 +69,7 @@ export default function AuditPage() {
           Free. No pitch. No strings.
         </p>
         <a
-          href="https://calendly.com/oloye-getclarioiq/audit"
+          href="https://calendly.com/oloye-gtmsignalstudio/audit"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-orange hover:bg-orange-hover text-white px-8 py-3 rounded-lg font-semibold transition-colors"
@@ -156,7 +156,7 @@ export default function AuditPage() {
           Takes 15 minutes on our end. Delivered same-day. No follow-up spam.
         </p>
         <a
-          href="https://calendly.com/oloye-getclarioiq/audit"
+          href="https://calendly.com/oloye-gtmsignalstudio/audit"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-orange hover:bg-orange-hover text-white px-8 py-3 rounded-lg font-semibold transition-colors"

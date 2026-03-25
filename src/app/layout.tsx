@@ -7,11 +7,11 @@ import CookieBanner from "@/components/CookieBanner";
 
 export const metadata: Metadata = {
   title: {
-    default: "GTM Signal Studio | Signal-Led Go-To-Market for B2B",
+    default: "GTM Signal Studio | Enterprise Marketing Insights & Signal-Led GTM",
     template: "%s | GTM Signal Studio",
   },
   description:
-    "Signal-led go-to-market strategies for B2B founders. Stop spray-and-pray. Start signal-led. Free GTM audits, frameworks, and tools.",
+    "Enterprise marketing insights on AI visibility, MarTech, and signal-led GTM. Research-backed. No fluff.",
   metadataBase: new URL("https://gtmsignalstudio.com"),
   applicationName: "GTM Signal Studio",
   authors: [{ name: "Oloye Adeosun", url: "https://gtmsignalstudio.com/about" }],
@@ -43,24 +43,24 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://gtmsignalstudio.com",
     siteName: "GTM Signal Studio",
-    title: "GTM Signal Studio | Signal-Led Go-To-Market for B2B",
+    title: "GTM Signal Studio | Enterprise Marketing Insights & Signal-Led GTM",
     description:
-      "Signal-led go-to-market strategies for B2B founders. Stop spray-and-pray. Start signal-led.",
+      "Enterprise marketing insights on AI visibility, MarTech, and signal-led GTM. Research-backed. No fluff.",
     images: [
       {
         url: "/og-default.png",
         width: 1200,
         height: 630,
-        alt: "GTM Signal Studio — Signal-Led Go-To-Market for B2B",
+        alt: "GTM Signal Studio — Enterprise Marketing Insights & Signal-Led GTM",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "GTM Signal Studio | Signal-Led Go-To-Market for B2B",
+    title: "GTM Signal Studio | Enterprise Marketing Insights & Signal-Led GTM",
     description:
-      "Signal-led go-to-market strategies for B2B founders. Stop spray-and-pray. Start signal-led.",
+      "Enterprise marketing insights on AI visibility, MarTech, and signal-led GTM. Research-backed. No fluff.",
     images: ["/og-default.png"],
     creator: "@oloyeadeosun",
   },
@@ -131,7 +131,7 @@ export default function RootLayout({
                 "@id": "https://gtmsignalstudio.com/#founder",
                 name: "Oloye Adeosun",
                 url: "https://gtmsignalstudio.com/about",
-                jobTitle: "GTM Strategist & Marketing Automation Specialist",
+                jobTitle: "Marketing Manager, Enterprise & Automation",
                 sameAs: [
                   "https://www.linkedin.com/in/oloyeadeosun/",
                 ],
@@ -145,11 +145,11 @@ export default function RootLayout({
                 ],
               },
               description:
-                "Signal-led go-to-market strategies and infrastructure for B2B service companies. GTM audits, outreach systems, and positioning sprints.",
+                "Enterprise marketing insights on AI visibility, MarTech, and signal-led GTM. Research-backed strategies for B2B companies.",
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "sales",
-                url: "https://calendly.com/oloye-getclarioiq/audit",
+                url: "https://calendly.com/oloye-gtmsignalstudio/audit",
               },
               sameAs: [
                 "https://www.linkedin.com/in/oloyeadeosun/",

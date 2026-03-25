@@ -19,7 +19,7 @@ export default function NewsletterPage() {
         not recycled marketing theory. Frameworks you can deploy this week.
       </p>
       <p className="text-muted text-sm mb-8 max-w-md mx-auto">
-        Join 1,200+ B2B founders and GTM operators.
+        Join enterprise marketing leaders and GTM practitioners.
       </p>
 
       <a

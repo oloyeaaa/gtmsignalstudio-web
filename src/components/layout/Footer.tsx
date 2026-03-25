@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="font-heading font-bold text-white">GTM Signal Studio</span>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed">
-              Signal-led go-to-market for B2B founders. Volume is noise. Precision is signal.
+              Signal-led enterprise marketing. Volume is noise. Precision is signal.
             </p>
           </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
                 <a href="https://newsletter.gtmsignalstudio.com" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white text-sm transition-colors">Newsletter</a>
               </li>
               <li>
-                <a href="https://calendly.com/oloye-getclarioiq/audit" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white text-sm transition-colors">Book a Call</a>
+                <a href="https://calendly.com/oloye-gtmsignalstudio/audit" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white text-sm transition-colors">Book a Call</a>
               </li>
             </ul>
           </div>

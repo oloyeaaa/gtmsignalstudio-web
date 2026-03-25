@@ -4,9 +4,9 @@ import { getPublishedPosts } from "@/lib/queries";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "GTM Signal Studio | Signal-Led Go-To-Market for B2B",
+  title: "GTM Signal Studio | Enterprise Marketing Insights & Signal-Led GTM",
   description:
-    "Signal-led go-to-market strategies for B2B founders. Stop spray-and-pray. Start signal-led. Free GTM audits, frameworks, and tools.",
+    "Enterprise marketing insights on AI visibility, MarTech, and signal-led GTM. Research-backed strategies for B2B companies.",
   keywords: ["GTM Signal Studio", "signal-led go-to-market", "B2B GTM strategy", "buying signals", "go-to-market audit", "B2B pipeline", "cold email infrastructure"],
 };
 

@@ -16,30 +16,6 @@ const categoryColors: Record<string, string> = {
 
 const tools = [
   {
-    name: "SmartLead",
-    category: "Outreach",
-    pricing: "From $39/mo",
-    description: "Cold email infrastructure. Multi-mailbox rotation, warmup, sequence builder, and reply tracking. Runs all my outbound campaigns across 9 mailboxes and 3 domains.",
-    tags: ["Cold Email", "Sequences", "Warmup", "Multi-Mailbox"],
-    note: "I run 9 mailboxes across 3 domains. Open tracking OFF — reply rate is the only metric.",
-  },
-  {
-    name: "Sales Navigator",
-    category: "Intelligence",
-    pricing: "~$99/mo",
-    description: "Signal detection and prospecting. Boolean search by hiring signals, funding events, and leadership changes. The source for signal-qualified lead lists.",
-    tags: ["Prospecting", "Buying Signals", "Lead Lists"],
-    note: "Keep only while actively prospecting. 300 signal-qualified leads beat 900 cold ones (P007).",
-  },
-  {
-    name: "Taplio",
-    category: "Content",
-    pricing: "From $49/mo",
-    description: "LinkedIn scheduling and analytics. Posts scheduled at 5:15am for best engagement. Carousel builder, post analytics, and content queue for Mon/Wed/Fri cadence.",
-    tags: ["LinkedIn", "Scheduling", "Analytics", "Carousels"],
-    note: "Lane 1 (Authority). Schedule posts, never sell in the post. Newsletter link goes in comments only.",
-  },
-  {
     name: "Beehiiv",
     category: "Content",
     pricing: "Free tier",

@@ -30,7 +30,7 @@ export async function GET() {
   <channel>
     <title>GTM Signal Studio</title>
     <link>${baseUrl}</link>
-    <description>Signal-led go-to-market strategies for B2B founders. Frameworks, data, and patterns from real campaigns.</description>
+    <description>Enterprise marketing insights on AI visibility, MarTech, and signal-led GTM. Research-backed frameworks, data, and patterns.</description>
     <language>en-gb</language>
     <managingEditor>oloye@gtmsignalstudio.com (Oloye Adeosun)</managingEditor>
     <webMaster>oloye@gtmsignalstudio.com (Oloye Adeosun)</webMaster>

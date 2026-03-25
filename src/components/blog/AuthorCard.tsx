@@ -13,8 +13,7 @@ export default function AuthorCard() {
       <div>
         <p className="font-heading font-bold text-text-dark">Oloye Adeosun</p>
         <p className="text-text-muted text-sm mt-1 leading-relaxed">
-          Building signal-led GTM infrastructure for B2B founders.
-          Marketing Automation Specialist by day, GTM Signal Studio by night.
+          Enterprise marketing practitioner. Writes about what actually works in B2B GTM, MarTech, and AI visibility.
         </p>
         <a
           href="https://www.linkedin.com/in/oloyeadeosun/"

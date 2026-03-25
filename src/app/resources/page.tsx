@@ -6,7 +6,7 @@ import EmailGate from "@/components/EmailGate";
 export const metadata: Metadata = {
   title: "Resources",
   description:
-    "Free tools, templates, and guides for B2B founders building GTM systems with AI. Skill file templates, outreach frameworks, and audit tools.",
+    "Free tools, templates, and guides for enterprise marketing teams building GTM systems with AI. Skill file templates, outreach frameworks, and audit tools.",
   keywords: ["B2B GTM resources", "free GTM templates", "outreach frameworks", "AI visibility tools", "signal-led tools"],
 };
 
@@ -107,7 +107,7 @@ export default function ResourcesPage() {
           The tools I built because I couldn&apos;t afford to hire.
         </h1>
         <p className="text-muted text-lg max-w-[600px] mx-auto leading-relaxed">
-          Templates, frameworks, and guides for B2B founders building GTM systems with AI.
+          Templates, frameworks, and guides for enterprise marketing teams building GTM systems with AI.
           Built from live campaigns. Grab what you need.
         </p>
       </div>
@@ -295,7 +295,7 @@ export default function ResourcesPage() {
           <div>
             <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">Who Built This</p>
             <h3 className="font-heading text-xl font-bold text-white mb-4">
-              I build AI-powered GTM infrastructure. And I teach other founders how to do the same.
+              I build AI-powered GTM infrastructure. Here&apos;s what I&apos;ve learned.
             </h3>
             <p className="text-muted text-sm leading-relaxed mb-3">
               I run GTM Signal Studio. 5 departments, 33 AI skills, full pipeline.
@@ -351,7 +351,7 @@ export default function ResourcesPage() {
             "@type": "CollectionPage",
             name: "GTM Signal Studio Resources",
             description:
-              "Free tools, templates, and guides for B2B founders building GTM systems with AI.",
+              "Free tools, templates, and guides for enterprise marketing teams building GTM systems with AI.",
             url: "https://gtmsignalstudio.com/resources",
             publisher: {
               "@type": "Organization",

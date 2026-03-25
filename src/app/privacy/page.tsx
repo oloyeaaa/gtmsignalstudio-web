@@ -71,7 +71,7 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong>Name, email, and company details</strong> when you request
-              a GTM audit or AI Presence audit.
+              a GTM audit or AI Visibility audit.
             </li>
             <li>
               <strong>Correspondence</strong> when you email or message us

@@ -55,7 +55,7 @@ export default function TermsPage() {
           </p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Free GTM audits (delivered as PDF reports).</li>
-            <li>AI Presence audits (paid, delivered within 48 hours).</li>
+            <li>AI Visibility audits (paid, delivered within 48 hours).</li>
             <li>
               Positioning Sprints, GTM Fix Sprints, and Outreach Setup packages.
             </li>
