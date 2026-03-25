@@ -87,6 +87,11 @@ const nextConfig: NextConfig = {
         destination: "/ai-visibility-audit",
         permanent: true,
       },
+      {
+        source: "/gtm-signals-guide",
+        destination: "/resources/ai-visibility-playbook",
+        permanent: true,
+      },
     ];
   },
 };
