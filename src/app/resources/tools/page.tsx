@@ -31,7 +31,7 @@ const tools = [
     category: "Agents",
     description: "4-dimension AI visibility scanner. Checks Google AI Mode, Perplexity, and ChatGPT citation presence. Scores 0-100 with a prioritised fix list and branded PDF report.",
     tech: ["Python", "Perplexity API", "Claude Code"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/research-intelligence/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/ri-ai-presence-audit",
     note: "Powers the £297 AI Visibility Audit service. 50 companies benchmarked so far.",
   },
   {
@@ -39,7 +39,7 @@ const tools = [
     category: "Agents",
     description: "Full blog post pipeline. Researches the topic, writes a draft, generates a header image, formats for publishing, and pushes to Supabase + Airtable in one run.",
     tech: ["Claude Code", "fal.ai", "Supabase"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/.claude/skills",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/cm-blog-agent",
     note: "Orchestrates blog-writer, infographic-builder, and copywriter skills.",
   },
   {
@@ -47,7 +47,7 @@ const tools = [
     category: "Agents",
     description: "End-to-end LinkedIn content pipeline. Researches if needed, writes the post, generates a companion image, and saves outputs locally. Handles both standard posts and multi-slide carousels.",
     tech: ["Claude Code", "fal.ai"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/.claude/skills",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/cm-linkedin-agent",
     note: "Orchestrates linkedin-creator, infographic-builder, and copywriter skills.",
   },
   {
@@ -55,7 +55,7 @@ const tools = [
     category: "Agents",
     description: "Full newsletter pipeline. Researches the topic, writes the issue, generates a header image, formats for Beehiiv HTML, and saves outputs locally.",
     tech: ["Claude Code", "fal.ai"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/.claude/skills",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/cm-newsletter-agent",
     note: "Orchestrates newsletter-creator and infographic-builder skills.",
   },
   {
@@ -63,7 +63,7 @@ const tools = [
     category: "Agents",
     description: "Video production pipeline. Researches the topic, writes a talk-track script with timestamps, generates an Excalidraw diagram, creates a thumbnail, and writes metadata.",
     tech: ["Claude Code", "fal.ai"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/.claude/skills",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/cm-youtube-agent",
     note: "Orchestrates youtube-scriptwriter, excalidraw-builder, and infographic-builder.",
   },
   {
@@ -71,7 +71,7 @@ const tools = [
     category: "Agents",
     description: "6-dimension Go-To-Market audit for any B2B website. Scores ICP clarity, messaging, content, channels, signals, and AI visibility. Single-pass analysis with branded PDF output.",
     tech: ["Claude Code", "Python"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/sales-outreach/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/so-gtm-audit",
     note: "6 sub-skills: gtm-icp, gtm-messaging, gtm-content, gtm-channels, gtm-signals, gtm-report-pdf.",
   },
   {
@@ -79,7 +79,7 @@ const tools = [
     category: "Agents",
     description: "6-step research framework for producing original data that AI platforms cite. Signal, Scope, Scan, Score, Source, Seed. Built to replace reliance on third-party research.",
     tech: ["Claude Code", "Python"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/knowledge/frameworks",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/frameworks",
     note: "First study: AI Visibility Benchmark 2026 (50 companies, 5 sectors).",
   },
 
@@ -89,7 +89,7 @@ const tools = [
     category: "Chrome Extensions",
     description: "Scrapes business data from Google Maps search results. Exports name, address, phone, website, and rating to CSV for the daily outreach workflow.",
     tech: ["JavaScript"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/content-media/tools/gmaps-lead-scraper",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/chrome-extensions/gmaps-lead-scraper",
     note: "Feeds the 5-emails-per-day manual outreach process.",
   },
   {
@@ -97,7 +97,7 @@ const tools = [
     category: "Chrome Extensions",
     description: "AI-powered LinkedIn comment generator. Reads the post context and generates a thoughtful, on-brand reply using the Claude API. Keeps the GSS voice consistent.",
     tech: ["JavaScript", "Claude Code"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/content-media/tools/linkedin-comment-extension",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/chrome-extensions/linkedin-comment-extension",
     note: "Saves 15-20 minutes per day on LinkedIn engagement.",
   },
   {
@@ -105,7 +105,7 @@ const tools = [
     category: "Chrome Extensions",
     description: "AI-powered Reddit comment generator. Same concept as the LinkedIn extension but tuned for Reddit's tone and community norms. Uses Claude API for generation.",
     tech: ["JavaScript", "Claude Code"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/content-media/tools/reddit-comment-extension",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/chrome-extensions/reddit-comment-extension",
     note: "Ensures comments add value, not spam. Matches subreddit tone.",
   },
 
@@ -115,7 +115,7 @@ const tools = [
     category: "Python Tools",
     description: "Automated AI visibility detection via the Perplexity API. Input a company, domain, and keywords. Returns JSON with 4 dimension scores and raw API responses.",
     tech: ["Python", "Perplexity API"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/research-intelligence/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/ai_presence_scanner.py",
     note: "Core engine behind the AI Visibility Audit and the benchmark research.",
   },
   {
@@ -123,7 +123,7 @@ const tools = [
     category: "Python Tools",
     description: "Batch version of the AI presence scanner. Processes a list of companies in sequence, rate-limits API calls, and exports results to JSON and CSV.",
     tech: ["Python", "Perplexity API"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/research-intelligence/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/batch_ai_scan.py",
     note: "Used to scan 50 companies for the AI Visibility Benchmark 2026.",
   },
   {
@@ -131,7 +131,7 @@ const tools = [
     category: "Python Tools",
     description: "Generates stat-based LinkedIn images (1200x628) from data. Takes a headline stat, subtitle, and branding and renders a shareable image using Playwright.",
     tech: ["Python", "Playwright"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/content-media/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/linkedin_post_image.py",
     note: "Companion images for data-driven LinkedIn posts.",
   },
   {
@@ -139,7 +139,7 @@ const tools = [
     category: "Python Tools",
     description: "Converts GTM audit markdown reports into branded, client-ready PDFs with scoring visuals, findings tables, and prioritised action plans. Replaced Gamma.",
     tech: ["Python"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/sales-outreach/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/gtm_audit_pdf.py",
     note: "Custom-built to replace the Gamma subscription. Full brand control.",
   },
   {
@@ -147,7 +147,7 @@ const tools = [
     category: "Python Tools",
     description: "Branded PDF generator for AI Visibility audit reports. Takes the markdown audit output and renders a professional document with scores, findings, and recommendations.",
     tech: ["Python"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/research-intelligence/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/ai_presence_report_pdf.py",
     note: "Deliverable for the £297 AI Visibility Audit.",
   },
   {
@@ -155,7 +155,7 @@ const tools = [
     category: "Python Tools",
     description: "AI image generation using fal.ai (Nano Banana model) with programmatic GSS logo overlay. Creates branded header images for blog posts, newsletters, and social.",
     tech: ["Python", "fal.ai"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/content-media/tools",
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/branded_infographic.py",
     note: "Every content agent calls this for image generation.",
   },
 
@@ -165,7 +165,7 @@ const tools = [
     category: "Workflows",
     description: "Markdown to live blog post. Takes a markdown file and header image, publishes to Supabase, uploads the image to storage, and pushes metadata to the Airtable Content-Engine.",
     tech: ["Next.js", "Supabase", "Airtable API"],
-    github: "https://github.com/oloyeaaa/gtmsignalstudio-web/tree/main/scripts",
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/workflows/publish-post.js",
     note: "One command: node scripts/publish-post.js --markdown FILE --image IMG --slug SLUG",
   },
   {
@@ -173,7 +173,7 @@ const tools = [
     category: "Workflows",
     description: "The Signal Source Method in practice. Scan companies for AI visibility gaps, score across 4 dimensions, analyse patterns, publish findings with methodology, and seed into content.",
     tech: ["Python", "Claude Code", "Perplexity API"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/research-intelligence/research",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/frameworks",
     note: "First output: AI Visibility Benchmark 2026 (50 companies, 5 sectors).",
   },
   {
@@ -181,7 +181,7 @@ const tools = [
     category: "Workflows",
     description: "Manual prospecting system. Google Maps search, AI Mode visibility check, personalised Gmail email. 5 emails per day to local Kent businesses before noon.",
     tech: ["JavaScript", "Claude Code"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/departments/sales-outreach/templates",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/so-daily-outreach",
     note: "Lean revenue track. Google Maps + AI Mode + Gmail. No paid tools needed.",
   },
   {
@@ -189,7 +189,7 @@ const tools = [
     category: "Workflows",
     description: "37 Claude Code skills across 5 departments. Research, write, design, publish, and analyse — all coordinated through agent pipelines that call sub-skills automatically.",
     tech: ["Claude Code"],
-    github: "https://github.com/oloyeaaa/GSS/tree/main/.claude/skills",
+    github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents",
     note: "12 content, 7 research, 9 sales, 3 engineering, 5 ops, 4 intelligence skills.",
   },
 ];
@@ -301,7 +301,7 @@ export default function ToolsPage() {
             The full skill system, research tools, and agent pipelines are open source. Star the repo or fork it for your own GTM stack.
           </p>
           <a
-            href="https://github.com/oloyeaaa/GSS"
+            href="https://github.com/oloyeaaa/gss-open-tools"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-orange hover:bg-orange-hover text-white font-heading font-semibold text-sm px-6 py-3 rounded-md transition-colors"
