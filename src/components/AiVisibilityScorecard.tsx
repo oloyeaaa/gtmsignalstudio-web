@@ -376,14 +376,14 @@ export default function AiVisibilityScorecard() {
             <p className="text-muted text-sm mb-6 max-w-lg mx-auto">
               This scorecard detects the signal. The AI Visibility Audit gives you the fix.
               We run your company through our scanner, score all 4 dimensions with real data,
-              and deliver a branded report with a prioritised action plan. 48 hours. £297.
+              and deliver a branded report with a prioritised action plan. 48 hours.
             </p>
             <a
               href="mailto:oloye@gtmsignalstudio.com?subject=AI%20Visibility%20Audit&body=Company%3A%20%0AWebsite%3A%20%0AKeywords%3A%20"
               onClick={() => trackEvent("scorecard_audit_cta", keyword)}
               className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold text-sm px-8 py-3 rounded-lg transition-colors"
             >
-              Get the Full Audit — £297
+              Get the Full Audit
             </a>
             <p className="text-muted text-xs mt-3">No call required. Reply with your URL.</p>
           </div>

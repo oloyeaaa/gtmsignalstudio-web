@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Work With Me | AI Visibility Audit for Enterprise",
   description:
-    "Get your AI Visibility Audit. 4 dimensions, scored 0-100, prioritised fix plan, PDF delivered within 48 hours. £297.",
+    "Get your AI Visibility Audit. 4 dimensions, scored 0-100, prioritised fix plan, PDF delivered within 48 hours.",
   keywords: [
     "AI visibility audit",
     "enterprise marketing audit",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Work With Me | GTM Signal Studio",
     description:
-      "AI Visibility Audit: 4 dimensions, scored 0-100, prioritised fix plan. £297.",
+      "AI Visibility Audit: 4 dimensions, scored 0-100, prioritised fix plan.",
     type: "website",
     url: "https://gtmsignalstudio.com/work-with-me",
   },
@@ -53,7 +53,6 @@ export default function WorkWithMePage() {
               </p>
             </div>
             <div className="p-8 md:p-10 text-center">
-              <p className="text-text-dark text-4xl font-bold mb-2">£297</p>
               <p className="text-text-muted mb-8">
                 One-off. No subscription. No ongoing commitment.
               </p>

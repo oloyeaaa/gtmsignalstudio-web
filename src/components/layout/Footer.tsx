@@ -63,7 +63,7 @@ export default function Footer() {
                 <a href="https://newsletter.gtmsignalstudio.com" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white text-sm transition-colors">Newsletter</a>
               </li>
               <li>
-                <a href="https://calendly.com/oloye-gtmsignalstudio/audit" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white text-sm transition-colors">Book a Call</a>
+                <a href="https://calendly.com/thegtmsignalstudio/30min" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white text-sm transition-colors">Book a Call</a>
               </li>
             </ul>
           </div>

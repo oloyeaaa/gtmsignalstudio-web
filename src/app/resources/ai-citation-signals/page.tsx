@@ -207,7 +207,7 @@ export default function AiCitationSignalsPage() {
               GET THE FULL ANALYSIS
             </p>
             <h3 className="font-heading text-xl font-bold text-white mb-3">
-              AI Visibility Audit — £297
+              AI Visibility Audit
             </h3>
             <p className="text-muted text-sm leading-relaxed mb-4">
               We run your company through our scanner, score all 4 dimensions

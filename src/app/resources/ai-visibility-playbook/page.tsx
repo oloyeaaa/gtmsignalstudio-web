@@ -399,7 +399,6 @@ export default function AiVisibilityPlaybookPage() {
             precision, not guesswork. 4 dimensions, scored 0-100, prioritised fix
             plan, PDF delivered within 48 hours.
           </p>
-          <p className="text-text-dark text-2xl font-bold mb-8">&pound;297</p>
           <Link
             href="/ai-visibility-audit"
             className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"

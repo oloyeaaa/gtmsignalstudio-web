@@ -139,7 +139,7 @@ export default function AuditPage() {
           Takes 15 minutes on our end. Delivered same-day. No follow-up spam.
         </p>
         <a
-          href="https://calendly.com/oloye-gtmsignalstudio/audit"
+          href="https://calendly.com/thegtmsignalstudio/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-orange hover:bg-orange-hover text-white px-8 py-3 rounded-lg font-semibold transition-colors"

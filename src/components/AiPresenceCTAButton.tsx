@@ -8,12 +8,12 @@ interface Props {
   className?: string;
 }
 
-export default function AiPresenceCTAButton({ label = "Get Your AI Visibility Audit — £297", className }: Props) {
+export default function AiPresenceCTAButton({ label = "Get Your AI Visibility Audit", className }: Props) {
   const pathname = usePathname();
 
   return (
     <a
-      href="https://calendly.com/oloye-gtmsignalstudio/audit"
+      href="https://calendly.com/thegtmsignalstudio/30min"
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => trackCTAClick("ai_visibility_audit", pathname)}

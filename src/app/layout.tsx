@@ -149,7 +149,7 @@ export default function RootLayout({
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "sales",
-                url: "https://calendly.com/oloye-gtmsignalstudio/audit",
+                url: "https://calendly.com/thegtmsignalstudio/30min",
               },
               sameAs: [
                 "https://www.linkedin.com/in/oloyeadeosun/",

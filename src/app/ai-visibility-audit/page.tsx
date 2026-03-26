@@ -5,12 +5,12 @@ import AiPresenceCTAButton from "@/components/AiPresenceCTAButton";
 export const metadata: Metadata = {
   title: "AI Visibility Audit — GTM Signal Studio",
   description:
-    "Find out if AI platforms recommend your business. Scored report across 4 dimensions with a prioritised fix plan. Delivered in 48 hours. £297.",
+    "Find out if AI platforms recommend your business. Scored report across 4 dimensions with a prioritised fix plan. Delivered in 48 hours.",
   keywords: ["AI visibility audit", "AI visibility score", "AI citation check", "AI Mode visibility", "B2B AI discovery"],
   openGraph: {
     title: "AI Visibility Audit — GTM Signal Studio",
     description:
-      "Find out if AI platforms recommend your business. Scored across 4 dimensions. 48-hour turnaround. £297.",
+      "Find out if AI platforms recommend your business. Scored across 4 dimensions. 48-hour turnaround.",
     url: "https://gtmsignalstudio.com/ai-visibility-audit",
     type: "website",
     images: [{ url: "https://gtmsignalstudio.com/og-default.png", width: 1200, height: 630, alt: "AI Visibility Audit — GTM Signal Studio" }],
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Visibility Audit — GTM Signal Studio",
     description:
-      "Find out if AI platforms recommend your business. Scored across 4 dimensions. 48-hour turnaround. £297.",
+      "Find out if AI platforms recommend your business. Scored across 4 dimensions. 48-hour turnaround.",
     images: ["https://gtmsignalstudio.com/og-default.png"],
   },
 };
@@ -91,7 +91,7 @@ export default function AiVisibilityAuditPage() {
       {/* Hero */}
       <div className="max-w-3xl mb-16">
         <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>
-        <p className="font-mono text-orange text-sm mb-2 tracking-wider">AI VISIBILITY AUDIT — £297</p>
+        <p className="font-mono text-orange text-sm mb-2 tracking-wider">AI VISIBILITY AUDIT</p>
         <h1 className="font-heading text-4xl md:text-5xl font-bold text-text-dark mb-6 leading-tight">
           Does AI recommend{" "}
           <span className="text-orange">your business?</span>
