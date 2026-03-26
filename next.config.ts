@@ -92,6 +92,11 @@ const nextConfig: NextConfig = {
         destination: "/resources/ai-visibility-playbook",
         permanent: true,
       },
+      {
+        source: "/audit",
+        destination: "/ai-visibility-audit",
+        permanent: true,
+      },
     ];
   },
 };
