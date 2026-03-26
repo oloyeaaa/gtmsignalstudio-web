@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tools — GTM Signal Studio",
+  title: "Built Tools — GTM Signal Studio",
   description:
-    "Free browser-based GTM tools. Score your go-to-market, check AI visibility, and diagnose pipeline gaps. No signup required.",
-  keywords: ["free GTM tools", "AI visibility checker", "GTM scoring tool", "B2B marketing tools", "go-to-market calculator"],
+    "Custom-built agents, Python tools, Chrome extensions, and workflows for AI visibility audits, content pipelines, and GTM research. Open source on GitHub.",
+  keywords: ["AI visibility tools", "Claude Code skills", "GTM automation", "AI agents", "marketing automation tools", "open source GTM"],
 };
 
 export default function ToolsLayout({ children }: { children: React.ReactNode }) {
