@@ -94,15 +94,28 @@ function extractMetaDescription(md) {
 }
 
 function extractTitle(md) {
-  // First ## heading that looks like the post title (inside ## Blog Post section)
+  // First try: look for # H1 heading (not ## H2)
+  const h1Match = md.match(/^# (.+)/m);
+  if (h1Match && !h1Match[1].includes("Meta Description")) {
+    return h1Match[1].trim();
+  }
+
+  // Second try: Blog Post section
   const blogSection = extractSection(md, "Blog Post");
   if (blogSection) {
     const match = blogSection.match(/^##?\s+(.+)/m);
     if (match) return match[1].trim();
   }
-  // Fallback: first # or ## heading
-  const match = md.match(/^##?\s+(.+)/m);
-  return match ? match[1].trim() : "Untitled";
+
+  // Fallback: first heading that is not Meta Description or FAQ
+  const lines = md.split("\n");
+  for (const line of lines) {
+    const match = line.match(/^##?\s+(.+)/);
+    if (match && !match[1].includes("Meta Description") && !match[1].includes("FAQ")) {
+      return match[1].trim();
+    }
+  }
+  return "Untitled";
 }
 
 function extractFAQ(md) {
@@ -142,12 +155,37 @@ function extractSchemaMarkup(md) {
 }
 
 function extractBlogContent(md) {
-  // Find everything from ## Blog Post to ## Schema Markup (or end of file)
-  const start = md.indexOf("## Blog Post");
-  if (start === -1) return md;
-  const afterStart = md.indexOf("\n", start) + 1; // skip the "## Blog Post" line itself
-  const end = md.indexOf("\n## Schema Markup", afterStart);
-  const content = end !== -1 ? md.slice(afterStart, end) : md.slice(afterStart);
+  let content = md;
+
+  // Strip YAML frontmatter (--- ... ---)
+  content = content.replace(/^---[\s\S]*?---\s*\n/, "");
+
+  // Strip ## Meta Description section
+  content = content.replace(/## Meta Description[\s\S]*?(?=# [A-Z])/, "");
+
+  // Strip H1 title (template renders title from title field)
+  content = content.replace(/^# .+\n\n/, "");
+
+  // Strip ## FAQ section (template renders from faq field via FaqAccordion)
+  content = content.replace(/\n## FAQ[\s\S]*$/, "");
+
+  // Strip ## Frequently Asked Questions section
+  content = content.replace(/\n## Frequently Asked Questions[\s\S]*$/, "");
+
+  // Strip author bio at end (template renders AuthorCard component)
+  content = content.replace(/\n---\n\n\*Oloye Adeosun is[\s\S]*$/, "");
+
+  // Strip ## Sources section (kept in markdown file for reference, not rendered)
+  content = content.replace(/\n## Sources[\s\S]*$/, "");
+
+  // Legacy: Find ## Blog Post section if it exists
+  const start = content.indexOf("## Blog Post");
+  if (start !== -1) {
+    const afterStart = content.indexOf("\n", start) + 1;
+    const end = content.indexOf("\n## Schema Markup", afterStart);
+    content = end !== -1 ? content.slice(afterStart, end) : content.slice(afterStart);
+  }
+
   return content.trim();
 }
 
@@ -288,8 +326,8 @@ async function main() {
     excerpt: metaDescription || content.substring(0, 200),
     meta_description: metaDescription,
     short_answer: shortAnswer,
-    category: "AI Presence",
-    tags: ["AI Presence", "GEO", "B2B Marketing", "SEO", "AI Search"],
+    category: "AI Visibility",
+    tags: ["AI Visibility", "Enterprise Marketing", "B2B Marketing", "AI Search"],
     schema_markup: schemaMarkup || {},
     faq: faq,
     featured_image: featuredImageUrl,
