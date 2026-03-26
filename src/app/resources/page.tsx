@@ -1,381 +1,313 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import EmailGate from "@/components/EmailGate";
 import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Resources",
+  title: "Resources | AI Visibility Frameworks, Tools & Research",
   description:
-    "Free tools, templates, and guides for enterprise marketing teams building GTM systems with AI. Skill file templates, outreach frameworks, and audit tools.",
-  keywords: ["B2B GTM resources", "free GTM templates", "outreach frameworks", "AI visibility tools", "signal-led tools"],
+    "Free enterprise marketing frameworks, tools, and research on AI visibility. Scorecard, playbook, citation signals, and the AI Visibility Benchmark.",
+  keywords: [
+    "AI visibility tools",
+    "enterprise marketing resources",
+    "AI visibility scorecard",
+    "AI visibility playbook",
+    "marketing frameworks",
+  ],
 };
 
 const resources = [
   {
-    title: "AI Visibility Signal Scorecard",
+    title: "AI Visibility Scorecard",
     badge: "Free Tool",
     badgeClass: "bg-green-400/10 text-green-400",
     description:
-      "Can AI find your business? Self-assess across 4 dimensions — AI Citation, Entity Recognition, Content Structure, Citation Breadth. Takes 5 minutes. Real-time scoring.",
+      "Interactive self-assessment. Score your company across 4 dimensions of AI visibility in under 5 minutes. Instant results.",
     stats: [
       { value: "4", label: "dimensions" },
       { value: "5min", label: "to complete" },
-      { value: "60", label: "max score" },
+      { value: "100", label: "max score" },
     ],
-    tags: ["AI Visibility", "Signal Detection", "Self-Assessment", "B2B"],
+    tags: ["AI Visibility", "Self-Assessment", "Interactive"],
     link: "/resources/ai-visibility-scorecard",
     cta: "Take the Scorecard",
     primary: true,
+  },
+  {
+    title: "AI Visibility Playbook for Enterprise Marketers",
+    badge: "Free Guide",
+    badgeClass: "bg-orange/10 text-orange",
+    description:
+      "The full framework: 4 dimensions, scoring method, prioritised fix list. Everything enterprise marketing teams need to understand and improve their AI visibility.",
+    stats: [
+      { value: "4", label: "dimensions" },
+      { value: "3", label: "priority tiers" },
+      { value: "7", label: "sections" },
+    ],
+    tags: ["AI Visibility", "Framework", "Enterprise"],
+    link: "/resources/ai-visibility-playbook",
+    cta: "Read the Playbook",
+    primary: false,
   },
   {
     title: "7 Signals That Make AI Cite Your Company",
     badge: "Free Guide",
     badgeClass: "bg-orange/10 text-orange",
     description:
-      "The structural changes that move your company from invisible to recommended by AI. Each signal includes the fix and why it works. Implementation guide for the scorecard.",
+      "The specific signals AI platforms use to decide who to recommend. Each signal includes the fix and why it works. Prioritised by impact.",
     stats: [
       { value: "7", label: "signals" },
       { value: "3", label: "priority fixes" },
-      { value: "30 days", label: "to see shift" },
     ],
-    tags: ["AI Visibility", "Content Strategy", "SEO to AI", "B2B"],
+    tags: ["AI Visibility", "Citation Signals", "Implementation"],
     link: "/resources/ai-citation-signals",
-    cta: "Read the Guide",
+    cta: "See the Signals",
     primary: false,
   },
   {
-    title: "The GTM Playbook",
-    badge: "GitHub Repo",
+    title: "AI Visibility Benchmark 2026",
+    badge: "Original Research",
     badgeClass: "bg-sky-400/10 text-sky-400",
     description:
-      "18 Claude Code skills, 7 proven outreach patterns, and the full campaign framework. ICP research to pipeline forecast. Built from 900+ emails and 6 live audit deliveries.",
+      "50 enterprise companies scored across 5 sectors. 44% scored 2/25 on citation presence. Full methodology, sector breakdown, and citable stats.",
     stats: [
-      { value: "18", label: "skills" },
-      { value: "7", label: "patterns" },
-      { value: "4", label: "frameworks" },
-      { value: "2", label: "playbooks" },
+      { value: "50", label: "companies" },
+      { value: "5", label: "sectors" },
+      { value: "10", label: "citable stats" },
     ],
-    tags: ["Claude Code", "Cold Outreach", "GTM Audit", "Pipeline"],
-    link: "https://github.com/oloyeaaa/gtm-playbook",
-    cta: "View on GitHub",
-    primary: false,
-  },
-  {
-    title: "Claude Code Second Brain",
-    badge: "Free Guide",
-    badgeClass: "bg-sky-400/10 text-sky-400",
-    description:
-      "How to build persistent memory, learnings, and pattern recognition into your AI workflow. 4-layer memory system that makes Claude get smarter every session.",
-    stats: [
-      { value: "4", label: "memory layers" },
-      { value: "1", label: "skill file" },
-      { value: "15min", label: "setup" },
-    ],
-    tags: ["Claude Code", "AI Workflow", "Memory System", "Productivity"],
-    link: "/blog/claude-code-memory-system",
-    cta: "Read the Guide",
+    tags: ["Research", "Data", "Enterprise", "AI Visibility"],
+    link: "/research/ai-visibility-benchmark-2026",
+    cta: "Read the Research",
     primary: false,
   },
 ];
 
-const highlights = [
-  { number: "900+", label: "Cold emails sent across 3 segments" },
-  { number: "85%", label: "Audit acceptance rate from replies" },
-  { number: "10min", label: "Request to branded PDF in inbox" },
-  { number: "41/100", label: "Average GTM score across audits" },
-];
-
-const patterns = [
-  { id: "P001", name: "Trust Bridge", description: "The free audit converts at 85% once someone replies. Audit first, sell second. Always." },
-  { id: "P002", name: "Hidden Differentiator", description: "Every company had at least one strong proof point buried where buyers never see it." },
-  { id: "P003", name: "Score Hook", description: "\"Scored [Company] out of 100\" in the subject line. 6.7% reply rate." },
-  { id: "P004", name: "2-Hour Window", description: "6 of 9 converting replies came within 2 hours. Speed beats perfection." },
-  { id: "P005", name: "JS Rendering Gap", description: "3 of 5 Wix sites scored zero on technical SEO. Google cannot read them." },
-  { id: "P006", name: "Service Menu Overload", description: "Every company listed too many services. Fix: 3 pillars, 3 pages, 3 entry points." },
-  { id: "P007", name: "Signal Over Volume", description: "300 signal-qualified leads outperformed 900 cold ones. Timing beats volume." },
+const researchStats = [
+  { number: "44%", label: "of enterprise companies scored 2/25 on AI citation" },
+  { number: "82.2", label: "average AI visibility score out of 100" },
+  { number: "3x", label: "citation gap between SaaS and IT Services" },
+  { number: "50", label: "enterprise companies scored in the benchmark" },
 ];
 
 export default function ResourcesPage() {
   return (
     <>
-      <PageHeader tagline="RESOURCES" title="Enterprise marketing frameworks and tools." subtitle="Templates, frameworks, and tools from real campaigns. Built for enterprise marketing teams." />
+      <PageHeader
+        tagline="RESOURCES"
+        title="Enterprise marketing frameworks and tools."
+        subtitle="Free frameworks, tools, and original research on AI visibility. Built for enterprise marketing teams. Grounded in real data."
+      />
 
-    <div className="max-w-[1080px] mx-auto px-6 py-16">
-
-      {/* Featured: Skill File Templates (gated) */}
-      <section className="mb-12">
-        <div className="bg-navy-light border-2 border-orange/40 rounded-xl p-10 md:grid md:grid-cols-[1fr_1fr] gap-10 items-center">
-          <div>
-            <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-3 py-1 rounded w-fit mb-5 bg-orange/10 text-orange">
-              Free Download
-            </span>
-            <h2 className="font-heading text-2xl font-bold text-white mb-4 tracking-tight">
-              AI Skill File Templates
-            </h2>
-            <p className="text-muted text-sm leading-relaxed mb-4">
-              3 ready-to-use templates that give your AI persistent expertise. Stop re-prompting
-              every session. One skill file replaces 45 minutes of context-setting.
-            </p>
-            <div className="flex flex-wrap gap-5 mb-5">
-              <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
-                <strong className="text-white font-semibold">3</strong> templates
-              </div>
-              <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
-                <strong className="text-white font-semibold">10min</strong> setup
-              </div>
-              <div className="flex items-center gap-1.5 font-mono text-xs text-muted">
-                <strong className="text-white font-semibold">.md</strong> format
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-2 mb-7">
-              {["Claude Code", "Cursor", "AI Workflow", "Productivity"].map((t) => (
-                <span key={t} className="font-mono text-xs text-muted/70 bg-white/[0.04] border border-navy-border px-2.5 py-1 rounded">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <p className="text-muted text-xs mb-4">Includes:</p>
-            <ul className="text-muted text-sm space-y-1.5 mb-7">
-              <li className="flex items-start gap-2">
-                <span className="text-orange mt-0.5">→</span>
-                Content creator template (LinkedIn, blog, newsletter)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-orange mt-0.5">→</span>
-                Research agent template (audits, competitor analysis)
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-orange mt-0.5">→</span>
-                Blank template with 3 worked examples
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-orange mt-0.5">→</span>
-                Quick-start guide with before/after comparison
-              </li>
-            </ul>
-
-            <EmailGate
-              magnet="skill-file-templates"
-              source="skill-file-templates"
-              downloadUrl="https://github.com/oloyeaaa/gtm-playbook/tree/main/skill-file-templates"
-              buttonLabel="Get the Templates"
-            />
-          </div>
-
-          <div className="hidden md:block">
-            <Image
-              src="/skill-templates-preview.png"
-              alt="AI Skill File Template — content creator template shown in code editor"
-              width={1200}
-              height={630}
-              className="rounded-lg border border-navy-border"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Resource Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
-        {resources.map((r) => (
-          <div
-            key={r.title}
-            className="bg-navy-light border border-navy-border rounded-xl p-10 flex flex-col hover:border-orange transition-colors"
-          >
-            <span className={`inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-3 py-1 rounded w-fit mb-5 ${r.badgeClass}`}>
-              {r.badge}
-            </span>
-            <h3 className="font-heading text-xl font-bold text-white mb-3 tracking-tight">
-              {r.title}
-            </h3>
-            <p className="text-muted text-sm leading-relaxed mb-6">{r.description}</p>
-
-            {/* Stats */}
-            <div className="flex flex-wrap gap-5 mb-6">
-              {r.stats.map((s) => (
-                <div key={s.label} className="flex items-center gap-1.5 font-mono text-xs text-muted">
-                  <strong className="text-white font-semibold">{s.value}</strong> {s.label}
-                </div>
-              ))}
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-7">
-              {r.tags.map((t) => (
-                <span key={t} className="font-mono text-xs text-muted/70 bg-white/[0.04] border border-navy-border px-2.5 py-1 rounded">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="mt-auto">
-              <a
-                href={r.link}
-                target={r.link.startsWith("http") ? "_blank" : undefined}
-                rel={r.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`inline-block font-semibold text-sm px-7 py-3 rounded-lg transition-colors ${
-                  r.primary
-                    ? "bg-orange hover:bg-orange-hover text-white"
-                    : "bg-sky-400/10 text-sky-400 border border-sky-400/25 hover:bg-sky-400/20"
-                }`}
+      <div className="max-w-[1080px] mx-auto px-6 py-16">
+        {/* Resource Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+          {resources.map((r) => (
+            <Link
+              key={r.title}
+              href={r.link}
+              className="bg-navy-light border border-navy-border rounded-xl p-10 flex flex-col hover:border-orange transition-colors"
+            >
+              <span
+                className={`inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider px-3 py-1 rounded w-fit mb-5 ${r.badgeClass}`}
               >
-                {r.cta}
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
+                {r.badge}
+              </span>
+              <h3 className="font-heading text-xl font-bold text-white mb-3 tracking-tight">
+                {r.title}
+              </h3>
+              <p className="text-muted text-sm leading-relaxed mb-6">
+                {r.description}
+              </p>
 
-      {/* Campaign Highlights */}
-      <section className="mb-20">
-        <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">
-          From the Playbook
-        </p>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
-          Numbers from live campaigns. Not theory.
-        </h2>
-        <p className="text-muted text-base max-w-[560px] leading-relaxed mb-10">
-          Every skill, pattern, and framework was extracted from real outreach to B2B service companies.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {highlights.map((h) => (
-            <div key={h.label} className="bg-navy-light border border-navy-border rounded-lg p-6">
-              <div className="font-mono text-2xl font-bold text-white mb-1">{h.number}</div>
-              <div className="text-muted text-sm leading-snug">{h.label}</div>
-            </div>
+              <div className="flex flex-wrap gap-5 mb-6">
+                {r.stats.map((s) => (
+                  <div
+                    key={s.label}
+                    className="flex items-center gap-1.5 font-mono text-xs text-muted"
+                  >
+                    <strong className="text-white font-semibold">
+                      {s.value}
+                    </strong>{" "}
+                    {s.label}
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-7">
+                {r.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-xs text-muted/70 bg-white/[0.04] border border-navy-border px-2.5 py-1 rounded"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-auto">
+                <span
+                  className={`inline-block font-semibold text-sm px-7 py-3 rounded-lg transition-colors ${
+                    r.primary
+                      ? "bg-orange hover:bg-orange-hover text-white"
+                      : "bg-navy border border-navy-border text-white hover:border-orange"
+                  }`}
+                >
+                  {r.cta}
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
-      </section>
 
-      {/* Proven Patterns */}
-      <section className="border-t border-light-border pt-16 mb-20">
-        <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">
-          Proven Patterns
-        </p>
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
-          7 patterns. Each confirmed 3+ times.
-        </h2>
-        <p className="text-muted text-base max-w-[560px] leading-relaxed mb-10">
-          Extracted from live data. Not blog posts.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {patterns.map((p) => (
-            <div key={p.id} className="bg-navy-light border border-navy-border rounded-lg p-6">
-              <p className="font-mono text-xs text-muted/70 mb-2">{p.id}</p>
-              <h3 className="font-heading font-semibold text-white text-sm mb-1">{p.name}</h3>
-              <p className="text-muted text-sm leading-relaxed">{p.description}</p>
+        {/* Research Data */}
+        <section className="mb-20">
+          <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">
+            FROM THE RESEARCH
+          </p>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
+            Numbers from original research. Not recycled reports.
+          </h2>
+          <p className="text-muted text-base max-w-[560px] leading-relaxed mb-10">
+            Every stat comes from our own studies. The AI Visibility Benchmark
+            2026 scored 50 enterprise companies across 5 sectors.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {researchStats.map((h) => (
+              <div
+                key={h.label}
+                className="bg-navy-light border border-navy-border rounded-lg p-6"
+              >
+                <div className="font-mono text-2xl font-bold text-orange mb-1">
+                  {h.number}
+                </div>
+                <div className="text-muted text-sm leading-snug">
+                  {h.label}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6">
+            <Link
+              href="/research"
+              className="text-orange font-semibold text-sm hover:underline"
+            >
+              View all research &rarr;
+            </Link>
+          </div>
+        </section>
+
+        {/* About */}
+        <section className="border-t border-light-border pt-16 mb-20">
+          <div className="bg-navy-light border border-navy-border rounded-xl p-10 md:p-12 md:grid md:grid-cols-[1fr_2fr] gap-12 items-center">
+            <div className="flex items-center justify-center mb-6 md:mb-0">
+              <Image
+                src="/oloye-profile.png"
+                alt="Oloye Adeosun"
+                width={200}
+                height={200}
+                className="rounded-2xl object-cover"
+              />
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Founder */}
-      <section className="border-t border-light-border pt-16 mb-20">
-        <div className="bg-navy-light border border-navy-border rounded-xl p-10 md:p-12 md:grid md:grid-cols-[1fr_2fr] gap-12 items-center">
-          <div className="flex items-center justify-center mb-6 md:mb-0">
-            <Image
-              src="/oloye-profile.png"
-              alt="Oloye Adeosun"
-              width={200}
-              height={200}
-              className="rounded-2xl object-cover"
-            />
+            <div>
+              <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">
+                ABOUT
+              </p>
+              <h3 className="font-heading text-xl font-bold text-white mb-4">
+                Enterprise marketing practitioner. Publishing what works.
+              </h3>
+              <p className="text-muted text-sm leading-relaxed mb-3">
+                I work in enterprise marketing every day. Campaigns, MarTech,
+                automation, tracking, web performance. I see what works, what
+                breaks, and what most teams have not looked at yet.
+              </p>
+              <p className="text-muted text-sm leading-relaxed mb-3">
+                I publish original research and frameworks here because most
+                marketing advice comes from people who advise on campaigns, not
+                people who run them. Everything on this site is grounded in real
+                data and enterprise experience.
+              </p>
+              <p className="text-muted text-sm leading-relaxed mb-5">
+                The AI Visibility Benchmark 2026 was the first study. More are
+                coming.
+              </p>
+              <Link
+                href="/about"
+                className="text-orange font-semibold text-sm hover:underline"
+              >
+                Read more &rarr;
+              </Link>
+            </div>
           </div>
-          <div>
-            <p className="font-mono text-orange text-xs uppercase tracking-widest mb-3">Who Built This</p>
-            <h3 className="font-heading text-xl font-bold text-white mb-4">
-              I build AI-powered GTM infrastructure. Here&apos;s what I&apos;ve learned.
-            </h3>
-            <p className="text-muted text-sm leading-relaxed mb-3">
-              I run GTM Signal Studio. 5 departments, 33 AI skills, full pipeline.
-              One person. No team. No agency.
-            </p>
-            <p className="text-muted text-sm leading-relaxed mb-3">
-              I built this system on the side of a full-time job. No funding.
-              Every skill, every framework, every pattern came from real campaigns — not a course I bought.
-            </p>
-            <p className="text-muted text-sm leading-relaxed mb-5">
-              I&apos;m giving the tools away because the best way to earn trust is to prove you can build.
-              If you want to build your own system, grab the templates. If you want me to build it for you,
-              that conversation starts with the free audit.
-            </p>
-            <p className="font-mono text-white text-sm font-medium">
-              — Oloye Adeosun, GTM Signal Studio
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Bottom CTA */}
-      <section className="border-t border-light-border pt-16 text-center">
-        <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
-          Built in public. Shared with builders.
-        </h2>
-        <p className="text-muted text-base max-w-[480px] mx-auto leading-relaxed mb-8">
-          Grab the tools and build your own GTM system. Or get a free audit and let me build it for you.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
+        {/* Bottom CTA */}
+        <section className="border-t border-light-border pt-16 text-center">
+          <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-4 tracking-tight">
+            Get enterprise marketing insights. Weekly.
+          </h2>
+          <p className="text-muted text-base max-w-[480px] mx-auto leading-relaxed mb-8">
+            Research-backed frameworks on AI visibility, MarTech, and enterprise
+            GTM. No fluff. No recycled theory.
+          </p>
           <a
-            href="https://github.com/oloyeaaa/gtm-playbook"
+            href="https://newsletter.gtmsignalstudio.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-3.5 rounded-lg transition-colors"
+            className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-3.5 rounded-lg transition-colors"
           >
-            Get the Playbook
+            Subscribe to The GTM Signal
           </a>
-          <Link
-            href="/audit"
-            className="border border-light-border hover:border-orange text-text-dark hover:text-orange font-semibold px-8 py-3.5 rounded-lg transition-colors"
-          >
-            Get a Free GTM Audit
-          </Link>
-        </div>
-      </section>
-      {/* Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            name: "GTM Signal Studio Resources",
-            description:
-              "Free tools, templates, and guides for enterprise marketing teams building GTM systems with AI.",
-            url: "https://gtmsignalstudio.com/resources",
-            publisher: {
-              "@type": "Organization",
-              name: "GTM Signal Studio",
-              url: "https://gtmsignalstudio.com",
-            },
-            mainEntity: {
-              "@type": "ItemList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "AI Visibility Signal Scorecard",
-                  url: "https://gtmsignalstudio.com/resources/ai-visibility-scorecard",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "7 Signals That Make AI Cite Your Company",
-                  url: "https://gtmsignalstudio.com/resources/ai-citation-signals",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: "GTM Tools Stack",
-                  url: "https://gtmsignalstudio.com/resources/tools",
-                },
-              ],
-            },
-          }),
-        }}
-      />
-    </div>
+        </section>
+
+        {/* Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CollectionPage",
+              name: "GTM Signal Studio Resources",
+              description:
+                "Free enterprise marketing frameworks, tools, and research on AI visibility.",
+              url: "https://gtmsignalstudio.com/resources",
+              publisher: {
+                "@type": "Organization",
+                name: "GTM Signal Studio",
+                url: "https://gtmsignalstudio.com",
+              },
+              mainEntity: {
+                "@type": "ItemList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "AI Visibility Scorecard",
+                    url: "https://gtmsignalstudio.com/resources/ai-visibility-scorecard",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "AI Visibility Playbook",
+                    url: "https://gtmsignalstudio.com/resources/ai-visibility-playbook",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: "7 AI Citation Signals",
+                    url: "https://gtmsignalstudio.com/resources/ai-citation-signals",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 4,
+                    name: "AI Visibility Benchmark 2026",
+                    url: "https://gtmsignalstudio.com/research/ai-visibility-benchmark-2026",
+                  },
+                ],
+              },
+            }),
+          }}
+        />
+      </div>
     </>
   );
 }
