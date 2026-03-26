@@ -13,7 +13,9 @@ export default function AiPresenceCTAButton({ label = "Get Your AI Visibility Au
 
   return (
     <a
-      href="mailto:oloye@gtmsignalstudio.com?subject=AI%20Visibility%20Audit&body=Hi%20Oloye%2C%0A%0AI%27d%20like%20to%20book%20an%20AI%20Visibility%20Audit%20for%20%5Bcompany%20name%5D.%0A%0AMy%20website%3A%20%5Byour%20website%5D%0A%0ACore%20keywords%3A%20%5Bwhat%20do%20clients%20search%20to%20find%20you%5D"
+      href="https://calendly.com/oloye-gtmsignalstudio/audit"
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={() => trackCTAClick("ai_visibility_audit", pathname)}
       className={
         className ??
