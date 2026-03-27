@@ -119,7 +119,9 @@ function extractTitle(md) {
 }
 
 function extractFAQ(md) {
-  const faqSection = extractSection(md, "Frequently Asked Questions");
+  // Try both section heading formats: "## FAQ" and "## Frequently Asked Questions"
+  let faqSection = extractSection(md, "Frequently Asked Questions");
+  if (!faqSection) faqSection = extractSection(md, "FAQ");
   if (!faqSection) return [];
 
   const faqs = [];
@@ -127,10 +129,21 @@ function extractFAQ(md) {
   let current = null;
 
   for (const block of blocks) {
-    const questionMatch = block.match(/^\*\*(.+?)\*\*/);
+    // Format 1: **Question here** (bold)
+    const boldMatch = block.match(/^\*\*(.+?)\*\*/);
+    // Format 2: ### Question here (h3 heading)
+    const h3Match = block.match(/^###\s+(.+)/);
+
+    const questionMatch = boldMatch || h3Match;
     if (questionMatch) {
       if (current) faqs.push(current);
-      const rest = block.replace(/^\*\*(.+?)\*\*\s*\n?/, "").trim();
+      // Strip the question marker from the block to get the answer
+      let rest;
+      if (boldMatch) {
+        rest = block.replace(/^\*\*(.+?)\*\*\s*\n?/, "").trim();
+      } else {
+        rest = block.replace(/^###\s+.+\n?/, "").trim();
+      }
       current = { question: questionMatch[1].trim(), answer: rest };
     } else if (current && block.trim()) {
       current.answer += " " + block.trim();
@@ -177,6 +190,12 @@ function extractBlogContent(md) {
 
   // Strip ## Sources section (kept in markdown file for reference, not rendered)
   content = content.replace(/\n## Sources[\s\S]*$/, "");
+
+  // Strip **Meta:** section (internal metadata, not for publishing)
+  content = content.replace(/\n\*\*Meta:\*\*[\s\S]*$/, "");
+
+  // Strip **Companion LinkedIn Post:** section
+  content = content.replace(/\n\*\*Companion LinkedIn Post:\*\*[\s\S]*$/, "");
 
   // Legacy: Find ## Blog Post section if it exists
   const start = content.indexOf("## Blog Post");
