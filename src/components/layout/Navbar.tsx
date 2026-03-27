@@ -8,8 +8,12 @@ const navLinks = [
   { href: "/research", label: "Research" },
   { href: "/resources", label: "Resources" },
   { href: "/blog", label: "Blog" },
-  { href: "/about", label: "About" },
   { href: "/work-with-me", label: "Work With Me" },
+];
+
+const aboutLinks = [
+  { href: "/about", label: "The Studio" },
+  { href: "/about/founder", label: "The Founder" },
 ];
 
 export default function Navbar() {
@@ -36,6 +40,33 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            {/* About dropdown */}
+            <div className="relative group">
+              <Link
+                href="/about"
+                className="text-white/60 hover:text-white transition-colors font-body text-sm flex items-center gap-1"
+              >
+                About
+                <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </Link>
+              <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                <div className="bg-navy-light border border-navy-border rounded-lg shadow-lg py-1 min-w-[160px]">
+                  {aboutLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2.5 text-white/60 hover:text-white hover:bg-white/5 text-sm transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <Link
               href="/ai-visibility-audit"
               className="bg-orange hover:bg-orange-hover text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
@@ -71,6 +102,20 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            {/* About links - flat on mobile */}
+            <div className="border-t border-navy-border mt-2 pt-2">
+              <p className="text-white/30 text-xs font-mono uppercase tracking-wider py-1">About</p>
+              {aboutLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block py-2 pl-3 text-white/60 hover:text-white transition-colors"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
             <Link
               href="/ai-visibility-audit"
               className="block mt-3 bg-orange hover:bg-orange-hover text-white px-4 py-2 rounded-lg font-semibold text-sm text-center transition-colors"
