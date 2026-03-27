@@ -11,18 +11,18 @@ export default function BlogCTA() {
     <div className="bg-navy py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h3 className="font-heading text-xl font-bold text-white mb-3">
-          Want to know your GTM score?
+          Is AI recommending your company?
         </h3>
         <p className="text-white/60 mb-6">
-          Free audit. Scored out of 100. Three things to fix this week.
+          Scored across 4 dimensions. Prioritised fix list. 48-hour delivery.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/audit"
+            href="/ai-visibility-audit"
             className="bg-orange hover:bg-orange-hover text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            onClick={() => trackCTAClick("gtm_audit_cta", pathname)}
+            onClick={() => trackCTAClick("ai_visibility_audit_cta", pathname)}
           >
-            Get Your Free GTM Audit
+            Get Your AI Visibility Audit
           </Link>
           <a
             href="https://newsletter.gtmsignalstudio.com"

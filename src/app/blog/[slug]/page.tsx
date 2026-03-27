@@ -7,6 +7,7 @@ import FaqAccordion from "@/components/blog/FaqAccordion";
 import AuthorCard from "@/components/blog/AuthorCard";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogCTA from "@/components/blog/BlogCTA";
+import InlineSubscribe from "@/components/blog/InlineSubscribe";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -238,6 +239,9 @@ export default async function BlogPost({ params }: Props) {
 
           {/* Article body */}
           <BlogContent content={post.content} />
+
+          {/* Inline subscribe form */}
+          <InlineSubscribe />
 
           {/* Infographic (mid-post image) */}
           {post.infographic_image && (

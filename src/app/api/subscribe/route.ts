@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { email, magnet, source } = body;
+  const { email, first_name, magnet, source } = body;
 
   if (!email || !isValidEmail(email)) {
     return NextResponse.json(
@@ -101,6 +101,7 @@ export async function POST(request: NextRequest) {
         utm_medium: magnet ? "lead-magnet" : "organic",
         utm_campaign: magnet || undefined,
         referring_site: `https://gtmsignalstudio.com${source ? `/resources/${source}` : ""}`,
+        ...(first_name ? { custom_fields: [{ name: "first_name", value: first_name }] } : {}),
       }),
     }
   );
