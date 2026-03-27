@@ -84,6 +84,7 @@ export default function Footer() {
               onClick={() => {
                 if (typeof window !== "undefined") {
                   localStorage.removeItem("cookie_consent");
+                  localStorage.removeItem("cookie_consent_date");
                   window.location.reload();
                 }
               }}

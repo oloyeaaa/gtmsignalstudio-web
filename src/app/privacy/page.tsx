@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <PageHeader tagline="LEGAL" title="Privacy Policy" subtitle="Last updated: 22 March 2026" />
+      <PageHeader tagline="LEGAL" title="Privacy Policy" subtitle="Last updated: 27 March 2026" />
 
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="prose prose-sm max-w-none text-text-body space-y-8">
@@ -120,25 +120,37 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-5 space-y-2">
             <li>
               <strong>Beehiiv</strong> for newsletter delivery and email
-              subscription management.
+              subscription management. Stores your email address and engagement
+              data (opens, clicks). Data processed in the US.
             </li>
             <li>
-              <strong>Google Analytics 4</strong> for website analytics.
+              <strong>Google Analytics 4</strong> for website analytics. Collects
+              anonymised usage data (pages visited, time on site, device type,
+              referral source). IP addresses are anonymised. Only active if you
+              consent via our cookie banner.
             </li>
             <li>
-              <strong>Vercel</strong> for website hosting.
+              <strong>Vercel</strong> for website hosting. May process access logs
+              including IP addresses for security purposes.
             </li>
             <li>
-              <strong>Supabase</strong> for database and content storage.
+              <strong>Supabase</strong> for database and content storage. Stores
+              blog content and resource metadata. Does not store personal data
+              beyond what you submit.
             </li>
             <li>
-              <strong>SmartLead</strong> for email campaign delivery (outbound
-              only, not subscriber data).
+              <strong>Google Workspace</strong> for email communication. Processes
+              correspondence when you email us directly.
+            </li>
+            <li>
+              <strong>Calendly</strong> for appointment scheduling. When you book
+              a call, Calendly processes your name, email, and selected time slot.
             </li>
           </ul>
           <p className="leading-relaxed mt-3">
             Each service has its own privacy policy. We encourage you to review
-            them.
+            them. We do not use any cold email platforms or share subscriber
+            data with outbound tools.
           </p>
         </section>
 
@@ -146,21 +158,34 @@ export default function PrivacyPage() {
           <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
             Cookies
           </h2>
-          <p className="leading-relaxed mb-3">We use the following cookies:</p>
+          <p className="leading-relaxed mb-3">
+            We use three categories of cookies. Analytics and functional cookies
+            are only set after you provide explicit consent via our cookie banner.
+          </p>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>Essential cookies</strong> required for the website to
-              function (session management, security).
+              <strong>Essential cookies</strong> — Required for the website to
+              function. Cannot be disabled. Includes security tokens and session
+              management.
             </li>
             <li>
-              <strong>Analytics cookies</strong> (Google Analytics 4) to
-              understand how visitors use our site. These are only set after you
-              consent via our cookie banner.
+              <strong>Analytics cookies</strong> — Google Analytics 4 cookies
+              that help us understand how visitors use the site. Anonymised IP.
+              Only active after consent.
+            </li>
+            <li>
+              <strong>Functional cookies</strong> — Remember your preferences
+              (cookie consent choice, display settings). Improve your experience
+              on return visits.
             </li>
           </ul>
           <p className="leading-relaxed mt-3">
-            You can manage your cookie preferences at any time by clicking the
-            cookie settings link in our footer.
+            You can manage your cookie preferences at any time by clicking
+            &quot;Cookie Settings&quot; in our footer. For a detailed list of
+            every cookie we use, see our{" "}
+            <Link href="/cookies" className="text-orange hover:underline">
+              Cookie Policy
+            </Link>.
           </p>
         </section>
 
@@ -191,6 +216,34 @@ export default function PrivacyPage() {
               thegtmsignalstudio@gmail.com
             </a>
             .
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
+            International data transfers
+          </h2>
+          <p className="leading-relaxed">
+            Some of our third-party services (Beehiiv, Google Analytics, Vercel,
+            Supabase, Calendly) process data in the United States. These
+            transfers are protected by the EU-US Data Privacy Framework and/or
+            Standard Contractual Clauses (SCCs) as required under UK GDPR. We
+            only use services that provide adequate data protection safeguards.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
+            Data security
+          </h2>
+          <p className="leading-relaxed">
+            We implement appropriate technical and organisational measures to
+            protect your personal data, including: HTTPS encryption on all pages,
+            Content Security Policy (CSP) headers, secure HTTP headers
+            (HSTS, X-Frame-Options, X-Content-Type-Options), rate limiting on
+            API endpoints, and restricted access to databases and storage. No
+            method of transmission over the internet is 100% secure, but we take
+            reasonable steps to protect your data.
           </p>
         </section>
 
