@@ -96,12 +96,14 @@ export default function PrivacyPage() {
           </h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>Consent</strong> when you subscribe to our newsletter or
-              submit your email for a resource.
+              <strong>Consent</strong> when you subscribe to our newsletter,
+              submit your email for a resource, or accept analytics cookies
+              via our cookie banner.
             </li>
             <li>
-              <strong>Legitimate interest</strong> for website analytics and
-              improving our services.
+              <strong>Legitimate interest</strong> for contacting businesses
+              about our services (outreach to corporate subscribers only,
+              supported by a documented Legitimate Interest Assessment).
             </li>
             <li>
               <strong>Contract</strong> when you engage us for audit or
