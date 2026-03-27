@@ -159,6 +159,15 @@ const tools = [
     note: "Every content agent calls this for image generation.",
   },
 
+  {
+    name: "MarTech Stack Auditor",
+    category: "Python Tools",
+    description: "Scans any website to detect installed marketing tools from HTML, JS, headers, and DNS. Identifies 50+ tools across 10 categories, scores the stack on 4 dimensions, flags redundancies, and generates a branded PDF report.",
+    tech: ["Python", "Playwright"],
+    github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/martech_scanner.py",
+    note: "No API keys needed. Detects analytics, automation, chat, ads, CMS, CDN, A/B testing, and privacy tools.",
+  },
+
   // Workflows
   {
     name: "Blog Publishing Pipeline",
@@ -218,7 +227,7 @@ export default function ToolsPage() {
             { value: "37", label: "Claude Code Skills" },
             { value: "7", label: "Agent Pipelines" },
             { value: "3", label: "Chrome Extensions" },
-            { value: "6", label: "Python Tools" },
+            { value: "7", label: "Python Tools" },
           ].map((stat) => (
             <div key={stat.label} className="bg-navy-light border border-navy-border rounded-lg p-5 text-center">
               <p className="font-heading text-2xl font-bold text-orange mb-1">{stat.value}</p>
