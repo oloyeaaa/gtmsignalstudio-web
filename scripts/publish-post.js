@@ -63,10 +63,11 @@ function getArg(flag) {
 const markdownPath = getArg("--markdown");
 const imagePath    = getArg("--image");
 const slugArg      = getArg("--slug");
+const dateArg      = getArg("--date"); // Optional: schedule for a future date (YYYY-MM-DD)
 const dryRun       = process.argv.includes("--dry-run");
 
 if (!markdownPath || !slugArg) {
-  console.error("Usage: node scripts/publish-post.js --markdown <path> --slug <slug> [--image <path>] [--dry-run]");
+  console.error("Usage: node scripts/publish-post.js --markdown <path> --slug <slug> [--image <path>] [--date YYYY-MM-DD] [--dry-run]");
   process.exit(1);
 }
 
@@ -353,7 +354,7 @@ async function main() {
     og_image: featuredImageUrl,
     status: "published",
     author: "Oloye Adeosun",
-    published_at: new Date().toISOString(),
+    published_at: dateArg ? new Date(`${dateArg}T09:00:00.000Z`).toISOString() : new Date().toISOString(),
     reading_time: rt,
   };
 
