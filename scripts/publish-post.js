@@ -354,7 +354,7 @@ async function main() {
     og_image: featuredImageUrl,
     status: "published",
     author: "Oloye Adeosun",
-    published_at: dateArg ? new Date(`${dateArg}T09:00:00.000Z`).toISOString() : new Date().toISOString(),
+    published_at: dateArg ? new Date(`${dateArg}T00:00:00.000Z`).toISOString() : new Date().toISOString(),
     reading_time: rt,
   };
 
