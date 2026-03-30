@@ -337,27 +337,33 @@ export default function BenchmarkPage() {
       <section className="section-light py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-3xl font-bold text-text-dark mb-4">
-            Where does your company score?
+            Where does your company rank against competitors?
           </h2>
           <p className="text-text-body text-lg mb-8 max-w-xl mx-auto">
-            This benchmark shows where 50 enterprise companies stand. The AI
-            Visibility Audit shows where you stand. 4 dimensions, scored 0-100,
-            prioritised fix plan. 48-hour delivery.
+            This benchmark shows where 50 enterprise companies stand. The
+            Competitive Report shows where <em>you</em> stand — your company
+            plus 10 direct competitors, scored with the same methodology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/ai-visibility-audit"
+              href="/competitive-report"
               className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
             >
-              Get Your AI Visibility Audit
+              Get Your Competitive Report — £997
             </Link>
             <Link
-              href="/resources/ai-visibility-scorecard"
+              href="/ai-visibility-audit"
               className="inline-block border border-light-border hover:border-orange text-text-dark font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
             >
-              Take the Free Scorecard
+              Single Audit — £297
             </Link>
           </div>
+          <p className="text-text-muted text-sm mt-4">
+            Or check yourself first:{" "}
+            <Link href="/resources/ai-visibility-scorecard" className="text-orange hover:underline">
+              Free AI Visibility Scorecard
+            </Link>
+          </p>
         </div>
       </section>
 
