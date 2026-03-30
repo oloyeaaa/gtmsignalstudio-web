@@ -27,6 +27,15 @@ export const metadata: Metadata = {
 
 const studies = [
   {
+    title: "AI Visibility: UK Law Firms 2026",
+    slug: "ai-visibility-uk-law-firms-2026",
+    status: "Published",
+    description:
+      "50 UK law firms scanned across 4 AI visibility dimensions. 52% are invisible to AI recommendations. Mid-market specialists outperform global firms. The split is binary.",
+    stats: "50 law firms, 4 dimensions, multi-API scanner v2.0",
+    date: "March 2026",
+  },
+  {
     title: "AI Visibility Benchmark 2026: Enterprise Edition",
     slug: "ai-visibility-benchmark-2026",
     status: "Published",
