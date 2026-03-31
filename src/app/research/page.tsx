@@ -78,6 +78,31 @@ export default function ResearchPage() {
         subtitle="We run original research on AI visibility and enterprise marketing so you can cite the source, not the summary. Every stat links to its methodology."
       />
 
+      {/* Stats Page Link */}
+      <section className="section-light py-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/research/stats"
+            className="block bg-navy text-white rounded-xl p-6 hover:bg-navy-light transition-colors"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-mono text-orange text-xs mb-1 tracking-wider">
+                  LIVING DATA
+                </p>
+                <h3 className="font-heading text-xl font-bold mb-1">
+                  AI Visibility &amp; B2B Buyer Behaviour Stats
+                </h3>
+                <p className="text-muted text-sm">
+                  50+ citable stats from our research and 20+ external sources. Updated regularly.
+                </p>
+              </div>
+              <span className="text-orange text-2xl ml-4">→</span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* Active Studies - Light */}
       <section className="section-light py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
