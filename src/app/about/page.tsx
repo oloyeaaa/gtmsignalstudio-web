@@ -71,7 +71,7 @@ export default function AboutPage() {
             {[
               {
                 title: "Original Research",
-                text: "We run studies on how companies appear in AI-driven search. Our AI Visibility Benchmark scored 50 companies across 5 sectors. We publish the methodology, the data, and the frameworks so others can apply them.",
+                text: "We run studies on how companies appear in AI-driven search. Our AI Visibility Benchmark has scored 150 companies across 5 sectors and grows by 100 each month. We publish the methodology, the data, and the frameworks so others can apply them.",
                 link: "/research",
                 linkText: "View our research",
               },
@@ -83,7 +83,7 @@ export default function AboutPage() {
               },
               {
                 title: "Enterprise Marketing Content",
-                text: "Three posts a week on LinkedIn. A blog when there is something worth saying. A newsletter when there is something worth sharing. Everything grounded in our own data.",
+                text: "Six posts a week on LinkedIn. Four blog posts. A weekly newsletter. Everything grounded in our own research data — not recycled industry reports.",
                 link: "/blog",
                 linkText: "Read the blog",
               },
@@ -122,10 +122,10 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { stat: "50", label: "Companies benchmarked" },
+              { stat: "150+", label: "Companies benchmarked" },
+              { stat: "3", label: "Published studies" },
               { stat: "40+", label: "AI skills built" },
-              { stat: "7", label: "Open-source Python tools" },
-              { stat: "3", label: "Chrome extensions" },
+              { stat: "5", label: "Sectors analysed" },
             ].map((s) => (
               <div
                 key={s.label}

@@ -48,13 +48,40 @@ const gssOriginalStats: StatCategory = {
   id: "gss-original",
   title: "GTM Signal Studio Original Research",
   description:
-    "Original data from GSS benchmark studies. 100+ companies scanned across multiple sectors using the AI Visibility Framework (4 dimensions, scored 0-100).",
+    "Original data from GSS benchmark studies. 150+ companies scanned across multiple sectors using the AI Visibility Framework (4 dimensions, scored 0-100). Updated monthly.",
   stats: [
+    {
+      stat: "81%",
+      label:
+        "of 150 B2B companies score 0-5 on AI citation presence — invisible to AI recommendations",
+      source: "AI Visibility Benchmark April 2026 — GTM Signal Studio",
+      sourceUrl: "/research/ai-visibility-benchmark-april-2026",
+      year: "2026",
+      sample: "150 companies, 5 sectors",
+    },
+    {
+      stat: "28.7",
+      label:
+        "average AI visibility score across 150 companies (out of 100) — down from 82.2 at N=50",
+      source: "AI Visibility Benchmark April 2026 — GTM Signal Studio",
+      sourceUrl: "/research/ai-visibility-benchmark-april-2026",
+      year: "2026",
+      sample: "150 companies, 5 sectors",
+    },
+    {
+      stat: "10/10",
+      label:
+        "bottom 10 companies in the 150-company benchmark are all IT Services firms scoring 2/100",
+      source: "AI Visibility Benchmark April 2026 — GTM Signal Studio",
+      sourceUrl: "/research/ai-visibility-benchmark-april-2026",
+      year: "2026",
+      sample: "150 companies, 5 sectors",
+    },
     {
       stat: "44%",
       label:
         "of enterprise B2B companies score 2/25 on AI citation presence",
-      source: "AI Visibility Benchmark 2026 — GTM Signal Studio",
+      source: "AI Visibility Benchmark March 2026 — GTM Signal Studio",
       sourceUrl: "/research/ai-visibility-benchmark-2026",
       year: "2026",
       sample: "50 companies, 5 sectors",

@@ -32,7 +32,7 @@ const tools = [
     description: "4-dimension AI visibility scanner. Checks Google AI Mode, Perplexity, and ChatGPT citation presence. Scores 0-100 with a prioritised fix list and branded PDF report.",
     tech: ["Python", "Perplexity API", "Claude Code"],
     github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/ri-ai-presence-audit",
-    note: "Powers the £297 AI Visibility Audit service. 50 companies benchmarked so far.",
+    note: "Powers the £297 AI Visibility Audit service. 150+ companies benchmarked across 3 published studies.",
   },
   {
     name: "Blog Agent",
@@ -80,7 +80,7 @@ const tools = [
     description: "6-step research framework for producing original data that AI platforms cite. Signal, Scope, Scan, Score, Source, Seed. Built to replace reliance on third-party research.",
     tech: ["Claude Code", "Python"],
     github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/frameworks",
-    note: "First study: AI Visibility Benchmark 2026 (50 companies, 5 sectors).",
+    note: "Powers the monthly AI Visibility Benchmark. April 2026: 150 companies, 5 sectors.",
   },
 
   // Chrome Extensions
@@ -124,7 +124,7 @@ const tools = [
     description: "Batch version of the AI presence scanner. Processes a list of companies in sequence, rate-limits API calls, and exports results to JSON and CSV.",
     tech: ["Python", "Perplexity API"],
     github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/batch_ai_scan.py",
-    note: "Used to scan 50 companies for the AI Visibility Benchmark 2026.",
+    note: "Multi-API scanner (OpenAI, Gemini, Brave, Tavily). Scans 150+ companies monthly.",
   },
   {
     name: "LinkedIn Post Image Generator",
@@ -183,7 +183,7 @@ const tools = [
     description: "The Signal Source Method in practice. Scan companies for AI visibility gaps, score across 4 dimensions, analyse patterns, publish findings with methodology, and seed into content.",
     tech: ["Python", "Claude Code", "Perplexity API"],
     github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/frameworks",
-    note: "First output: AI Visibility Benchmark 2026 (50 companies, 5 sectors).",
+    note: "Generates branded research reports from benchmark data. Used across all published studies.",
   },
   {
     name: "Daily Outreach Workflow",
