@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <PageHeader tagline="LEGAL" title="Terms and Conditions" subtitle="Last updated: 22 March 2026" />
+      <PageHeader tagline="LEGAL" title="Terms and Conditions" subtitle="Last updated: 3 April 2026" />
 
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="prose prose-sm max-w-none text-text-body space-y-8">
@@ -55,6 +55,10 @@ export default function TermsPage() {
             </li>
             <li>
               Free resources including tools, templates, and newsletter content.
+            </li>
+            <li>
+              Free, open-source Chrome extensions (such as LinkedIn Comment
+              Assist) distributed via GitHub.
             </li>
           </ul>
           <p className="leading-relaxed mt-3">
@@ -141,7 +145,37 @@ export default function TermsPage() {
 
         <section>
           <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
-            7. Limitation of liability
+            7. Chrome extensions
+          </h2>
+          <p className="leading-relaxed mb-3">
+            GTM Signal Studio publishes free Chrome extensions distributed via
+            GitHub. By using these extensions, you agree that:
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              Extensions are provided &quot;as is&quot; without warranty. They
+              interact with third-party platforms (LinkedIn, Reddit) whose
+              terms you are responsible for following.
+            </li>
+            <li>
+              Extensions use your own API keys for AI generation. You are
+              responsible for any costs incurred with your AI provider
+              (Anthropic, OpenAI).
+            </li>
+            <li>
+              We are not liable for any consequences arising from comments
+              generated or posted using the extensions.
+            </li>
+            <li>
+              Extensions are open source under their respective licences. You
+              may modify and redistribute in accordance with those licences.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
+            8. Limitation of liability
           </h2>
           <p className="leading-relaxed mb-3">
             GTM Signal Studio provides information and consulting services in
@@ -169,7 +203,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
-            8. Refunds
+            9. Refunds
           </h2>
           <p className="leading-relaxed">
             If you are not satisfied with a paid service, contact us within 7
@@ -182,7 +216,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
-            9. Governing law
+            10. Governing law
           </h2>
           <p className="leading-relaxed">
             These terms are governed by the laws of England and Wales. Any
@@ -193,7 +227,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
-            10. Changes to these terms
+            11. Changes to these terms
           </h2>
           <p className="leading-relaxed">
             We may update these terms from time to time. Changes will be posted
@@ -204,7 +238,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
-            11. Contact
+            12. Contact
           </h2>
           <p className="leading-relaxed">
             For questions about these terms, email{" "}

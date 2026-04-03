@@ -37,7 +37,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com https://www.clarity.ms; font-src 'self'; connect-src 'self' https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://*.clarity.ms; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
           },
         ],
       },

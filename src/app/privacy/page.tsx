@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <PageHeader tagline="LEGAL" title="Privacy Policy" subtitle="Last updated: 27 March 2026" />
+      <PageHeader tagline="LEGAL" title="Privacy Policy" subtitle="Last updated: 3 April 2026" />
 
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="prose prose-sm max-w-none text-text-body space-y-8">
@@ -148,6 +148,12 @@ export default function PrivacyPage() {
               <strong>Calendly</strong> for appointment scheduling. When you book
               a call, Calendly processes your name, email, and selected time slot.
             </li>
+            <li>
+              <strong>Microsoft Clarity</strong> for website analytics and
+              heatmaps. Records anonymised session replays, clicks, and scroll
+              behaviour to help us improve the user experience. Only active if
+              you consent via our cookie banner. Data processed in the US.
+            </li>
           </ul>
           <p className="leading-relaxed mt-3">
             Each service has its own privacy policy. We encourage you to review
@@ -171,8 +177,9 @@ export default function PrivacyPage() {
               management.
             </li>
             <li>
-              <strong>Analytics cookies</strong> — Google Analytics 4 cookies
-              that help us understand how visitors use the site. Anonymised IP.
+              <strong>Analytics cookies</strong> — Google Analytics 4 and
+              Microsoft Clarity cookies that help us understand how visitors
+              use the site. Anonymised IP. Session replays are anonymised.
               Only active after consent.
             </li>
             <li>
@@ -227,7 +234,7 @@ export default function PrivacyPage() {
           </h2>
           <p className="leading-relaxed">
             Some of our third-party services (Beehiiv, Google Analytics, Vercel,
-            Supabase, Calendly) process data in the United States. These
+            Supabase, Calendly, Microsoft Clarity) process data in the United States. These
             transfers are protected by the EU-US Data Privacy Framework and/or
             Standard Contractual Clauses (SCCs) as required under UK GDPR. We
             only use services that provide adequate data protection safeguards.
@@ -246,6 +253,48 @@ export default function PrivacyPage() {
             API endpoints, and restricted access to databases and storage. No
             method of transmission over the internet is 100% secure, but we take
             reasonable steps to protect your data.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-xl font-bold text-text-dark mb-3">
+            Chrome extensions
+          </h2>
+          <p className="leading-relaxed mb-3">
+            GTM Signal Studio publishes free, open-source Chrome extensions
+            (such as LinkedIn Comment Assist). These extensions:
+          </p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              Run entirely in your browser. No data is sent to GTM Signal
+              Studio servers.
+            </li>
+            <li>
+              Send page content (post text, article text) directly from your
+              browser to the AI provider you select (Anthropic or OpenAI)
+              using your own API key.
+            </li>
+            <li>
+              Store your API key and preferences locally in Chrome&apos;s sync
+              storage. We never have access to your API keys.
+            </li>
+            <li>
+              Do not collect, store, or transmit any personal data, LinkedIn
+              data, browsing history, or analytics.
+            </li>
+          </ul>
+          <p className="leading-relaxed mt-3">
+            The extensions are open source. You can review the full source code
+            on{" "}
+            <a
+              href="https://github.com/oloyeaaa/gss-open-tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange hover:underline"
+            >
+              GitHub
+            </a>
+            .
           </p>
         </section>
 

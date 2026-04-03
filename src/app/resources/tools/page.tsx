@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 
 const categories = ["All", "Agents", "Chrome Extensions", "Python Tools", "Workflows"];
@@ -95,10 +96,11 @@ const tools = [
   {
     name: "LinkedIn Comment Assist",
     category: "Chrome Extensions",
-    description: "AI-powered LinkedIn comment generator. Reads the post context and generates a thoughtful, on-brand reply using the Claude API. Keeps the GSS voice consistent.",
+    description: "AI-powered LinkedIn comment generator. Reads posts, articles, and newsletters. 5 comment styles, 3 options per generation. Voice-encoded prompts with banned words and preferred vocabulary.",
     tech: ["JavaScript", "Claude Code"],
     github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/chrome-extensions/linkedin-comment-extension",
-    note: "Saves 15-20 minutes per day on LinkedIn engagement.",
+    note: "Saves 15-20 minutes per day on LinkedIn engagement. Full details at /resources/tools/linkedin-comment-assist",
+    link: "/resources/tools/linkedin-comment-assist",
   },
   {
     name: "Reddit Comment Assist",
@@ -299,6 +301,16 @@ export default function ToolsPage() {
               <p className="text-muted/60 text-xs italic pt-3 border-t border-navy-border mt-auto leading-relaxed">
                 {tool.note}
               </p>
+
+              {/* Detail page link */}
+              {"link" in tool && tool.link && (
+                <Link
+                  href={tool.link as string}
+                  className="text-orange font-semibold text-xs mt-3 hover:underline"
+                >
+                  Learn more &rarr;
+                </Link>
+              )}
             </div>
           ))}
         </div>

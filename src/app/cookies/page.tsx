@@ -15,7 +15,7 @@ export default function CookiePolicyPage() {
       <PageHeader
         tagline="LEGAL"
         title="Cookie Policy"
-        subtitle="Last updated: 27 March 2026"
+        subtitle="Last updated: 3 April 2026"
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -114,6 +114,24 @@ export default function CookiePolicyPage() {
                     <td className="px-4 py-3">2 years</td>
                     <td className="px-4 py-3">Google</td>
                   </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-mono text-xs">_clck</td>
+                    <td className="px-4 py-3">Persists the Clarity user ID and preferences. Used to link pageviews to a single user session.</td>
+                    <td className="px-4 py-3">1 year</td>
+                    <td className="px-4 py-3">Microsoft</td>
+                  </tr>
+                  <tr className="bg-cream/30">
+                    <td className="px-4 py-3 font-mono text-xs">_clsk</td>
+                    <td className="px-4 py-3">Connects multiple pageviews by a user into a single Clarity session recording.</td>
+                    <td className="px-4 py-3">1 day</td>
+                    <td className="px-4 py-3">Microsoft</td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3 font-mono text-xs">CLID</td>
+                    <td className="px-4 py-3">Identifies the first-time Clarity saw this user on any site that uses Clarity.</td>
+                    <td className="px-4 py-3">1 year</td>
+                    <td className="px-4 py-3">Microsoft</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -158,9 +176,10 @@ export default function CookiePolicyPage() {
             <p className="leading-relaxed">
               We do not use any advertising cookies, remarketing pixels, or social
               media tracking cookies. The only third-party cookies are from Google
-              Analytics (listed above), and they are only set with your consent.
-              Beehiiv (our newsletter provider) may set cookies when you visit
-              the newsletter subscription page, subject to their own cookie policy.
+              Analytics and Microsoft Clarity (listed above), and they are only set
+              with your consent. Beehiiv (our newsletter provider) may set cookies
+              when you visit the newsletter subscription page, subject to their own
+              cookie policy.
             </p>
           </section>
 
