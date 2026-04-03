@@ -27,6 +27,15 @@ export const metadata: Metadata = {
 
 const studies = [
   {
+    title: "AI Visibility Benchmark: April 2026",
+    slug: "ai-visibility-benchmark-april-2026",
+    status: "Published",
+    description:
+      "We tripled the sample to 150 B2B companies across 5 sectors. 81% score 0-5 on citation. The pattern from 50 companies held at scale — and the invisible majority is even larger than expected.",
+    stats: "150 companies, 5 sectors, multi-API scanner v2.0",
+    date: "April 2026",
+  },
+  {
     title: "AI Visibility: UK Law Firms 2026",
     slug: "ai-visibility-uk-law-firms-2026",
     status: "Published",
@@ -160,40 +169,40 @@ export default function ResearchPage() {
           <div className="grid md:grid-cols-2 gap-4">
             {[
               {
-                stat: "7 / 10",
-                label: "enterprise companies are invisible to AI search",
-                source: "GTM Signal Studio audit of 10 UK consulting firms, March 2026",
-                href: "/blog/the-ai-visibility-gap-enterprise-marketing",
+                stat: "81%",
+                label: "of 150 B2B companies are invisible to AI recommendations",
+                source: "GTM Signal Studio AI Visibility Benchmark, April 2026 (N=150)",
+                href: "/research/ai-visibility-benchmark-april-2026",
               },
               {
-                stat: "15-25",
-                label: "average AI visibility score for enterprise companies (out of 100)",
-                source: "GTM Signal Studio AI Visibility framework",
-                href: "/ai-visibility",
+                stat: "28.7",
+                label: "average AI visibility score across 150 companies (out of 100)",
+                source: "GTM Signal Studio AI Visibility Benchmark, April 2026",
+                href: "/research/ai-visibility-benchmark-april-2026",
               },
               {
                 stat: "48%",
                 label: "of B2B searches trigger AI-generated answers",
                 source: "Genesys Growth, AI Overviews for Marketing Leaders, 2026",
-                href: "/blog/the-ai-visibility-gap-enterprise-marketing",
+                href: "/research/stats",
               },
               {
-                stat: "94%",
-                label: "of B2B buyers use generative AI during research",
-                source: "Sopro, AI in Sales and Marketing Statistics, 2026",
-                href: "/blog/the-ai-visibility-gap-enterprise-marketing",
+                stat: "52%",
+                label: "of UK law firms are invisible to AI recommendations",
+                source: "GTM Signal Studio, UK Law Firms AI Visibility Study, March 2026",
+                href: "/research/ai-visibility-uk-law-firms-2026",
               },
               {
-                stat: "75%",
-                label: "of enterprise organisations have adopted AI in marketing",
-                source: "AllAboutAI / Loopex Digital, AI Marketing Statistics, 2026",
-                href: "/blog/the-ai-visibility-gap-enterprise-marketing",
+                stat: "3x",
+                label: "citation gap between Enterprise SaaS and IT Services",
+                source: "GTM Signal Studio AI Visibility Benchmark, March 2026 (N=50)",
+                href: "/research/ai-visibility-benchmark-2026",
               },
               {
-                stat: "86%",
-                label: "of enterprise teams are increasing AI budgets this year",
-                source: "Kong Inc. / Gartner, Enterprise AI Spending, 2025-2026",
-                href: "/blog/the-ai-visibility-gap-enterprise-marketing",
+                stat: "10/10",
+                label: "bottom 10 companies are all IT Services firms scoring 2/100",
+                source: "GTM Signal Studio AI Visibility Benchmark, April 2026",
+                href: "/research/ai-visibility-benchmark-april-2026",
               },
             ].map((item) => (
               <Link
