@@ -4,10 +4,10 @@ import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Topics",
+  title: "Topics — Enterprise Marketing & AI Visibility",
   description:
-    "Explore signal-led GTM topics: ICP definition, buying signals, cold email infrastructure, outreach tactics, and build-in-public stories.",
-  keywords: ["GTM topics", "signal-led outreach topics", "B2B go-to-market", "ICP definition", "buying signals"],
+    "Two pillars. Every article we publish maps to one: Enterprise Marketing frameworks and systems, or AI Visibility research and strategies.",
+  keywords: ["enterprise marketing", "AI visibility", "B2B marketing strategy", "AI citations", "marketing frameworks"],
 };
 
 export const revalidate = 3600;
@@ -27,7 +27,7 @@ export default async function TopicsPage() {
 
   return (
     <>
-      <PageHeader tagline="TOPICS" title="Learn signal-led GTM by topic." subtitle="Each topic is a structured guide. Start with the pillar article, then work through the supporting posts in order." />
+      <PageHeader tagline="TOPICS" title="Two pillars. Every article links to one." subtitle="Enterprise Marketing frameworks from the frontline. AI Visibility research that proves what works. Pick a pillar and start reading." />
 
     <div className="bg-cream min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -63,8 +63,8 @@ export default async function TopicsPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            name: "GTM Signal Studio Topics",
-            description: "Structured guides on signal-led go-to-market topics.",
+            name: "Enterprise Marketing & AI Visibility Topics",
+            description: "Two pillar topics: Enterprise Marketing frameworks and AI Visibility research.",
             url: "https://gtmsignalstudio.com/topics",
             publisher: { "@id": "https://gtmsignalstudio.com/#organization" },
           }),

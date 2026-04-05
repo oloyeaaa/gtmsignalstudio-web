@@ -4,6 +4,7 @@ import {
   getTopicClusterBySlug,
   getClusterPosts,
   getAllClusterSlugs,
+  type AuthorityLink,
 } from "@/lib/queries";
 import type { Metadata } from "next";
 
@@ -166,6 +167,37 @@ export default async function TopicPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Authority Links */}
+      {cluster.authority_links && cluster.authority_links.length > 0 && (
+        <section className="bg-white border-b border-light-border">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <p className="font-mono text-orange text-xs mb-6 tracking-wider">FURTHER READING</p>
+            <h2 className="font-heading text-xl font-bold text-text-dark mb-6">
+              Authority sources we reference
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {(cluster.authority_links as AuthorityLink[]).map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-4 bg-cream border border-light-border rounded-xl p-5 hover:shadow hover:border-orange/30 transition-all"
+                >
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-heading font-bold text-sm text-text-dark group-hover:text-orange transition-colors leading-tight mb-1">
+                      {link.title}
+                    </h3>
+                    <span className="text-text-muted text-xs font-mono">{link.source}</span>
+                  </div>
+                  <span className="text-text-muted group-hover:text-orange transition-colors flex-shrink-0">↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA — dark */}
       <section className="bg-navy">

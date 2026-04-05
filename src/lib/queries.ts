@@ -133,6 +133,12 @@ export async function getRecentPosts(limit = 3) {
 
 // ---- TOPIC CLUSTERS ----
 
+export type AuthorityLink = {
+  title: string;
+  url: string;
+  source: string;
+};
+
 export type TopicCluster = {
   id: string;
   name: string;
@@ -142,6 +148,7 @@ export type TopicCluster = {
   cta_text: string;
   cta_url: string;
   pillar_post_id: string;
+  authority_links: AuthorityLink[];
 };
 
 export type ClusterPost = {

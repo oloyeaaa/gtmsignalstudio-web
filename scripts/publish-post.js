@@ -63,11 +63,20 @@ function getArg(flag) {
 const markdownPath = getArg("--markdown");
 const imagePath    = getArg("--image");
 const slugArg      = getArg("--slug");
+const categoryArg  = getArg("--category"); // Required: "Enterprise Marketing" or "AI Visibility"
 const dateArg      = getArg("--date"); // Optional: schedule for a future date (YYYY-MM-DD)
 const dryRun       = process.argv.includes("--dry-run");
 
-if (!markdownPath || !slugArg) {
-  console.error("Usage: node scripts/publish-post.js --markdown <path> --slug <slug> [--image <path>] [--date YYYY-MM-DD] [--dry-run]");
+const VALID_CATEGORIES = ["Enterprise Marketing", "AI Visibility"];
+
+if (!markdownPath || !slugArg || !categoryArg) {
+  console.error("Usage: node scripts/publish-post.js --markdown <path> --slug <slug> --category <category> [--image <path>] [--date YYYY-MM-DD] [--dry-run]");
+  console.error("  Categories: \"Enterprise Marketing\" or \"AI Visibility\"");
+  process.exit(1);
+}
+
+if (!VALID_CATEGORIES.includes(categoryArg)) {
+  console.error(`❌  Invalid category: "${categoryArg}". Must be one of: ${VALID_CATEGORIES.join(", ")}`);
   process.exit(1);
 }
 
@@ -346,8 +355,8 @@ async function main() {
     excerpt: metaDescription || content.substring(0, 200),
     meta_description: metaDescription,
     short_answer: shortAnswer,
-    category: "AI Visibility",
-    tags: ["AI Visibility", "Enterprise Marketing", "B2B Marketing", "AI Search"],
+    category: categoryArg,
+    tags: [categoryArg, "B2B Marketing"],
     schema_markup: schemaMarkup || {},
     faq: faq,
     featured_image: featuredImageUrl,
