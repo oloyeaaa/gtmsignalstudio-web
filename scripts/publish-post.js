@@ -80,6 +80,19 @@ if (!VALID_CATEGORIES.includes(categoryArg)) {
   process.exit(1);
 }
 
+// ── Frontmatter parser ───────────────────────────────────────────────────────
+
+function extractFrontmatter(md) {
+  const match = md.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (!match) return {};
+  const fm = {};
+  for (const line of match[1].split("\n")) {
+    const m = line.match(/^(\w[\w_]*)\s*:\s*"?(.*?)"?\s*$/);
+    if (m) fm[m[1]] = m[2];
+  }
+  return fm;
+}
+
 // ── Markdown parser ───────────────────────────────────────────────────────────
 
 function extractSection(md, heading) {
@@ -89,14 +102,21 @@ function extractSection(md, heading) {
 }
 
 function extractShortAnswer(md) {
+  // Try inline bold format: **The short answer:** ...
   const match = md.match(/\*\*The short answer:\*\*\s+([^\n]+(?:\n(?!\n)[^\n]+)*)/);
   if (match) return match[1].replace(/\*\*/g, "").trim();
   const match2 = md.match(/\*\*The short answer:\*\*([^*]+)/);
-  return match2 ? match2[1].trim() : null;
+  if (match2) return match2[1].trim();
+  // Try ## The Short Answer section heading
+  const section = extractSection(md, "The Short Answer");
+  return section || null;
 }
 
 function extractMetaDescription(md) {
-  // Looks for the recommended option under ## Meta Description
+  // First try: YAML frontmatter meta_description
+  const fm = extractFrontmatter(md);
+  if (fm.meta_description) return fm.meta_description;
+  // Second try: ## Meta Description section with Option A/B
   const match = md.match(/\*\*Option A[^:]*:\*\*\s*\n([^\n]+)/);
   if (match) return match[1].trim().replace(/\s*\(\d+ chars?\)$/, "").trim();
   const match2 = md.match(/\*\*Option B[^:]*:\*\*\s*\n([^\n]+)/);
@@ -104,24 +124,28 @@ function extractMetaDescription(md) {
 }
 
 function extractTitle(md) {
-  // First try: look for # H1 heading (not ## H2)
+  // First try: YAML frontmatter title
+  const fm = extractFrontmatter(md);
+  if (fm.title) return fm.title;
+
+  // Second try: # H1 heading (not ## H2)
   const h1Match = md.match(/^# (.+)/m);
   if (h1Match && !h1Match[1].includes("Meta Description")) {
     return h1Match[1].trim();
   }
 
-  // Second try: Blog Post section
+  // Third try: Blog Post section
   const blogSection = extractSection(md, "Blog Post");
   if (blogSection) {
     const match = blogSection.match(/^##?\s+(.+)/m);
     if (match) return match[1].trim();
   }
 
-  // Fallback: first heading that is not Meta Description or FAQ
+  // Fallback: first heading that is not Meta Description, FAQ, or The Short Answer
   const lines = md.split("\n");
   for (const line of lines) {
     const match = line.match(/^##?\s+(.+)/);
-    if (match && !match[1].includes("Meta Description") && !match[1].includes("FAQ")) {
+    if (match && !match[1].includes("Meta Description") && !match[1].includes("FAQ") && !match[1].includes("Frequently Asked") && !match[1].includes("The Short Answer")) {
       return match[1].trim();
     }
   }
