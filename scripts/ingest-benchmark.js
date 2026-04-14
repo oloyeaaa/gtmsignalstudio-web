@@ -308,6 +308,32 @@ Example:
     return;
   }
 
+  // Snapshot existing values to stat_history before overwriting
+  console.log("\nSnapshotting existing values to stat_history...");
+  const slugs = stats.map((s) => s.slug);
+  const { data: existing } = await supabase
+    .from("stats")
+    .select("slug, stat_value, label, sample")
+    .in("slug", slugs);
+
+  if (existing && existing.length > 0) {
+    const historyRows = existing.map((e) => ({
+      stat_slug: e.slug,
+      stat_value: e.stat_value,
+      label: e.label,
+      edition: opts.edition,
+      sample: e.sample,
+    }));
+    const { error: histErr } = await supabase
+      .from("stat_history")
+      .insert(historyRows);
+    if (histErr) {
+      console.log(`  Warning: History snapshot failed (non-critical): ${histErr.message}`);
+    } else {
+      console.log(`  Snapshotted ${historyRows.length} previous values.`);
+    }
+  }
+
   // Upsert to Supabase
   console.log("\nUpserting to Supabase...");
   const { data, error } = await supabase

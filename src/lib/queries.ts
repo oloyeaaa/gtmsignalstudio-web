@@ -397,6 +397,42 @@ export async function getPublishedStatCount() {
   return count ?? 0;
 }
 
+// ---- STAT HISTORY ----
+
+export type StatHistoryEntry = {
+  id: string;
+  stat_slug: string;
+  stat_value: string;
+  label: string;
+  edition: string | null;
+  sample: string | null;
+  recorded_at: string;
+};
+
+export async function getStatHistory(slug: string, limit = 20) {
+  const { data, error } = await supabase
+    .from("stat_history")
+    .select("*")
+    .eq("stat_slug", slug)
+    .order("recorded_at", { ascending: true })
+    .limit(limit);
+
+  if (error) throw error;
+  return data as StatHistoryEntry[];
+}
+
+export async function getStatTrend(metricType: string, limit = 10) {
+  const { data, error } = await supabase
+    .from("stat_history")
+    .select("stat_slug, stat_value, edition, recorded_at")
+    .like("stat_slug", `%-${metricType}`)
+    .order("recorded_at", { ascending: true })
+    .limit(limit);
+
+  if (error) throw error;
+  return data as Partial<StatHistoryEntry>[];
+}
+
 // ---- PAGES ----
 
 export async function getPageBySlug(slug: string) {

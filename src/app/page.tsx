@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getPublishedPosts } from "@/lib/queries";
+import { getPublishedPosts, getFeaturedStats } from "@/lib/queries";
 import type { Metadata } from "next";
 import PageHeader from "@/components/PageHeader";
 
@@ -19,7 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const posts = await getPublishedPosts(3, 0);
+  const [posts, featuredStats] = await Promise.all([
+    getPublishedPosts(3, 0),
+    getFeaturedStats(6),
+  ]);
 
   return (
     <>
@@ -143,17 +146,13 @@ export default async function Home() {
             methodology.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            {[
-              { stat: "7/10", label: "enterprise companies invisible to AI search" },
-              { stat: "15-25", label: "average enterprise AI visibility score" },
-              { stat: "86%", label: "of teams increasing AI budgets" },
-            ].map((s) => (
+            {featuredStats.slice(0, 3).map((s) => (
               <div
-                key={s.label}
+                key={s.slug}
                 className="bg-navy-light border border-navy-border rounded-xl p-4 text-center"
               >
                 <p className="text-orange font-heading text-2xl font-bold">
-                  {s.stat}
+                  {s.stat_value}
                 </p>
                 <p className="text-muted text-xs mt-1">{s.label}</p>
               </div>
