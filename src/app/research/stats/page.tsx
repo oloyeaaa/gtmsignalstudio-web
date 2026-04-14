@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
+import StatsFilter from "@/components/StatsFilter";
 import {
   getStatCategories,
   getPublishedStats,
   getPublishedStatCount,
-  type Stat,
-  type StatCategory as StatCategoryType,
 } from "@/lib/queries";
 
 export const dynamic = "force-dynamic"; // Fetch fresh from Supabase on every request
@@ -37,115 +36,12 @@ export const metadata: Metadata = {
   },
 };
 
-function StatCard({ item, isGss }: { item: Stat; isGss: boolean }) {
-  const inner = (
-    <>
-      <p
-        className={`font-heading text-2xl md:text-3xl font-bold mb-1 ${
-          isGss ? "text-orange" : "text-navy"
-        }`}
-      >
-        {item.stat_value}
-      </p>
-      <p className="text-text-dark text-sm font-semibold mb-3 leading-snug">
-        {item.label}
-      </p>
-      <div className="mt-auto">
-        <p className="text-text-muted text-xs leading-relaxed">
-          {item.source} ({item.year})
-          {item.sample && (
-            <span className="block font-mono text-[10px] mt-1 text-text-muted/70">
-              Sample: {item.sample}
-            </span>
-          )}
-        </p>
-      </div>
-    </>
-  );
-
-  const baseClasses =
-    "flex flex-col rounded-xl p-5 transition-all duration-200 h-full";
-
-  if (item.source_url) {
-    const isExternal =
-      item.source_url.startsWith("http") &&
-      !item.source_url.includes("gtmsignalstudio.com");
-    return (
-      <Link
-        href={item.source_url}
-        className={`${baseClasses} ${
-          isGss
-            ? "bg-navy/5 border-2 border-orange/20 hover:border-orange"
-            : "bg-cream border border-light-border hover:border-orange"
-        }`}
-        {...(isExternal
-          ? { target: "_blank", rel: "noopener noreferrer" }
-          : {})}
-      >
-        {inner}
-        <p className="text-[10px] font-mono text-orange mt-2">
-          {isExternal ? "View source ↗" : "View research →"}
-        </p>
-      </Link>
-    );
-  }
-
-  return (
-    <div
-      className={`${baseClasses} ${
-        isGss
-          ? "bg-navy/5 border-2 border-orange/20"
-          : "bg-cream border border-light-border"
-      }`}
-    >
-      {inner}
-    </div>
-  );
-}
-
-function StatSection({
-  category,
-  stats,
-  isGss,
-}: {
-  category: StatCategoryType;
-  stats: Stat[];
-  isGss: boolean;
-}) {
-  return (
-    <div id={category.id} className="scroll-mt-24">
-      <p className="font-mono text-orange text-sm mb-2 tracking-wider">
-        {isGss ? "ORIGINAL RESEARCH" : "EXTERNAL DATA"}
-      </p>
-      <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-dark mb-2">
-        {category.title}
-      </h2>
-      <p className="text-text-body text-sm mb-8 max-w-2xl">
-        {category.description}
-      </p>
-      <div className="grid md:grid-cols-2 gap-4">
-        {stats.map((item) => (
-          <StatCard key={item.slug} item={item} isGss={isGss} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default async function StatsPage() {
   const [categories, allStats, totalStats] = await Promise.all([
     getStatCategories(),
     getPublishedStats(),
     getPublishedStatCount(),
   ]);
-
-  // Group stats by category
-  const statsByCategory = new Map<string, Stat[]>();
-  for (const stat of allStats) {
-    const existing = statsByCategory.get(stat.category) ?? [];
-    existing.push(stat);
-    statsByCategory.set(stat.category, existing);
-  }
 
   // Count unique sources
   const uniqueSources = new Set(allStats.map((s) => s.source)).size;
@@ -164,52 +60,12 @@ export default async function StatsPage() {
         breadcrumb={{ label: "Research", href: "/research" }}
       />
 
-      {/* Jump Nav */}
-      <section className="section-light py-6 border-b border-light-border sticky top-0 z-30 bg-cream/95 backdrop-blur-sm">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
-            {categories.map((c) => (
-              <a
-                key={c.id}
-                href={`#${c.id}`}
-                className="px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap bg-white border border-light-border text-text-body hover:border-orange hover:text-orange transition-colors"
-              >
-                {c.title.replace("GTM Signal Studio ", "")}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stat Sections */}
-      {categories.map((category, i) => {
-        const categoryStats = statsByCategory.get(category.id) ?? [];
-        if (categoryStats.length === 0) return null;
-
-        // First category (GSS original) gets white bg, then alternate
-        const isGss = category.is_gss;
-        const bgIndex = isGss ? -1 : i - 1; // offset for alternating after GSS
-        const bgClass = isGss
-          ? "section-white"
-          : bgIndex % 2 === 0
-            ? "section-light"
-            : "section-white";
-
-        return (
-          <section
-            key={category.id}
-            className={`${bgClass} py-16 md:py-20`}
-          >
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <StatSection
-                category={category}
-                stats={categoryStats}
-                isGss={isGss}
-              />
-            </div>
-          </section>
-        );
-      })}
+      {/* Interactive filter + stats grid (client component) */}
+      <StatsFilter
+        categories={categories}
+        allStats={allStats}
+        totalCount={totalStats}
+      />
 
       {/* Methodology Note */}
       <section className="section-dark py-16 md:py-20">
