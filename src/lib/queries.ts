@@ -280,6 +280,123 @@ export async function getClusterSiblings(postId: string, clusterId: string) {
   };
 }
 
+// ---- STATS ----
+
+export type StatCategory = {
+  id: string;
+  title: string;
+  description: string;
+  sort_order: number;
+  is_gss: boolean;
+  status: string;
+};
+
+export type Stat = {
+  id: string;
+  slug: string;
+  stat_value: string;
+  label: string;
+  category: string;
+  source: string;
+  source_url: string | null;
+  source_type: "gss-original" | "gss-aggregate" | "external";
+  year: string;
+  sample: string | null;
+  sector: string | null;
+  metric_type: string | null;
+  tags: string[];
+  methodology_note: string | null;
+  is_featured: boolean;
+  sort_order: number;
+  auto_generated: boolean;
+  status: string;
+  computed_at: string | null;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export async function getStatCategories() {
+  const { data, error } = await supabase
+    .from("stat_categories")
+    .select("*")
+    .eq("status", "published")
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as StatCategory[];
+}
+
+export async function getPublishedStats() {
+  const { data, error } = await supabase
+    .from("stats")
+    .select("*")
+    .eq("status", "published")
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as Stat[];
+}
+
+export async function getStatsByCategory(categoryId: string) {
+  const { data, error } = await supabase
+    .from("stats")
+    .select("*")
+    .eq("status", "published")
+    .eq("category", categoryId)
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as Stat[];
+}
+
+export async function getFeaturedStats(limit = 6) {
+  const { data, error } = await supabase
+    .from("stats")
+    .select("*")
+    .eq("status", "published")
+    .eq("is_featured", true)
+    .order("sort_order")
+    .limit(limit);
+
+  if (error) throw error;
+  return data as Stat[];
+}
+
+export async function getStatsBySector(sector: string) {
+  const { data, error } = await supabase
+    .from("stats")
+    .select("*")
+    .eq("status", "published")
+    .eq("sector", sector)
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as Stat[];
+}
+
+export async function getStatsByTags(tags: string[]) {
+  const { data, error } = await supabase
+    .from("stats")
+    .select("*")
+    .eq("status", "published")
+    .overlaps("tags", tags)
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as Stat[];
+}
+
+export async function getPublishedStatCount() {
+  const { count, error } = await supabase
+    .from("stats")
+    .select("*", { count: "exact", head: true })
+    .eq("status", "published");
+
+  if (error) throw error;
+  return count ?? 0;
+}
+
 // ---- PAGES ----
 
 export async function getPageBySlug(slug: string) {

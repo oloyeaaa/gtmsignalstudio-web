@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
+import {
+  getStatCategories,
+  getPublishedStats,
+  getPublishedStatCount,
+  type Stat,
+  type StatCategory as StatCategoryType,
+} from "@/lib/queries";
+
+export const dynamic = "force-dynamic"; // Fetch fresh from Supabase on every request
 
 export const metadata: Metadata = {
   title:
@@ -28,394 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-type StatItem = {
-  stat: string;
-  label: string;
-  source: string;
-  sourceUrl?: string;
-  year: string;
-  sample?: string;
-};
-
-type StatCategory = {
-  id: string;
-  title: string;
-  description: string;
-  stats: StatItem[];
-};
-
-const gssOriginalStats: StatCategory = {
-  id: "gss-original",
-  title: "GTM Signal Studio Original Research",
-  description:
-    "Original data from GSS benchmark studies. 150+ companies scanned across multiple sectors using the AI Visibility Framework (4 dimensions, scored 0-100). Updated monthly.",
-  stats: [
-    {
-      stat: "81%",
-      label:
-        "of 150 B2B companies score 0-5 on AI citation presence — invisible to AI recommendations",
-      source: "AI Visibility Benchmark April 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-benchmark-april-2026",
-      year: "2026",
-      sample: "150 companies, 5 sectors",
-    },
-    {
-      stat: "28.7",
-      label:
-        "average AI visibility score across 150 companies (out of 100) — down from 82.2 at N=50",
-      source: "AI Visibility Benchmark April 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-benchmark-april-2026",
-      year: "2026",
-      sample: "150 companies, 5 sectors",
-    },
-    {
-      stat: "10/10",
-      label:
-        "bottom 10 companies in the 150-company benchmark are all IT Services firms scoring 2/100",
-      source: "AI Visibility Benchmark April 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-benchmark-april-2026",
-      year: "2026",
-      sample: "150 companies, 5 sectors",
-    },
-    {
-      stat: "44%",
-      label:
-        "of enterprise B2B companies score 2/25 on AI citation presence",
-      source: "AI Visibility Benchmark March 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-benchmark-2026",
-      year: "2026",
-      sample: "50 companies, 5 sectors",
-    },
-    {
-      stat: "52%",
-      label:
-        "of UK law firms score 2/25 on AI citation presence — invisible to AI recommendations",
-      source: "AI Visibility: UK Law Firms 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-uk-law-firms-2026",
-      year: "2026",
-      sample: "50 UK law firms",
-    },
-    {
-      stat: "3x",
-      label:
-        "citation gap between SaaS (24.4/25) and IT Services (8.0/25) on AI citation presence",
-      source: "AI Visibility Benchmark 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-benchmark-2026",
-      year: "2026",
-      sample: "50 companies, 5 sectors",
-    },
-    {
-      stat: "23.4/25",
-      label:
-        "average Entity Recognition — AI knows who companies are but does not recommend them",
-      source: "AI Visibility Benchmark 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-benchmark-2026",
-      year: "2026",
-      sample: "50 companies",
-    },
-    {
-      stat: "0",
-      label:
-        "law firms scored in the 6-20 range on citation — the split is binary: cited or invisible",
-      source: "AI Visibility: UK Law Firms 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-uk-law-firms-2026",
-      year: "2026",
-      sample: "50 UK law firms",
-    },
-    {
-      stat: "21 pts",
-      label:
-        "gap between cited (92.1) and uncited (70.7) law firms — driven entirely by citation presence",
-      source: "AI Visibility: UK Law Firms 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-uk-law-firms-2026",
-      year: "2026",
-      sample: "50 UK law firms",
-    },
-    {
-      stat: "93.5 vs 72.3",
-      label:
-        "specialist law firms outperform generalists on AI visibility — clear positioning wins",
-      source: "AI Visibility: UK Law Firms 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-uk-law-firms-2026",
-      year: "2026",
-      sample: "50 UK law firms",
-    },
-    {
-      stat: "22.9 vs 21.6",
-      label:
-        "uncited firms score HIGHER on content structure — proving site quality alone does not drive AI citation",
-      source: "AI Visibility: UK Law Firms 2026 — GTM Signal Studio",
-      sourceUrl: "/research/ai-visibility-uk-law-firms-2026",
-      year: "2026",
-      sample: "50 UK law firms",
-    },
-  ],
-};
-
-const externalStats: StatCategory[] = [
-  {
-    id: "ai-adoption",
-    title: "AI Adoption in B2B Buying",
-    description:
-      "How many B2B buyers are using AI during their purchasing process.",
-    stats: [
-      {
-        stat: "94%",
-        label: "of B2B buyers use AI in their buying process",
-        source: "Forrester Buyers' Journey Survey",
-        sourceUrl: "https://www.forrester.com",
-        year: "2025",
-        sample: "17,500 global buyers",
-      },
-      {
-        stat: "47%",
-        label:
-          "of enterprise buyers now start vendor research with AI tools — ahead of Google (43%)",
-        source: "Treble / Censuswide",
-        sourceUrl:
-          "https://finance.yahoo.com/news/treble-report",
-        year: "2025",
-        sample: "300 CIOs, CISOs, CTOs, VPs",
-      },
-      {
-        stat: "67%",
-        label:
-          "of B2B buyers use AI search tools during purchase research — up from 24% in early 2024",
-        source: "KnewSearch",
-        sourceUrl:
-          "https://knewsearch.com/blog/ai-search-buyer-behavior-research-2026",
-        year: "2026",
-      },
-      {
-        stat: "93%",
-        label:
-          "of enterprise buyers use AI to summarise or compare vendors during evaluation",
-        source: "Treble / Censuswide",
-        sourceUrl:
-          "https://finance.yahoo.com/news/treble-report",
-        year: "2025",
-        sample: "300 enterprise tech buyers",
-      },
-      {
-        stat: "66%",
-        label:
-          "of UK senior decision-makers use AI tools for supplier research",
-        source: "Magenta Associates",
-        year: "2025",
-        sample: "300 UK senior professionals",
-      },
-    ],
-  },
-  {
-    id: "buying-journey",
-    title: "How AI Changes the Buying Journey",
-    description:
-      "Shortlists form faster, decisions happen earlier, and AI shapes who buyers consider.",
-    stats: [
-      {
-        stat: "95%",
-        label:
-          "of winning vendors were already on the buyer's Day 1 shortlist",
-        source: "6sense Buyer Experience Report",
-        sourceUrl:
-          "https://6sense.com/science-of-b2b/buyer-experience-report-2025/",
-        year: "2025",
-        sample: "4,000 B2B buyers",
-      },
-      {
-        stat: "77-80%",
-        label:
-          "win rate for the top-ranked vendor on the initial shortlist",
-        source: "6sense / Corporate Visions",
-        sourceUrl:
-          "https://corporatevisions.com/blog/b2b-buying-behavior-statistics-trends/",
-        year: "2025",
-        sample: "4,000 B2B buyers",
-      },
-      {
-        stat: "4 of 5",
-        label:
-          "shortlist spots are filled on Day 1 — before any vendor contact",
-        source: "6sense Buyer Experience Report",
-        sourceUrl:
-          "https://6sense.com/science-of-b2b/buyer-experience-report-2025/",
-        year: "2025",
-        sample: "4,000 B2B buyers",
-      },
-      {
-        stat: "57%",
-        label:
-          "of B2B buyers consider more or different vendors because of AI",
-        source: "Forrester Buyers' Journey Survey",
-        sourceUrl: "https://www.forrester.com",
-        year: "2025",
-        sample: "17,500 global buyers",
-      },
-      {
-        stat: "10.1 mo",
-        label:
-          "average B2B buying cycle — down from 11.3 months year-over-year",
-        source: "6sense Buyer Experience Report",
-        sourceUrl:
-          "https://6sense.com/science-of-b2b/buyer-experience-report-2025/",
-        year: "2025",
-        sample: "4,000 B2B buyers",
-      },
-      {
-        stat: "67%",
-        label: "of B2B buyers prefer a rep-free buying experience",
-        source: "Gartner B2B Buyer Survey",
-        sourceUrl: "https://www.gartner.com",
-        year: "2025",
-        sample: "646 buyers",
-      },
-    ],
-  },
-  {
-    id: "ai-vs-google",
-    title: "AI vs Google: The Divergence",
-    description:
-      "AI platforms recommend different companies than Google. The overlap is smaller than most teams assume.",
-    stats: [
-      {
-        stat: "14%",
-        label:
-          "URL overlap between AI Mode and Google's top 10 organic results",
-        source: "SE Ranking",
-        sourceUrl: "https://seranking.com/blog/ai-statistics/",
-        year: "2025",
-      },
-      {
-        stat: "40%",
-        label:
-          "of AI Overview citations come from pages ranking OUTSIDE Google's top 10",
-        source: "Exposure Ninja",
-        sourceUrl:
-          "https://exposureninja.com/blog/ai-search-statistics/",
-        year: "2025",
-      },
-      {
-        stat: "3.2x",
-        label:
-          "more likely to be shortlisted if mentioned across all major AI platforms",
-        source: "KnewSearch",
-        sourceUrl:
-          "https://knewsearch.com/blog/ai-search-buyer-behavior-research-2026",
-        year: "2026",
-      },
-      {
-        stat: "37%",
-        label:
-          "of consumers now start searches with AI instead of Google",
-        source: "Search Engine Land / Yext",
-        sourceUrl: "https://searchengineland.com",
-        year: "2026",
-      },
-      {
-        stat: "6.5x",
-        label:
-          "more likely to be cited through third-party sources than your own domain",
-        source: "Position Digital",
-        sourceUrl:
-          "https://position.digital/blog/ai-seo-statistics/",
-        year: "2026",
-      },
-    ],
-  },
-  {
-    id: "trust",
-    title: "Trust in AI Recommendations",
-    description:
-      "Buyers trust AI but still verify. AI is a filter, not a closer.",
-    stats: [
-      {
-        stat: "90%",
-        label:
-          "of B2B buyers who use AI trust the recommendations it provides",
-        source: "Magenta Associates",
-        year: "2025",
-        sample: "300 UK decision-makers",
-      },
-      {
-        stat: "85%",
-        label:
-          "of buyers still double-check AI answers elsewhere — Google (68%) is the primary validation channel",
-        source: "Yext / Search Engine Land",
-        sourceUrl: "https://searchengineland.com",
-        year: "2026",
-      },
-      {
-        stat: "2x",
-        label:
-          "as many buyers named GenAI as a more meaningful source than ANY other source type",
-        source: "Forrester Buyers' Journey Survey",
-        sourceUrl: "https://www.forrester.com",
-        year: "2025",
-        sample: "17,500 global buyers",
-      },
-      {
-        stat: "60%",
-        label:
-          "say AI delivers better, clearer answers than traditional search",
-        source: "Search Engine Land / Yext",
-        sourceUrl: "https://searchengineland.com",
-        year: "2026",
-      },
-    ],
-  },
-  {
-    id: "ai-traffic",
-    title: "AI Search Traffic & Conversion",
-    description:
-      "AI traffic is small but growing fast — and converts at 5x the rate of Google organic.",
-    stats: [
-      {
-        stat: "527%",
-        label: "year-over-year growth in AI search traffic",
-        source: "Previsible AI Traffic Report",
-        sourceUrl: "https://semrush.com",
-        year: "2025",
-        sample: "19 GA4 properties",
-      },
-      {
-        stat: "14.2% vs 2.8%",
-        label:
-          "AI search traffic converts at 5x the rate of Google organic",
-        source: "Warmly / Yotpo",
-        sourceUrl:
-          "https://warmly.ai/p/blog/b2b-buyers-chatgpt-geo-guide",
-        year: "2026",
-      },
-      {
-        stat: "68%",
-        label:
-          "more time spent on websites by AI-referred visitors vs traditional organic",
-        source: "SE Ranking / PassionFruit",
-        sourceUrl: "https://seranking.com/blog/ai-statistics/",
-        year: "2025",
-      },
-      {
-        stat: "5% → 30%",
-        label:
-          "AI went from 5% to 30% of inbound demo requests in 2 months at one B2B company",
-        source: "Warmly (first-party data)",
-        sourceUrl:
-          "https://warmly.ai/p/blog/b2b-buyers-chatgpt-geo-guide",
-        year: "2026",
-      },
-      {
-        stat: "85%",
-        label:
-          "of 25-34 year olds use AI for supplier research vs 23% of 55-64 year olds",
-        source: "Magenta Associates",
-        year: "2025",
-        sample: "300 UK decision-makers",
-      },
-    ],
-  },
-];
-
-function StatCard({ item, isGss }: { item: StatItem; isGss: boolean }) {
+function StatCard({ item, isGss }: { item: Stat; isGss: boolean }) {
   const inner = (
     <>
       <p
@@ -423,7 +45,7 @@ function StatCard({ item, isGss }: { item: StatItem; isGss: boolean }) {
           isGss ? "text-orange" : "text-navy"
         }`}
       >
-        {item.stat}
+        {item.stat_value}
       </p>
       <p className="text-text-dark text-sm font-semibold mb-3 leading-snug">
         {item.label}
@@ -444,13 +66,13 @@ function StatCard({ item, isGss }: { item: StatItem; isGss: boolean }) {
   const baseClasses =
     "flex flex-col rounded-xl p-5 transition-all duration-200 h-full";
 
-  if (item.sourceUrl) {
+  if (item.source_url) {
     const isExternal =
-      item.sourceUrl.startsWith("http") &&
-      !item.sourceUrl.includes("gtmsignalstudio.com");
+      item.source_url.startsWith("http") &&
+      !item.source_url.includes("gtmsignalstudio.com");
     return (
       <Link
-        href={item.sourceUrl}
+        href={item.source_url}
         className={`${baseClasses} ${
           isGss
             ? "bg-navy/5 border-2 border-orange/20 hover:border-orange"
@@ -483,9 +105,11 @@ function StatCard({ item, isGss }: { item: StatItem; isGss: boolean }) {
 
 function StatSection({
   category,
+  stats,
   isGss,
 }: {
-  category: StatCategory;
+  category: StatCategoryType;
+  stats: Stat[];
   isGss: boolean;
 }) {
   return (
@@ -500,19 +124,31 @@ function StatSection({
         {category.description}
       </p>
       <div className="grid md:grid-cols-2 gap-4">
-        {category.stats.map((item, i) => (
-          <StatCard key={i} item={item} isGss={isGss} />
+        {stats.map((item) => (
+          <StatCard key={item.slug} item={item} isGss={isGss} />
         ))}
       </div>
     </div>
   );
 }
 
-export default function StatsPage() {
-  const categories = [gssOriginalStats, ...externalStats];
-  const totalStats =
-    gssOriginalStats.stats.length +
-    externalStats.reduce((sum, c) => sum + c.stats.length, 0);
+export default async function StatsPage() {
+  const [categories, allStats, totalStats] = await Promise.all([
+    getStatCategories(),
+    getPublishedStats(),
+    getPublishedStatCount(),
+  ]);
+
+  // Group stats by category
+  const statsByCategory = new Map<string, Stat[]>();
+  for (const stat of allStats) {
+    const existing = statsByCategory.get(stat.category) ?? [];
+    existing.push(stat);
+    statsByCategory.set(stat.category, existing);
+  }
+
+  // Count unique sources
+  const uniqueSources = new Set(allStats.map((s) => s.source)).size;
 
   return (
     <>
@@ -523,7 +159,7 @@ export default function StatsPage() {
         stats={[
           { stat: String(totalStats) + "+", label: "Citable Stats" },
           { stat: "100+", label: "Companies Scanned" },
-          { stat: "20+", label: "Sources" },
+          { stat: String(uniqueSources) + "+", label: "Sources" },
         ]}
         breadcrumb={{ label: "Research", href: "/research" }}
       />
@@ -545,26 +181,35 @@ export default function StatsPage() {
         </div>
       </section>
 
-      {/* GSS Original Research */}
-      <section className="section-white py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <StatSection category={gssOriginalStats} isGss={true} />
-        </div>
-      </section>
+      {/* Stat Sections */}
+      {categories.map((category, i) => {
+        const categoryStats = statsByCategory.get(category.id) ?? [];
+        if (categoryStats.length === 0) return null;
 
-      {/* External Stats — alternating sections */}
-      {externalStats.map((category, i) => (
-        <section
-          key={category.id}
-          className={`${
-            i % 2 === 0 ? "section-light" : "section-white"
-          } py-16 md:py-20`}
-        >
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <StatSection category={category} isGss={false} />
-          </div>
-        </section>
-      ))}
+        // First category (GSS original) gets white bg, then alternate
+        const isGss = category.is_gss;
+        const bgIndex = isGss ? -1 : i - 1; // offset for alternating after GSS
+        const bgClass = isGss
+          ? "section-white"
+          : bgIndex % 2 === 0
+            ? "section-light"
+            : "section-white";
+
+        return (
+          <section
+            key={category.id}
+            className={`${bgClass} py-16 md:py-20`}
+          >
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <StatSection
+                category={category}
+                stats={categoryStats}
+                isGss={isGss}
+              />
+            </div>
+          </section>
+        );
+      })}
 
       {/* Methodology Note */}
       <section className="section-dark py-16 md:py-20">
@@ -595,8 +240,7 @@ export default function StatsPage() {
             <p>
               <strong className="text-white">Updates:</strong> This page
               is updated as we publish new benchmark studies and as
-              significant new external research becomes available. Last
-              updated March 2026.
+              significant new external research becomes available.
             </p>
           </div>
         </div>
@@ -645,7 +289,7 @@ export default function StatsPage() {
               name: "GTM Signal Studio",
               url: "https://gtmsignalstudio.com",
             },
-            dateModified: "2026-03-31",
+            dateModified: new Date().toISOString().split("T")[0],
             url: "https://gtmsignalstudio.com/research/stats",
             keywords: [
               "AI visibility",
