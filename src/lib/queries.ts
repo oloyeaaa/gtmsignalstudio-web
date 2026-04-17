@@ -433,6 +433,146 @@ export async function getStatTrend(metricType: string, limit = 10) {
   return data as Partial<StatHistoryEntry>[];
 }
 
+// ---- TOOLS ----
+
+export type Tool = {
+  id: string;
+  name: string;
+  slug: string;
+  tagline: string;
+  description: string;
+  website_url: string;
+  affiliate_url: string | null;
+  discount_code: string | null;
+  discount_description: string | null;
+  logo_url: string | null;
+  domain: string;
+  category: string;
+  dimensions: string[];
+  use_cases: string[];
+  pricing_model: string;
+  price_from: string | null;
+  gss_rating: number | null;
+  pros: string[];
+  cons: string[];
+  best_for: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  is_featured: boolean;
+  sort_order: number;
+  status: string;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export async function getPublishedTools() {
+  const { data, error } = await supabase
+    .from("tools")
+    .select("*")
+    .eq("status", "published")
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as Tool[];
+}
+
+export async function getToolBySlug(slug: string) {
+  const { data, error } = await supabase
+    .from("tools")
+    .select("*")
+    .eq("slug", slug)
+    .eq("status", "published")
+    .single();
+
+  if (error) return null;
+  return data as Tool;
+}
+
+export async function getFeaturedTools(limit = 6) {
+  const { data, error } = await supabase
+    .from("tools")
+    .select("*")
+    .eq("status", "published")
+    .eq("is_featured", true)
+    .order("sort_order")
+    .limit(limit);
+
+  if (error) throw error;
+  return data as Tool[];
+}
+
+export async function getToolsByCategory(category: string) {
+  const { data, error } = await supabase
+    .from("tools")
+    .select("*")
+    .eq("status", "published")
+    .eq("category", category)
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as Tool[];
+}
+
+export async function getToolsByDimension(dimension: string) {
+  const { data, error } = await supabase
+    .from("tools")
+    .select("*")
+    .eq("status", "published")
+    .contains("dimensions", [dimension])
+    .order("sort_order");
+
+  if (error) throw error;
+  return data as Tool[];
+}
+
+export async function getAllToolSlugs() {
+  const { data, error } = await supabase
+    .from("tools")
+    .select("slug, updated_at")
+    .eq("status", "published");
+
+  if (error) throw error;
+  return data as { slug: string; updated_at: string }[];
+}
+
+export async function getToolReviewPosts(toolSlug: string, limit = 5) {
+  const { data, error } = await supabase
+    .from("posts")
+    .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
+    .eq("status", "published")
+    .eq("tool_slug", toolSlug)
+    .order("published_at", { ascending: false })
+    .limit(limit);
+
+  if (error) throw error;
+  return data as Partial<Post>[];
+}
+
+export async function getRelatedTools(toolSlug: string, dimensions: string[], limit = 3) {
+  const { data, error } = await supabase
+    .from("tools")
+    .select("*")
+    .eq("status", "published")
+    .neq("slug", toolSlug)
+    .overlaps("dimensions", dimensions)
+    .order("sort_order")
+    .limit(limit);
+
+  if (error) throw error;
+  return data as Tool[];
+}
+
+export async function getPublishedToolCount() {
+  const { count, error } = await supabase
+    .from("tools")
+    .select("*", { count: "exact", head: true })
+    .eq("status", "published");
+
+  if (error) throw error;
+  return count ?? 0;
+}
+
 // ---- PAGES ----
 
 export async function getPageBySlug(slug: string) {

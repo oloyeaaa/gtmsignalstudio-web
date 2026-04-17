@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getAllPostSlugs, getAllClusterSlugs } from "@/lib/queries";
+import { getAllPostSlugs, getAllClusterSlugs, getAllToolSlugs } from "@/lib/queries";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://gtmsignalstudio.com";
@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/resources/ai-visibility-scorecard`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/resources/ai-citation-signals`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/resources/ai-visibility-playbook`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${baseUrl}/tools`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/resources/tools`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: `${baseUrl}/newsletter`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
@@ -53,5 +54,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Supabase not connected
   }
 
-  return [...staticPages, ...topicPages, ...blogPages];
+  // Dynamic tool pages
+  let toolPages: MetadataRoute.Sitemap = [];
+  try {
+    const toolSlugs = await getAllToolSlugs();
+    toolPages = toolSlugs.map((t) => ({
+      url: `${baseUrl}/tools/${t.slug}`,
+      lastModified: new Date(t.updated_at),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // Supabase not connected
+  }
+
+  return [...staticPages, ...topicPages, ...blogPages, ...toolPages];
 }

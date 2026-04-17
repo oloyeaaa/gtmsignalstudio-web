@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { getPostBySlug, getRelatedPosts, getAllPostSlugs, getPostCluster, getClusterSiblings } from "@/lib/queries";
+import { getPostBySlug, getRelatedPosts, getAllPostSlugs, getPostCluster, getClusterSiblings, getToolBySlug, getRelatedTools } from "@/lib/queries";
 import type { Metadata } from "next";
 import FaqAccordion from "@/components/blog/FaqAccordion";
 import AuthorCard from "@/components/blog/AuthorCard";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogCTA from "@/components/blog/BlogCTA";
 import InlineSubscribe from "@/components/blog/InlineSubscribe";
+import ToolQuickInfoCard from "@/components/tools/ToolQuickInfoCard";
+import RelatedToolsSidebar from "@/components/tools/RelatedToolsSidebar";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -68,6 +70,14 @@ export default async function BlogPost({ params }: Props) {
   const siblings = clusterInfo
     ? await getClusterSiblings(post.id, clusterInfo.cluster.id)
     : { prev: null, next: null };
+
+  // Tool review sidebar: fetch linked tool + related tools
+  const toolSlug = (post as Record<string, unknown>).tool_slug as string | null;
+  const linkedTool = toolSlug ? await getToolBySlug(toolSlug) : null;
+  const sidebarTools = linkedTool
+    ? await getRelatedTools(linkedTool.slug, linkedTool.dimensions, 4)
+    : [];
+  const isToolReview = post.category === "Tool Reviews" && linkedTool;
 
   return (
     <>
@@ -139,7 +149,11 @@ export default async function BlogPost({ params }: Props) {
       />
 
       <article className="bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className={`${isToolReview ? "max-w-5xl" : "max-w-3xl"} mx-auto px-4 sm:px-6 lg:px-8 py-16`}>
+          {/* Tool review: two-column layout */}
+          <div className={isToolReview ? "flex gap-8 lg:gap-12" : ""}>
+          {/* Main content column */}
+          <div className={isToolReview ? "flex-1 min-w-0" : ""}>
           {/* Breadcrumb — cluster-aware */}
           <nav className="flex items-center gap-2 text-sm text-text-muted mb-8 flex-wrap">
             <Link href="/" className="hover:text-orange transition-colors">Home</Link>
@@ -268,6 +282,22 @@ export default async function BlogPost({ params }: Props) {
 
           {/* Author card */}
           <AuthorCard />
+          </div>{/* end main content column */}
+
+          {/* Tool review sidebar — desktop only */}
+          {isToolReview && linkedTool && (
+            <aside className="hidden lg:block w-72 flex-shrink-0 space-y-6">
+              <div className="sticky top-24">
+                <ToolQuickInfoCard tool={linkedTool} />
+                {sidebarTools.length > 0 && (
+                  <div className="mt-6">
+                    <RelatedToolsSidebar tools={sidebarTools} />
+                  </div>
+                )}
+              </div>
+            </aside>
+          )}
+          </div>{/* end flex wrapper */}
         </div>
 
         {/* Cluster sibling navigation */}
