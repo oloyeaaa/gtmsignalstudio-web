@@ -1,6 +1,7 @@
 /**
  * Get the logo URL for a tool.
- * Priority: manual override (Supabase Storage) → Clearbit → fallback.
+ * Priority: manual override (Supabase Storage) → Google favicon → letter fallback.
+ * Clearbit Logo API was shut down Dec 2025.
  */
 export function getToolLogoUrl(tool: { logo_url: string | null; domain: string; name: string }): {
   src: string;
@@ -11,7 +12,7 @@ export function getToolLogoUrl(tool: { logo_url: string | null; domain: string; 
   }
 
   return {
-    src: `https://logo.clearbit.com/${tool.domain}`,
+    src: `https://www.google.com/s2/favicons?domain=${tool.domain}&sz=128`,
     isFallback: false,
   };
 }

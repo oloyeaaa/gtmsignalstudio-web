@@ -14,7 +14,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "logo.clearbit.com",
+        hostname: "www.google.com",
+        pathname: "/s2/favicons/**",
+      },
+      {
+        protocol: "https",
+        hostname: "t2.gstatic.com",
       },
     ],
   },
@@ -41,7 +46,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://qgcbzstbwfpxkruanrgt.supabase.co https://logo.clearbit.com https://www.google-analytics.com https://www.clarity.ms; font-src 'self'; connect-src 'self' https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://*.clarity.ms; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google.com https://t2.gstatic.com https://www.google-analytics.com https://www.clarity.ms; font-src 'self'; connect-src 'self' https://qgcbzstbwfpxkruanrgt.supabase.co https://www.google-analytics.com https://analytics.google.com https://www.clarity.ms https://*.clarity.ms; frame-ancestors 'none'; base-uri 'self'; form-action 'self';",
           },
         ],
       },

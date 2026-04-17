@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { getToolInitial } from "@/lib/utils";
 
@@ -23,8 +22,9 @@ export default function ToolLogo({ src, name, size, className = "", fallbackClas
     );
   }
 
+  /* eslint-disable @next/next/no-img-element */
   return (
-    <Image
+    <img
       src={src}
       alt={`${name} logo`}
       width={size}
