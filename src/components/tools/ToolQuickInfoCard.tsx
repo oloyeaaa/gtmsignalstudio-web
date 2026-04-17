@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Tool } from "@/lib/queries";
-import { getToolLogoUrl, getToolInitial, formatPricingModel, formatDimension } from "@/lib/utils";
+import { getToolLogoUrl, formatPricingModel, formatDimension } from "@/lib/utils";
+import ToolLogo from "./ToolLogo";
 
 export default function ToolQuickInfoCard({ tool }: { tool: Tool }) {
   const logo = getToolLogoUrl(tool);
@@ -13,23 +13,12 @@ export default function ToolQuickInfoCard({ tool }: { tool: Tool }) {
 
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 rounded-lg bg-cream border border-light-border flex items-center justify-center overflow-hidden flex-shrink-0">
-          <Image
+          <ToolLogo
             src={logo.src}
-            alt={`${tool.name} logo`}
-            width={40}
-            height={40}
+            name={tool.name}
+            size={40}
             className="w-full h-full object-contain p-1"
-            onError={(e) => {
-              const target = e.currentTarget;
-              target.style.display = "none";
-              const parent = target.parentElement;
-              if (parent) {
-                const fallback = document.createElement("span");
-                fallback.className = "text-orange font-heading font-bold text-lg";
-                fallback.textContent = getToolInitial(tool.name);
-                parent.appendChild(fallback);
-              }
-            }}
+            fallbackClassName="text-orange font-heading font-bold text-lg"
           />
         </div>
         <div>

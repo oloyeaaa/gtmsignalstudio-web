@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Tool } from "@/lib/queries";
-import { getToolLogoUrl, getToolInitial, formatPricingModel } from "@/lib/utils";
+import { getToolLogoUrl, formatPricingModel } from "@/lib/utils";
 import AffiliateDisclaimer from "./AffiliateDisclaimer";
+import ToolLogo from "./ToolLogo";
 
 export default function RelatedToolsSidebar({ tools }: { tools: Tool[] }) {
   if (tools.length === 0) return null;
@@ -20,23 +20,12 @@ export default function RelatedToolsSidebar({ tools }: { tools: Tool[] }) {
               className="group flex items-center gap-3 p-2 rounded-lg hover:bg-cream transition-colors"
             >
               <div className="w-8 h-8 rounded-md bg-cream border border-light-border flex items-center justify-center overflow-hidden flex-shrink-0">
-                <Image
+                <ToolLogo
                   src={logo.src}
-                  alt={`${tool.name} logo`}
-                  width={32}
-                  height={32}
+                  name={tool.name}
+                  size={32}
                   className="w-full h-full object-contain p-0.5"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = "none";
-                    const parent = target.parentElement;
-                    if (parent) {
-                      const fallback = document.createElement("span");
-                      fallback.className = "text-orange font-heading font-bold text-sm";
-                      fallback.textContent = getToolInitial(tool.name);
-                      parent.appendChild(fallback);
-                    }
-                  }}
+                  fallbackClassName="text-orange font-heading font-bold text-sm"
                 />
               </div>
               <div className="min-w-0">

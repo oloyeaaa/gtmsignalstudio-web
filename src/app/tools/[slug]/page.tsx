@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 import {
   getToolBySlug,
@@ -8,9 +7,10 @@ import {
   getToolReviewPosts,
   getRelatedTools,
 } from "@/lib/queries";
-import { getToolLogoUrl, getToolInitial, formatPricingModel, formatDimension } from "@/lib/utils";
+import { getToolLogoUrl, formatPricingModel, formatDimension } from "@/lib/utils";
 import AffiliateDisclaimer from "@/components/tools/AffiliateDisclaimer";
 import ToolCard from "@/components/tools/ToolCard";
+import ToolLogo from "@/components/tools/ToolLogo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -122,23 +122,12 @@ export default async function ToolDetailPage({ params }: Props) {
 
           <div className="flex items-start gap-5 mb-6">
             <div className="w-16 h-16 rounded-xl bg-white/10 border border-navy-border flex items-center justify-center overflow-hidden flex-shrink-0">
-              <Image
+              <ToolLogo
                 src={logo.src}
-                alt={`${tool.name} logo`}
-                width={64}
-                height={64}
+                name={tool.name}
+                size={64}
                 className="w-full h-full object-contain p-2"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  target.style.display = "none";
-                  const parent = target.parentElement;
-                  if (parent) {
-                    const fallback = document.createElement("span");
-                    fallback.className = "text-orange font-heading font-bold text-2xl";
-                    fallback.textContent = getToolInitial(tool.name);
-                    parent.appendChild(fallback);
-                  }
-                }}
+                fallbackClassName="text-orange font-heading font-bold text-2xl"
               />
             </div>
             <div>
