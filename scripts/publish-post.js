@@ -63,11 +63,12 @@ function getArg(flag) {
 const markdownPath = getArg("--markdown");
 const imagePath    = getArg("--image");
 const slugArg      = getArg("--slug");
-const categoryArg  = getArg("--category"); // Required: "Enterprise Marketing" or "AI Visibility"
+const categoryArg  = getArg("--category"); // Required: "Enterprise Marketing", "AI Visibility", or "Tool Reviews"
+const toolSlugArg  = getArg("--tool-slug"); // Optional: links post to a tool (for Tool Reviews category)
 const dateArg      = getArg("--date"); // Optional: schedule for a future date (YYYY-MM-DD)
 const dryRun       = process.argv.includes("--dry-run");
 
-const VALID_CATEGORIES = ["Enterprise Marketing", "AI Visibility"];
+const VALID_CATEGORIES = ["Enterprise Marketing", "AI Visibility", "Tool Reviews"];
 
 if (!markdownPath || !slugArg || !categoryArg) {
   console.error("Usage: node scripts/publish-post.js --markdown <path> --slug <slug> --category <category> [--image <path>] [--date YYYY-MM-DD] [--dry-run]");
@@ -389,6 +390,7 @@ async function main() {
     author: "Oloye Adeosun",
     published_at: dateArg ? new Date(`${dateArg}T00:00:00.000Z`).toISOString() : new Date().toISOString(),
     reading_time: rt,
+    ...(toolSlugArg ? { tool_slug: toolSlugArg } : {}),
   };
 
   console.log("\n📤 Inserting post into Supabase...");
