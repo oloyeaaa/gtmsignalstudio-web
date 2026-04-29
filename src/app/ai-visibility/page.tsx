@@ -234,6 +234,48 @@ export default function AiVisibilityPillar() {
         </div>
       </section>
 
+      {/* What doesn't move the needle: HTML myth */}
+      <section className="section-dark py-16 md:py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="font-mono text-orange text-sm mb-2 tracking-wider">
+            WHAT DOES NOT MOVE THE NEEDLE
+          </p>
+          <h2 className="font-heading text-3xl font-bold text-white mb-6">
+            The HTML myth
+          </h2>
+          <div className="space-y-4 text-muted leading-relaxed mb-8">
+            <p>
+              The most common AI-SEO advice in 2026 is some version of
+              &ldquo;fix your semantic HTML and the LLMs will find you.&rdquo;
+              We tested it.
+            </p>
+            <p>
+              Across 492 enterprise sites already scored on AI visibility, we
+              ran a 9-axis accessibility scan over the homepage HTML. The
+              correlation between accessibility score and AI citation score
+              was{" "}
+              <strong className="text-white">−0.007</strong>. Top-quartile AI
+              sites averaged <strong className="text-white">77.3</strong> on
+              accessibility. Bottom-quartile averaged{" "}
+              <strong className="text-white">77.1</strong>. A 0.1-point gap
+              across 246 sites.
+            </p>
+            <p>
+              Almost every modern enterprise site already has competent
+              markup. The variance in AI citation lives somewhere else
+              entirely — in entity authority, third-party citations, and the
+              broader signal graph the AI Visibility Audit actually tests.
+            </p>
+          </div>
+          <Link
+            href="/research/ai-visibility-html-myth-2026"
+            className="inline-block text-orange font-semibold hover:underline"
+          >
+            Read the full study &rarr;
+          </Link>
+        </div>
+      </section>
+
       {/* Check Your Score - Light */}
       <section className="section-light py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

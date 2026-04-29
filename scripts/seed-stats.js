@@ -499,6 +499,65 @@ const stats = [
     sort_order: 5,
     tags: ["demographics", "age-gap"],
   },
+
+  // ---- HTML Myth Study (April 2026) ----
+  {
+    slug: "gss-html-myth-correlation",
+    stat_value: "−0.007",
+    label:
+      "Pearson correlation between AI citation and HTML accessibility across 492 enterprise sites — effectively zero",
+    category: "gss-original",
+    source: "The HTML Myth in AI Visibility — GTM Signal Studio",
+    source_url: "/research/ai-visibility-html-myth-2026",
+    source_type: "gss-original",
+    year: "2026",
+    sample: "492 valid scans / 524 unique domains",
+    is_featured: true,
+    sort_order: 6,
+    tags: ["html-myth", "accessibility", "ai-visibility-correlation"],
+  },
+  {
+    slug: "gss-html-myth-quartile-delta",
+    stat_value: "0.1pt",
+    label:
+      "accessibility gap between top-quartile and bottom-quartile AI-cited enterprise sites (n=246)",
+    category: "gss-original",
+    source: "The HTML Myth in AI Visibility — GTM Signal Studio",
+    source_url: "/research/ai-visibility-html-myth-2026",
+    source_type: "gss-original",
+    year: "2026",
+    sample: "246 sites in quartile comparison",
+    sort_order: 7,
+    tags: ["html-myth", "quartile-analysis"],
+  },
+  {
+    slug: "gss-html-myth-a11y-floor",
+    stat_value: "77.0",
+    label:
+      "average accessibility score across 492 enterprise sites — the floor whether AI cites them or not (out of 100)",
+    category: "gss-original",
+    source: "The HTML Myth in AI Visibility — GTM Signal Studio",
+    source_url: "/research/ai-visibility-html-myth-2026",
+    source_type: "gss-original",
+    year: "2026",
+    sample: "492 valid scans / 524 unique domains",
+    sort_order: 8,
+    tags: ["html-myth", "accessibility-floor"],
+  },
+  {
+    slug: "gss-html-myth-skip-link",
+    stat_value: "1.6/5",
+    label:
+      "average score for skip-to-content links across 492 enterprise sites — most are missing entirely",
+    category: "gss-original",
+    source: "The HTML Myth in AI Visibility — GTM Signal Studio",
+    source_url: "/research/ai-visibility-html-myth-2026",
+    source_type: "gss-original",
+    year: "2026",
+    sample: "492 valid scans / 524 unique domains",
+    sort_order: 9,
+    tags: ["html-myth", "accessibility-axis", "skip-link"],
+  },
 ];
 
 async function seed() {
