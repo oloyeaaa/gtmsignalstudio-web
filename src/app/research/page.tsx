@@ -33,7 +33,7 @@ const studies = [
     description:
       "I tested whether clean semantic HTML predicts AI citation across 492 enterprise sites. The correlation was −0.007. Top-quartile and bottom-quartile sites scored within 0.1 points on accessibility. The markup is not the moat.",
     stats: "492 sites, 9-axis accessibility scan, Pearson r=−0.007",
-    date: "April 2026",
+    date: "May 2026",
   },
   {
     title: "AI Visibility Benchmark: April 2026",

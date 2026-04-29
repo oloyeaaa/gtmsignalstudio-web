@@ -544,7 +544,7 @@ export default function HtmlMythResearchPage() {
               name: "GTM Signal Studio",
               url: "https://gtmsignalstudio.com",
             },
-            datePublished: "2026-04-29",
+            datePublished: "2026-05-01",
             url: "https://gtmsignalstudio.com/research/ai-visibility-html-myth-2026",
           }),
         }}
