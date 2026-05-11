@@ -513,6 +513,43 @@ export default function LawFirmsBenchmarkPage() {
           }),
         }}
       />
+
+      {/* Dataset Schema — citable underlying data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            "@id": "https://gtmsignalstudio.com/research/ai-visibility-uk-law-firms-2026#dataset",
+            name: "AI Visibility: UK Law Firms 2026",
+            description:
+              "Original dataset: 50 UK law firms scored across 4 AI visibility dimensions. 52% scored 2/25 on Citation Presence. Specialists outperformed top-100 revenue firms.",
+            url: "https://gtmsignalstudio.com/research/ai-visibility-uk-law-firms-2026",
+            creator: { "@id": "https://gtmsignalstudio.com/#founder" },
+            publisher: { "@id": "https://gtmsignalstudio.com/#organization" },
+            datePublished: "2026-03-30",
+            dateModified: "2026-03-30",
+            inLanguage: "en-GB",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            isAccessibleForFree: true,
+            keywords: ["AI visibility", "AEO", "UK law firms", "legal sector", "benchmark"],
+            spatialCoverage: { "@type": "Place", name: "United Kingdom" },
+            variableMeasured: [
+              "AI Citation Presence (0–25)",
+              "Entity Recognition (0–25)",
+              "Content Structure for AI (0–25)",
+              "Citation Breadth (0–25)",
+            ],
+            numberOfItems: 50,
+            distribution: {
+              "@type": "DataDownload",
+              encodingFormat: "text/html",
+              contentUrl: "https://gtmsignalstudio.com/research/ai-visibility-uk-law-firms-2026",
+            },
+          }),
+        }}
+      />
     </>
   );
 }

@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "AI visibility playbook",
     "marketing frameworks",
   ],
+  alternates: { canonical: "/resources" },
 };
 
 const resources = [

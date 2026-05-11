@@ -22,6 +22,43 @@ export const metadata: Metadata = {
       "Find out if AI platforms recommend your business. Scored across 4 dimensions. 48-hour turnaround.",
     images: ["https://gtmsignalstudio.com/og-default.png"],
   },
+  alternates: { canonical: "/ai-visibility-audit" },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://gtmsignalstudio.com/ai-visibility-audit#service",
+  name: "AI Visibility Audit",
+  serviceType: "AI Visibility Audit",
+  description:
+    "Scored audit of your company's visibility across Google AI Mode, Perplexity, and ChatGPT. Four dimensions, prioritised fix plan, 48-hour turnaround.",
+  url: "https://gtmsignalstudio.com/ai-visibility-audit",
+  provider: { "@id": "https://gtmsignalstudio.com/#organization" },
+  areaServed: { "@type": "Country", name: "United Kingdom" },
+  audience: { "@type": "BusinessAudience", audienceType: "B2B companies" },
+  offers: {
+    "@type": "Offer",
+    price: "297",
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    url: "https://gtmsignalstudio.com/ai-visibility-audit",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      price: "297",
+      priceCurrency: "GBP",
+    },
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "AI Visibility Audit deliverables",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Visibility Score 0–100 across 4 dimensions" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Per-dimension scoring breakdown" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Prioritised fix plan" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Branded PDF report" } },
+    ],
+  },
 };
 
 const dimensions = [
@@ -88,6 +125,10 @@ const steps = [
 export default function AiVisibilityAuditPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero */}
       <div className="max-w-3xl mb-16">
         <Link href="/ai-visibility" className="text-orange font-mono text-sm hover:underline mb-4 inline-block">&larr; AI Visibility</Link>

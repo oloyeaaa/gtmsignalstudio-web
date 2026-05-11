@@ -6,9 +6,6 @@ Disallow: /_next/
 # Sitemap
 Sitemap: https://gtmsignalstudio.com/sitemap.xml
 
-# Crawl-delay (be respectful)
-Crawl-delay: 1
-
 # AI crawlers — allow for GEO/AEO
 User-agent: GPTBot
 Allow: /

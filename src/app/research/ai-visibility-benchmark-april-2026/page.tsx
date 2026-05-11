@@ -551,6 +551,43 @@ export default function BenchmarkAprilPage() {
           }),
         }}
       />
+
+      {/* Dataset Schema — citable underlying data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            "@id": "https://gtmsignalstudio.com/research/ai-visibility-benchmark-april-2026#dataset",
+            name: "AI Visibility Benchmark — April 2026",
+            description:
+              "Expanded dataset: 150 B2B companies across 5 sectors scored across 4 AI visibility dimensions. 81% scored 0–5 on Citation Presence. Average score 28.7/100.",
+            url: "https://gtmsignalstudio.com/research/ai-visibility-benchmark-april-2026",
+            creator: { "@id": "https://gtmsignalstudio.com/#founder" },
+            publisher: { "@id": "https://gtmsignalstudio.com/#organization" },
+            datePublished: "2026-04-03",
+            dateModified: "2026-04-03",
+            inLanguage: "en-GB",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            isAccessibleForFree: true,
+            keywords: ["AI visibility", "AEO", "B2B", "benchmark", "April 2026"],
+            spatialCoverage: { "@type": "Place", name: "United Kingdom" },
+            variableMeasured: [
+              "AI Citation Presence (0–25)",
+              "Entity Recognition (0–25)",
+              "Content Structure for AI (0–25)",
+              "Citation Breadth (0–25)",
+            ],
+            numberOfItems: 150,
+            distribution: {
+              "@type": "DataDownload",
+              encodingFormat: "text/html",
+              contentUrl: "https://gtmsignalstudio.com/research/ai-visibility-benchmark-april-2026",
+            },
+          }),
+        }}
+      />
     </>
   );
 }

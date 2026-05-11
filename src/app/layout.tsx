@@ -78,7 +78,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://gtmsignalstudio.com",
+    // NOTE: Do NOT set a global canonical here — it would be inherited by every
+    // child page without an override and make every page canonicalise to "/".
+    // Each page sets its own `alternates.canonical`.
     types: {
       "application/rss+xml": "https://gtmsignalstudio.com/feed.xml",
     },
@@ -104,7 +106,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <head>
         {/* Preconnect to Supabase for faster queries */}
         <link rel="preconnect" href="https://qgcbzstbwfpxkruanrgt.supabase.co" />

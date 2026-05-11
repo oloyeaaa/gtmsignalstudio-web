@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "MarTech",
     "GTM Signal Studio",
   ],
+  alternates: { canonical: "/" },
 };
 
 export default async function Home() {

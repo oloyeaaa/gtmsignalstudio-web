@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Weekly signal-led GTM insights from real campaigns. Frameworks, data, and patterns — delivered every Tuesday.",
   keywords: ["GTM Signal newsletter", "B2B marketing newsletter", "signal-led GTM insights", "weekly GTM newsletter", "go-to-market email"],
+  alternates: { canonical: "/newsletter" },
 };
 
 export default function NewsletterPage() {

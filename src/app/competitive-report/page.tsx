@@ -35,6 +35,46 @@ export const metadata: Metadata = {
       "Your company vs 10 competitors, scored across 4 AI visibility dimensions.",
     images: ["https://gtmsignalstudio.com/og-default.png"],
   },
+  alternates: { canonical: "/competitive-report" },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://gtmsignalstudio.com/competitive-report#service",
+  name: "Competitive AI Visibility Report",
+  serviceType: "Competitive AI Visibility Analysis",
+  description:
+    "Your company benchmarked against 10 direct competitors across 4 AI visibility dimensions. Competitive positioning map, dimension-level comparison, and 3 priority fixes. Branded PDF + 30-minute video walkthrough. 7-day turnaround.",
+  url: "https://gtmsignalstudio.com/competitive-report",
+  provider: { "@id": "https://gtmsignalstudio.com/#organization" },
+  areaServed: { "@type": "Country", name: "United Kingdom" },
+  audience: { "@type": "BusinessAudience", audienceType: "B2B companies" },
+  offers: {
+    "@type": "Offer",
+    price: "997",
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    url: "https://gtmsignalstudio.com/competitive-report",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      price: "997",
+      priceCurrency: "GBP",
+    },
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Competitive AI Visibility Report deliverables",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Your company scored across 4 AI visibility dimensions (0–100)" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "10 direct competitors scanned with the same methodology" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Competitive positioning map" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Dimension-level comparison" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "3 priority fixes ranked by competitive impact" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Branded PDF report" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "30-minute video walkthrough" } },
+    ],
+  },
 };
 
 const deliverables = [
@@ -71,6 +111,10 @@ const steps = [
 export default function CompetitiveReportPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <PageHeader
         tagline="COMPETITIVE AI VISIBILITY REPORT"
         title="Where does AI rank you against your competitors?"

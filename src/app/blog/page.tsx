@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "B2B marketing insights",
     "MarTech",
   ],
+  alternates: { canonical: "/blog" },
 };
 
 export const revalidate = 3600;

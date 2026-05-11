@@ -1,0 +1,938 @@
+{
+  "generated_at": "2026-05-11T12:59:02.842315Z",
+  "repo_url": "https://github.com/oloyeaaa/gss-toolkit",
+  "counts": {
+    "skills": 44,
+    "clis": 21,
+    "extensions": 3,
+    "total": 68
+  },
+  "items": [
+    {
+      "id": "bi-autoresearch",
+      "kind": "skill",
+      "name": "bi-autoresearch",
+      "slug": "bi-autoresearch",
+      "category": "Business Intelligence",
+      "category_key": "bi",
+      "description": "Self-improving experiment loop for GSS skills. Generates prompt variants, tests against real metrics, promotes winners. Inspired by Karpathy's autoresearch.",
+      "triggers": [
+        "autoresearch",
+        "improve skill",
+        "skill experiment",
+        "run experiment on",
+        "self-improve"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/bi-autoresearch"
+    },
+    {
+      "id": "bi-experiment-log",
+      "kind": "skill",
+      "name": "bi-experiment-log",
+      "slug": "bi-experiment-log",
+      "category": "Business Intelligence",
+      "category_key": "bi",
+      "description": "Track A/B tests and experiments across outreach, content, and pipeline. Log hypotheses, results, and conclusions. Auto-promotes to knowledge/patterns/ after 3+ confirmations.",
+      "triggers": [
+        "log experiment",
+        "experiment result",
+        "a/b test result",
+        "what experiments",
+        "experiment log"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/bi-experiment-log"
+    },
+    {
+      "id": "bi-pipeline-forecast",
+      "kind": "skill",
+      "name": "bi-pipeline-forecast",
+      "slug": "bi-pipeline-forecast",
+      "category": "Business Intelligence",
+      "category_key": "bi",
+      "description": "Data-driven pipeline projection using real conversion rates from GSS outreach data. Calculates expected audits, conversations, and revenue from remaining leads.",
+      "triggers": [
+        "pipeline forecast",
+        "forecast",
+        "how many audits",
+        "projected revenue",
+        "pipeline projection"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/bi-pipeline-forecast"
+    },
+    {
+      "id": "bi-weekly-intel",
+      "kind": "skill",
+      "name": "bi-weekly-intel",
+      "slug": "bi-weekly-intel",
+      "category": "Business Intelligence",
+      "category_key": "bi",
+      "description": "Weekly intelligence brief that analyses outreach, content, and pipeline data from the past 7 days and produces actionable recommendations. Feeds into fo-briefing on Monday mornings.",
+      "triggers": [
+        "weekly intel",
+        "weekly report",
+        "intelligence brief",
+        "what's working",
+        "data review"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/bi-weekly-intel"
+    },
+    {
+      "id": "cm-blog-agent",
+      "kind": "skill",
+      "name": "blog-agent",
+      "slug": "cm-blog-agent",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Run the full blog post pipeline: research, write, generate header image, format for publishing, and save outputs locally.",
+      "triggers": [
+        "run blog",
+        "blog pipeline",
+        "blog agent",
+        "write a blog post"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-blog-agent"
+    },
+    {
+      "id": "cm-blog-writer",
+      "kind": "skill",
+      "name": "blog-writer",
+      "slug": "cm-blog-writer",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Write research-backed blog posts for gtmsignalstudio.com optimised for both SEO and AEO (AI citation). Includes meta description, internal link suggestions, and a companion LinkedIn teaser post.",
+      "triggers": [
+        "blog post about",
+        "write a blog",
+        "article about",
+        "pillar article",
+        "blog for the website"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-blog-writer"
+    },
+    {
+      "id": "cm-carousel-builder",
+      "kind": "skill",
+      "name": "cm-carousel-builder",
+      "slug": "cm-carousel-builder",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Generate a 6-slide LinkedIn carousel for GSS with Twitter-style headers (avatar + blue tick + handle). Uses Python + Playwright.",
+      "triggers": [
+        "carousel about",
+        "build a carousel",
+        "linkedin carousel",
+        "carousel for"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-carousel-builder"
+    },
+    {
+      "id": "cm-copywriter",
+      "kind": "skill",
+      "name": "copywriter",
+      "slug": "cm-copywriter",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Cross-cutting copy optimization skill. Evaluates and improves hooks, titles, subject lines, and CTAs for all content types (blog, newsletter, LinkedIn, YouTube). Generates 3 scored alternatives per element using the 4U+S framework.",
+      "triggers": [
+        "optimize copy",
+        "score this hook",
+        "copywriter"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-copywriter"
+    },
+    {
+      "id": "cm-excalidraw-builder",
+      "kind": "skill",
+      "name": "excalidraw-builder",
+      "slug": "cm-excalidraw-builder",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Use when asked to create a diagram, visual, flowchart, system map, or any Excalidraw output.",
+      "triggers": [
+        "excalidraw",
+        "diagram of",
+        "draw this",
+        "visualise this",
+        "flowchart"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-excalidraw-builder"
+    },
+    {
+      "id": "cm-expert-copywriter",
+      "kind": "skill",
+      "name": "expert-copywriter",
+      "slug": "cm-expert-copywriter",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Strategic copywriting intelligence for all GSS departments. Produces a Copy Strategy Brief before writing begins \u2014 ICP psychology, narrative approach, storytelling patterns, and CTA strategy aligned to the correct funnel lane. Sits above cm-copywriter (which handles tactical scoring at Step 4). This skill operates at Step 2.5 (between research and writing).",
+      "triggers": [
+        "copy strategy",
+        "story angle",
+        "expert copywriter",
+        "how should I frame this"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-expert-copywriter"
+    },
+    {
+      "id": "cm-infographic-builder",
+      "kind": "skill",
+      "name": "infographic-builder",
+      "slug": "cm-infographic-builder",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Use when asked to create an infographic, branded image, or visual asset.",
+      "triggers": [
+        "infographic about",
+        "create an infographic",
+        "visual for",
+        "branded image",
+        "generate an image"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-infographic-builder"
+    },
+    {
+      "id": "cm-linkedin-agent",
+      "kind": "skill",
+      "name": "linkedin-agent",
+      "slug": "cm-linkedin-agent",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Run the full LinkedIn post pipeline: research (if needed), write, generate companion image, and save outputs locally.",
+      "triggers": [
+        "run linkedin",
+        "linkedin pipeline",
+        "linkedin agent",
+        "create a linkedin post"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-linkedin-agent"
+    },
+    {
+      "id": "cm-linkedin-creator",
+      "kind": "skill",
+      "name": "linkedin-creator",
+      "slug": "cm-linkedin-creator",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Use when asked to write a LinkedIn post, LinkedIn carousel, or any LinkedIn content.",
+      "triggers": [
+        "LinkedIn post",
+        "write a post about",
+        "carousel about",
+        "post about",
+        "LinkedIn content"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-linkedin-creator"
+    },
+    {
+      "id": "cm-newsletter-agent",
+      "kind": "skill",
+      "name": "newsletter-agent",
+      "slug": "cm-newsletter-agent",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Run the full newsletter pipeline: research, write, generate header image, format for Beehiiv, and save outputs locally.",
+      "triggers": [
+        "run newsletter",
+        "publish newsletter",
+        "newsletter pipeline",
+        "newsletter agent",
+        "this week's newsletter"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-newsletter-agent"
+    },
+    {
+      "id": "cm-newsletter-creator",
+      "kind": "skill",
+      "name": "newsletter-creator",
+      "slug": "cm-newsletter-creator",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Use when asked to write a newsletter, Beehiiv content, email newsletter, or \"The GTM Signal\" issue.",
+      "triggers": [
+        "The GTM Signal",
+        "newsletter about",
+        "write a newsletter",
+        "Beehiiv",
+        "GTM Signal issue"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-newsletter-creator"
+    },
+    {
+      "id": "cm-saturday-reflection",
+      "kind": "skill",
+      "name": "cm-saturday-reflection",
+      "slug": "cm-saturday-reflection",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Saturday LinkedIn post \u2014 personal leadership reflection. The Enterprise Edge pillar. Tech-to-leadership transition, stakeholder management, communication growth, negotiation.",
+      "triggers": [
+        "saturday post",
+        "saturday reflection",
+        "enterprise edge post",
+        "leadership reflection",
+        "write a reflection"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-saturday-reflection"
+    },
+    {
+      "id": "cm-weekly-content",
+      "kind": "skill",
+      "name": "cm-weekly-content",
+      "slug": "cm-weekly-content",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Full weekly content production pipeline. Researches keywords and PAA, writes 4 blog posts + 5 LinkedIn posts + 1 newsletter, generates all images, and prepares everything for publishing. One command produces an entire week of content.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-weekly-content"
+    },
+    {
+      "id": "cm-youtube-agent",
+      "kind": "skill",
+      "name": "youtube-agent",
+      "slug": "cm-youtube-agent",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Run the full YouTube video production pipeline: research (if needed), write script, generate Excalidraw diagram, generate thumbnail, write metadata, and save outputs locally.",
+      "triggers": [
+        "run youtube",
+        "youtube pipeline",
+        "youtube agent",
+        "create a youtube video",
+        "youtube script"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-youtube-agent"
+    },
+    {
+      "id": "cm-youtube-scriptwriter",
+      "kind": "skill",
+      "name": "youtube-scriptwriter",
+      "slug": "cm-youtube-scriptwriter",
+      "category": "Content",
+      "category_key": "cm",
+      "description": "Use when asked to write a YouTube video script.",
+      "triggers": [
+        "youtube script",
+        "write a script about",
+        "video script",
+        "youtube content"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/cm-youtube-scriptwriter"
+    },
+    {
+      "id": "fo-accountability",
+      "kind": "skill",
+      "name": "fo-accountability",
+      "slug": "fo-accountability",
+      "category": "Founder Ops",
+      "category_key": "fo",
+      "description": "Chief Accountability Officer. Runs a single-priority diagnostic on the business. Reads pipeline, campaigns, content, and sprint state, then delivers ONE action that has the highest probability of moving the business toward revenue today. Calls out avoidance patterns. Biases hard toward outward-facing work.",
+      "triggers": [
+        "what should I focus on",
+        "hold me accountable",
+        "what's the one thing",
+        "accountability check",
+        "CAO"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/fo-accountability"
+    },
+    {
+      "id": "fo-audit",
+      "kind": "skill",
+      "name": "fo-audit",
+      "slug": "fo-audit",
+      "category": "Founder Ops",
+      "category_key": "fo",
+      "description": "AIOS health check for the GSS workspace. Scores the 4 Cs (Context, Connections, Capabilities, Cadence) out of 100, maps coverage against the 7 tier-1 business domains (revenue, customers, calendar, comms, tasks, meetings, knowledge), surfaces the top 3 leverage gaps, and recommends the single next move. Saves results to founder/audits/ so progress compounds across runs.",
+      "triggers": [
+        "audit",
+        "aios audit",
+        "4 Cs audit",
+        "audit gss",
+        "score the system"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/fo-audit"
+    },
+    {
+      "id": "fo-briefing",
+      "kind": "skill",
+      "name": "fo-briefing",
+      "slug": "fo-briefing",
+      "category": "Founder Ops",
+      "category_key": "fo",
+      "description": "Morning briefing for the GSS founder. Checks Google Calendar, Gmail, Airtable pipeline, Airtable content calendar, and content backlog to produce today's top 3 priorities focused on the current sprint goal.",
+      "triggers": [
+        "morning briefing",
+        "daily briefing",
+        "what should I do today",
+        "today's priorities",
+        "brief me"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/fo-briefing"
+    },
+    {
+      "id": "fo-coordinator",
+      "kind": "skill",
+      "name": "fo-coordinator",
+      "slug": "fo-coordinator",
+      "category": "Founder Ops",
+      "category_key": "fo",
+      "description": "Strategic coordinator for the GSS founder. Analyzes the current state across pipeline, content, and sprint goals, then recommends the single highest-impact action to take right now. Also handles weekly planning and sprint reviews.",
+      "triggers": [
+        "what should I focus on",
+        "coordinate",
+        "weekly plan",
+        "sprint review",
+        "what's most important"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/fo-coordinator"
+    },
+    {
+      "id": "fo-dpo",
+      "kind": "skill",
+      "name": "fo-dpo",
+      "slug": "fo-dpo",
+      "category": "Founder Ops",
+      "category_key": "fo",
+      "description": "Data Protection Officer for GTM Signal Studio. Audits data flows, flags GDPR/PECR exposure, advises on compliance, and generates compliance reports.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/fo-dpo"
+    },
+    {
+      "id": "fo-pipeline-pulse",
+      "kind": "skill",
+      "name": "fo-pipeline-pulse",
+      "slug": "fo-pipeline-pulse",
+      "category": "Founder Ops",
+      "category_key": "fo",
+      "description": "Check the sales pipeline health and surface urgent actions. Scans the Airtable Campaign-Tracker table for leads going cold, overdue follow-ups, stale prospects, and pipeline gaps.",
+      "triggers": [
+        "pipeline check",
+        "pipeline pulse",
+        "check my leads",
+        "how's the pipeline"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/fo-pipeline-pulse"
+    },
+    {
+      "id": "fo-signal-funnel",
+      "kind": "skill",
+      "name": "fo-signal-funnel",
+      "slug": "fo-signal-funnel",
+      "category": "Founder Ops",
+      "category_key": "fo",
+      "description": "The Signal Funnel \u2014 GSS's lead routing framework. Shows the 3-lane funnel, validates channel routing, and returns the correct CTA for any channel.",
+      "triggers": [
+        "signal funnel",
+        "funnel check",
+        "which lane",
+        "routing check",
+        "what CTA should I use"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/fo-signal-funnel"
+    },
+    {
+      "id": "pe-script-writer",
+      "kind": "skill",
+      "name": "script-writer",
+      "slug": "pe-script-writer",
+      "category": "Platform Engineering",
+      "category_key": "pe",
+      "description": "Use when a Python tool script needs to be created, updated, or fixed.",
+      "triggers": [
+        "write a tool",
+        "build a script",
+        "Python script for",
+        "create a tool for",
+        "fix this tool"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/pe-script-writer"
+    },
+    {
+      "id": "pe-website-agent",
+      "kind": "skill",
+      "name": "website-agent",
+      "slug": "pe-website-agent",
+      "category": "Platform Engineering",
+      "category_key": "pe",
+      "description": "Manage content for the GTM Signal Studio website (gtmsignalstudio.com). Write blog posts, update page copy, and run SEO audits.",
+      "triggers": [
+        "website content",
+        "update website",
+        "website blog",
+        "seo audit",
+        "website agent"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/pe-website-agent"
+    },
+    {
+      "id": "ri-ai-presence-audit",
+      "kind": "skill",
+      "name": "ai-visibility-audit",
+      "slug": "ri-ai-presence-audit",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Audit a B2B company's AI visibility across Google AI Mode, Perplexity and ChatGPT. Scores 4 dimensions: AI Citation Presence, Entity Recognition, Content Structure, and Citation Breadth. Produces a scored report (0-100) with a prioritized fix list and PDF.",
+      "triggers": [
+        "ai visibility audit",
+        "ai visibility check",
+        "ai presence audit",
+        "check ai visibility",
+        "ai presence check"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-ai-presence-audit"
+    },
+    {
+      "id": "ri-icp-research-agent",
+      "kind": "skill",
+      "name": "icp-research-agent",
+      "slug": "ri-icp-research-agent",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Research what ICPs are talking about, asking, and struggling with across communities and forums. Produces structured topic bank with sources, dates, angles, and urgency ratings. Pushes to Airtable and feeds content agents. Use when: \"research icps\", \"icp research\", \"find topics\", \"what are icps talking about\", \"topic research\", \"research agent\", or /icp-research-agent.",
+      "triggers": [
+        "research icps",
+        "icp research",
+        "find topics",
+        "what are icps talking about",
+        "topic research"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-icp-research-agent"
+    },
+    {
+      "id": "ri-linkedin-signal",
+      "kind": "skill",
+      "name": "ri-linkedin-signal",
+      "slug": "ri-linkedin-signal",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Scan a LinkedIn profile or company for buying signals, score outreach readiness, and generate a signal-led personalized message. Input a name, company, or LinkedIn URL.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-linkedin-signal"
+    },
+    {
+      "id": "ri-linkedin-signal-report-pdf",
+      "kind": "skill",
+      "name": "ri-linkedin-signal-report-pdf",
+      "slug": "ri-linkedin-signal-report-pdf",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Generate a professional PDF report from the most recent LinkedIn signal scan (single or batch). Produces a branded, client-ready PDF with signal scores, outreach messages, and prioritization dashboard.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-linkedin-signal-report-pdf"
+    },
+    {
+      "id": "ri-linkedin-signals-batch",
+      "kind": "skill",
+      "name": "ri-linkedin-signals-batch",
+      "slug": "ri-linkedin-signals-batch",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Batch scan 5-10 target companies or people for LinkedIn buying signals. Prioritizes who to contact first and generates personalized outreach for the top 3. Input a list of names, companies, or URLs.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-linkedin-signals-batch"
+    },
+    {
+      "id": "ri-martech-audit",
+      "kind": "skill",
+      "name": "ri-martech-audit",
+      "slug": "ri-martech-audit",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Scan any website to detect installed marketing tools, score the stack, and generate a branded PDF report.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-martech-audit"
+    },
+    {
+      "id": "ri-signal-source-method",
+      "kind": "skill",
+      "name": "signal-source-method",
+      "slug": "ri-signal-source-method",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Run The Signal Source Method: GSS's 6-step research framework for producing original data that AI platforms cite. Steps: Signal, Scope, Scan, Score, Source, Seed.",
+      "triggers": [
+        "signal source method",
+        "run research",
+        "new study",
+        "research framework",
+        "original research"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-signal-source-method"
+    },
+    {
+      "id": "ri-signalled-agent",
+      "kind": "skill",
+      "name": "signalled-agent",
+      "slug": "ri-signalled-agent",
+      "category": "Research",
+      "category_key": "ri",
+      "description": "Run the SignalLed lead qualification pipeline: fetch signals from Signalbase API, research via Exa, qualify against ICP, enrich emails via Hunter.io, push to Airtable.",
+      "triggers": [
+        "run signalled",
+        "signalled pipeline",
+        "signalled agent",
+        "run funding signals",
+        "find leads"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/ri-signalled-agent"
+    },
+    {
+      "id": "so-daily-outreach",
+      "kind": "skill",
+      "name": "daily-outreach",
+      "slug": "so-daily-outreach",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Guide the daily manual outreach workflow: Google Maps prospecting, AI Mode visibility check, Gmail email. Target: 5 emails/day to local Kent businesses before noon.",
+      "triggers": [
+        "daily outreach",
+        "send emails",
+        "outreach check",
+        "how many emails today",
+        "outreach workflow"
+      ],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-daily-outreach"
+    },
+    {
+      "id": "so-gtm-audit",
+      "kind": "skill",
+      "name": "so-gtm-audit",
+      "slug": "so-gtm-audit",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Run a full Go-To-Market audit on any B2B company website. Single-pass analysis \u2014 no sub-agents. Fetches key pages in parallel, scores 6 categories (including AI Visibility), produces a branded report with prioritized action plan.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-gtm-audit"
+    },
+    {
+      "id": "so-gtm-channels",
+      "kind": "skill",
+      "name": "so-gtm-channels",
+      "slug": "so-gtm-channels",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Audit a B2B company's marketing and sales channel mix. Evaluates presence, activity, and effectiveness across all GTM channels including LinkedIn, blog, email, paid ads, SEO, community, and partnerships.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-gtm-channels"
+    },
+    {
+      "id": "so-gtm-content",
+      "kind": "skill",
+      "name": "so-gtm-content",
+      "slug": "so-gtm-content",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Analyze whether a B2B company's content maps to buyer pain points, funnel stages, and search intent. Evaluates content-market fit, topic coverage, and content strategy effectiveness.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-gtm-content"
+    },
+    {
+      "id": "so-gtm-icp",
+      "kind": "skill",
+      "name": "so-gtm-icp",
+      "slug": "so-gtm-icp",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Analyze a B2B company's Ideal Customer Profile clarity. Evaluates who they target, how well-defined their ICP is, and whether their messaging aligns with their intended audience.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-gtm-icp"
+    },
+    {
+      "id": "so-gtm-messaging",
+      "kind": "skill",
+      "name": "so-gtm-messaging",
+      "slug": "so-gtm-messaging",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Evaluate a B2B company's messaging and positioning. Analyzes value propositions, differentiation, headline clarity, CTA effectiveness, and positioning against established frameworks.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-gtm-messaging"
+    },
+    {
+      "id": "so-gtm-report-pdf",
+      "kind": "skill",
+      "name": "so-gtm-report-pdf",
+      "slug": "so-gtm-report-pdf",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Generate a professional PDF report from the most recent GTM audit. Converts the markdown audit report into a branded, client-ready PDF with scoring visuals, findings tables, and action plans.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-gtm-report-pdf"
+    },
+    {
+      "id": "so-gtm-signals",
+      "kind": "skill",
+      "name": "so-gtm-signals",
+      "slug": "so-gtm-signals",
+      "category": "Sales & Outreach",
+      "category_key": "so",
+      "description": "Detect growth, risk, and competitive signals for a B2B company. Analyzes hiring patterns, funding news, tech stack, competitive landscape, and market positioning signals.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/skills/so-gtm-signals"
+    },
+    {
+      "id": "accessibility_correlation",
+      "kind": "cli",
+      "name": "accessibility_correlation",
+      "slug": "accessibility_correlation",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: accessibility_correlation",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/accessibility_correlation.py"
+    },
+    {
+      "id": "accessibility_scanner",
+      "kind": "cli",
+      "name": "accessibility_scanner",
+      "slug": "accessibility_scanner",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: accessibility_scanner",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/accessibility_scanner.py"
+    },
+    {
+      "id": "ai_presence_report_pdf",
+      "kind": "cli",
+      "name": "ai_presence_report_pdf",
+      "slug": "ai_presence_report_pdf",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: ai_presence_report_pdf",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/ai_presence_report_pdf.py"
+    },
+    {
+      "id": "ai_presence_scanner",
+      "kind": "cli",
+      "name": "ai_presence_scanner",
+      "slug": "ai_presence_scanner",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: ai_presence_scanner (v2 \u2014 multi-API)",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/ai_presence_scanner.py"
+    },
+    {
+      "id": "batch_ai_scan",
+      "kind": "cli",
+      "name": "batch_ai_scan",
+      "slug": "batch_ai_scan",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Batch AI Presence Scanner \u2014 scan multiple companies and output summary.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/batch_ai_scan.py"
+    },
+    {
+      "id": "blog_featured_image",
+      "kind": "cli",
+      "name": "blog_featured_image",
+      "slug": "blog_featured_image",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Blog Featured Image Generator \u2014 GTM Signal Studio",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/blog_featured_image.py"
+    },
+    {
+      "id": "branded_infographic",
+      "kind": "cli",
+      "name": "branded_infographic",
+      "slug": "branded_infographic",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Branded Infographic Generator for GTM Signal Studio.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/branded_infographic.py"
+    },
+    {
+      "id": "carousel_builder",
+      "kind": "cli",
+      "name": "carousel_builder",
+      "slug": "carousel_builder",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "GSS Carousel Builder.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/carousel_builder.py"
+    },
+    {
+      "id": "follow_magnet_pdf",
+      "kind": "cli",
+      "name": "follow_magnet_pdf",
+      "slug": "follow_magnet_pdf",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: follow_magnet_pdf",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/follow_magnet_pdf.py"
+    },
+    {
+      "id": "google_drive_upload",
+      "kind": "cli",
+      "name": "google_drive_upload",
+      "slug": "google_drive_upload",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: google_drive_upload",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/google_drive_upload.py"
+    },
+    {
+      "id": "gtm_audit_pdf",
+      "kind": "cli",
+      "name": "gtm_audit_pdf",
+      "slug": "gtm_audit_pdf",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: gtm_audit_pdf",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/gtm_audit_pdf.py"
+    },
+    {
+      "id": "linkedin_chart_image",
+      "kind": "cli",
+      "name": "linkedin_chart_image",
+      "slug": "linkedin_chart_image",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "LinkedIn Chart Image Generator \u2014 GTM Signal Studio",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/linkedin_chart_image.py"
+    },
+    {
+      "id": "linkedin_post_image",
+      "kind": "cli",
+      "name": "linkedin_post_image",
+      "slug": "linkedin_post_image",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "LinkedIn Post Image Generator \u2014 GTM Signal Studio",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/linkedin_post_image.py"
+    },
+    {
+      "id": "martech_report_pdf",
+      "kind": "cli",
+      "name": "martech_report_pdf",
+      "slug": "martech_report_pdf",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: martech_report_pdf",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/martech_report_pdf.py"
+    },
+    {
+      "id": "martech_scanner",
+      "kind": "cli",
+      "name": "martech_scanner",
+      "slug": "martech_scanner",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: martech_scanner",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/martech_scanner.py"
+    },
+    {
+      "id": "perplexity_research",
+      "kind": "cli",
+      "name": "perplexity_research",
+      "slug": "perplexity_research",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: perplexity_research",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/perplexity_research.py"
+    },
+    {
+      "id": "proposal_pdf",
+      "kind": "cli",
+      "name": "proposal_pdf",
+      "slug": "proposal_pdf",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: proposal_pdf",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/proposal_pdf.py"
+    },
+    {
+      "id": "registry_build",
+      "kind": "cli",
+      "name": "registry_build",
+      "slug": "registry_build",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: registry_build",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/registry_build.py"
+    },
+    {
+      "id": "sync_toolkit",
+      "kind": "cli",
+      "name": "sync_toolkit",
+      "slug": "sync_toolkit",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "sync_toolkit.py \u2014 Mirror curated GSS skills + tools into the public gss-toolkit repo",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/sync_toolkit.py"
+    },
+    {
+      "id": "utils",
+      "kind": "cli",
+      "name": "utils",
+      "slug": "utils",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "Tool: utils",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/utils.py"
+    },
+    {
+      "id": "youtube_transcriber",
+      "kind": "cli",
+      "name": "youtube_transcriber",
+      "slug": "youtube_transcriber",
+      "category": "Python CLI",
+      "category_key": "cli",
+      "description": "YouTube Transcriber \u2014 Fetches transcript from any YouTube video URL.",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/blob/main/tools/python/youtube_transcriber.py"
+    },
+    {
+      "id": "gmaps-lead-scraper",
+      "kind": "extension",
+      "name": "gmaps-lead-scraper",
+      "slug": "gmaps-lead-scraper",
+      "category": "Chrome Extension",
+      "category_key": "extension",
+      "description": "Chrome extension: gmaps-lead-scraper",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/extensions/gmaps-lead-scraper"
+    },
+    {
+      "id": "linkedin-comment-extension",
+      "kind": "extension",
+      "name": "linkedin-comment-extension",
+      "slug": "linkedin-comment-extension",
+      "category": "Chrome Extension",
+      "category_key": "extension",
+      "description": "Chrome extension: linkedin-comment-extension",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/extensions/linkedin-comment-extension"
+    },
+    {
+      "id": "reddit-comment-extension",
+      "kind": "extension",
+      "name": "reddit-comment-extension",
+      "slug": "reddit-comment-extension",
+      "category": "Chrome Extension",
+      "category_key": "extension",
+      "description": "Chrome extension: reddit-comment-extension",
+      "triggers": [],
+      "github_url": "https://github.com/oloyeaaa/gss-toolkit/tree/main/extensions/reddit-comment-extension"
+    }
+  ]
+}

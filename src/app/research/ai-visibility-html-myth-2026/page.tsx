@@ -549,6 +549,44 @@ export default function HtmlMythResearchPage() {
           }),
         }}
       />
+
+      {/* Dataset Schema — citable underlying data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            "@id": "https://gtmsignalstudio.com/research/ai-visibility-html-myth-2026#dataset",
+            name: "The HTML Myth in AI Visibility — Accessibility vs Citation Correlation",
+            description:
+              "492 enterprise sites tested for correlation between WCAG accessibility score and AI citation presence. Pearson r=-0.007, delta 0.1 points. Refutes the claim that clean HTML drives AI citation.",
+            url: "https://gtmsignalstudio.com/research/ai-visibility-html-myth-2026",
+            creator: { "@id": "https://gtmsignalstudio.com/#founder" },
+            publisher: { "@id": "https://gtmsignalstudio.com/#organization" },
+            datePublished: "2026-05-01",
+            dateModified: "2026-05-01",
+            inLanguage: "en-GB",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            isAccessibleForFree: true,
+            keywords: ["AI visibility", "AEO", "accessibility", "WCAG", "correlation study"],
+            spatialCoverage: { "@type": "Place", name: "United Kingdom" },
+            variableMeasured: [
+              "WCAG accessibility score (0–100)",
+              "AI citation presence (0–25)",
+              "Pearson correlation coefficient",
+            ],
+            measurementTechnique:
+              "Paired-sample correlation analysis: each site scored on accessibility and AI citation presence; Pearson's r computed across N=492.",
+            numberOfItems: 492,
+            distribution: {
+              "@type": "DataDownload",
+              encodingFormat: "text/html",
+              contentUrl: "https://gtmsignalstudio.com/research/ai-visibility-html-myth-2026",
+            },
+          }),
+        }}
+      />
     </>
   );
 }

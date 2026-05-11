@@ -428,6 +428,46 @@ export default function BenchmarkPage() {
           }),
         }}
       />
+
+      {/* Dataset Schema — citable underlying data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Dataset",
+            "@id": "https://gtmsignalstudio.com/research/ai-visibility-benchmark-2026#dataset",
+            name: "AI Visibility Benchmark 2026 — Enterprise Edition",
+            description:
+              "Original dataset: 50 enterprise B2B companies scored across 4 AI visibility dimensions (Citation Presence, Entity Recognition, Content Structure, Citation Breadth). Published by GTM Signal Studio.",
+            url: "https://gtmsignalstudio.com/research/ai-visibility-benchmark-2026",
+            sameAs: "https://gtmsignalstudio.com/research/ai-visibility-benchmark-2026",
+            creator: { "@id": "https://gtmsignalstudio.com/#founder" },
+            publisher: { "@id": "https://gtmsignalstudio.com/#organization" },
+            datePublished: "2026-03-25",
+            dateModified: "2026-03-25",
+            inLanguage: "en-GB",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            isAccessibleForFree: true,
+            keywords: ["AI visibility", "AEO", "enterprise marketing", "benchmark", "B2B"],
+            spatialCoverage: { "@type": "Place", name: "United Kingdom" },
+            variableMeasured: [
+              "AI Citation Presence (0–25)",
+              "Entity Recognition (0–25)",
+              "Content Structure for AI (0–25)",
+              "Citation Breadth (0–25)",
+            ],
+            measurementTechnique:
+              "Multi-platform AI query scanning (Google AI Mode, Perplexity, ChatGPT) with structured scoring against four dimensions. See methodology for full protocol.",
+            numberOfItems: 50,
+            distribution: {
+              "@type": "DataDownload",
+              encodingFormat: "text/html",
+              contentUrl: "https://gtmsignalstudio.com/research/ai-visibility-benchmark-2026",
+            },
+          }),
+        }}
+      />
     </>
   );
 }
