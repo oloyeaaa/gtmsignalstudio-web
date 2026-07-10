@@ -1,0 +1,36 @@
+{
+  "slug": "gss",
+  "displayName": "GTM Signal Studio",
+  "_comment": "TODO: the Airtable Blog table for GSS may not exist yet. Once it does, run the sync-client-schema pattern (see docs/blog-pipeline.md) to resolve real base/table/field IDs and replace every TODO_* placeholder below. Field NAMES (the JSON keys under fields) must match the real Airtable column names exactly — the Airtable REST API is called by field name, not field ID, so field IDs here are for reference/parity with the sync-client-schema config shape only.",
+  "airtable": {
+    "baseId": "TODO_AIRTABLE_BASE_ID",
+    "blog": {
+      "tableId": "TODO_AIRTABLE_TABLE_ID",
+      "tableName": "Blog",
+      "fields": {
+        "Title": "TODO_FIELD_ID",
+        "Slug": "TODO_FIELD_ID",
+        "Status": "TODO_FIELD_ID",
+        "Excerpt": "TODO_FIELD_ID",
+        "Body": "TODO_FIELD_ID",
+        "Cover Image": "TODO_FIELD_ID",
+        "Meta Description": "TODO_FIELD_ID",
+        "Category": "TODO_FIELD_ID",
+        "Tags": "TODO_FIELD_ID"
+      },
+      "statusChoices": {
+        "Draft": "TODO_CHOICE_ID",
+        "Review": "TODO_CHOICE_ID",
+        "Published": "TODO_CHOICE_ID"
+      }
+    }
+  },
+  "supabase": {
+    "table": "posts",
+    "defaultAuthor": "GTM Signal Studio",
+    "defaultCategory": "Enterprise Marketing",
+    "validCategories": ["Enterprise Marketing", "AI Visibility", "Tool Reviews"],
+    "deliveryStatus": "draft"
+  },
+  "lastSynced": null
+}
