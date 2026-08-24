@@ -117,13 +117,10 @@ export default function UkMarketingCareers2026() {
     spatialCoverage: { "@type": "Place", name: "United Kingdom" },
     temporalCoverage: "2025/2026",
     creator: { "@type": "Organization", name: "GTM Signal Studio", url: "https://gtmsignalstudio.com" },
-    distribution: [
-      {
-        "@type": "DataDownload",
-        encodingFormat: "application/json",
-        contentUrl: "https://gtmsignalstudio.com/api/stats?category=marketing-careers",
-      },
-    ],
+    // Deliberately no DataDownload pointing at the raw API. Oloye's call 2026-08-24, and he
+    // is right: handing a stranger a JSON dump one click from a public page is the wrong
+    // front door. It costs nothing for citation, because variableMeasured below already
+    // carries all twelve roles with their values and sources inside the page itself.
     variableMeasured: ROLES.map((r) => ({
       "@type": "PropertyValue",
       name: r.role,
@@ -344,8 +341,8 @@ export default function UkMarketingCareers2026() {
           <div className="mt-10 p-6 bg-cream rounded-lg">
             <p className="font-semibold text-text-dark mb-3">Use the data</p>
             <p className="text-text-body mb-4">
-              Every figure above is published in the stats database with its source, and served
-              as JSON. Free to cite, quote or build on, with attribution.
+              Every figure above is in the stats database with the source it came from. Free to
+              cite, quote or build on, with attribution.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
@@ -354,12 +351,6 @@ export default function UkMarketingCareers2026() {
               >
                 Browse the stats database
               </Link>
-              <a
-                href="/api/stats?category=marketing-careers"
-                className="border border-text-dark/20 hover:border-text-dark/40 text-text-dark px-5 py-2.5 rounded-lg font-semibold text-sm text-center transition-colors"
-              >
-                Get the raw JSON
-              </a>
             </div>
             <p className="text-sm text-text-muted mt-4">
               Suggested citation: GTM Signal Studio, <em>UK Marketing Careers 2026</em>, {UPDATED}.{" "}
