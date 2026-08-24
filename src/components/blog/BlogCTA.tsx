@@ -4,6 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { trackCTAClick, trackNewsletterClick } from "@/components/Analytics";
 
+/**
+ * The end-of-post block.
+ *
+ * Changed 2026-08-24: this used to sell the AI Visibility Audit. Nothing on this site is for
+ * sale any more. GTM Signal Studio is a research brand, so the ask is to use the research
+ * rather than to buy anything. The newsletter stays, because it is free.
+ */
 export default function BlogCTA() {
   const pathname = usePathname();
 
@@ -11,18 +18,20 @@ export default function BlogCTA() {
     <div className="bg-navy py-16">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h3 className="font-heading text-xl font-bold text-white mb-3">
-          Is AI recommending your company?
+          Cite the source, not the summary
         </h3>
         <p className="text-white/60 mb-6">
-          Scored across 4 dimensions. Prioritised fix list. 48-hour delivery.
+          Every figure on this site is published with the source it came from, free to use.
+          Original research on AI visibility, and on what the market really pays for marketing
+          skills.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/ai-visibility-audit"
+            href="/research/stats"
             className="bg-orange hover:bg-orange-hover text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            onClick={() => trackCTAClick("ai_visibility_audit_cta", pathname)}
+            onClick={() => trackCTAClick("research_stats_cta", pathname)}
           >
-            Get Your AI Visibility Audit
+            Browse the data
           </Link>
           <a
             href="https://newsletter.gtmsignalstudio.com"

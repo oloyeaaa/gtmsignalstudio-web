@@ -115,16 +115,16 @@ export default async function StatsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/ai-visibility-audit"
+              href="/research/stats"
               className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors"
             >
-              AI Visibility Audit — £297
+              Browse the data
             </Link>
             <Link
-              href="/competitive-report"
+              href="/research"
               className="inline-block bg-navy hover:bg-navy-light text-white font-semibold px-8 py-4 rounded-lg transition-colors"
             >
-              Competitive Report — £997
+              Read the studies
             </Link>
           </div>
         </div>

@@ -400,10 +400,10 @@ export default function AiVisibilityPlaybookPage() {
             plan, PDF delivered within 48 hours.
           </p>
           <Link
-            href="/ai-visibility-audit"
+            href="/research/stats"
             className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
           >
-            Check your AI Visibility
+            Browse the data
           </Link>
 
           <div className="mt-12 pt-8 border-t border-light-border">

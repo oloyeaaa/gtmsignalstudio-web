@@ -5,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 export const metadata: Metadata = {
   title: "Research | AI Visibility & Enterprise Marketing Data",
   description:
-    "Original research on AI visibility, enterprise marketing, and B2B go-to-market. Real data from real audits. Cite the source, not the summary.",
+    "Original research on AI visibility, UK marketing careers and B2B go-to-market. Real data, every figure with its source. Cite the source, not the summary.",
   keywords: [
     "AI visibility research",
     "enterprise marketing data",
@@ -26,6 +26,15 @@ export const metadata: Metadata = {
 };
 
 const studies = [
+  {
+    title: "UK Marketing Careers 2026",
+    slug: "uk-marketing-careers-2026",
+    status: "Published",
+    description:
+      "Twelve UK marketing roles ranked on median salary, hiring demand, how hard each is to enter, and what AI is doing to it. Product marketing and campaign management sit £20,000 apart on almost identical job-ad volume, which makes the gap a labour-pool problem rather than a market one.",
+    stats: "12 roles, 28 sourced figures, IT Jobs Watch + Ashdown + Robert Half",
+    date: "August 2026",
+  },
   {
     title: "The HTML Myth in AI Visibility",
     slug: "ai-visibility-html-myth-2026",
@@ -270,10 +279,10 @@ export default function ResearchPage() {
             investigate, get in touch.
           </p>
           <Link
-            href="/ai-visibility-audit"
+            href="/research/stats"
             className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
           >
-            Get Your AI Visibility Score
+            Browse the data
           </Link>
         </div>
       </section>

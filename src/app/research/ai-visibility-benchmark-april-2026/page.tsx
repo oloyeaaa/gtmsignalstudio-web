@@ -469,16 +469,16 @@ export default function BenchmarkAprilPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/competitive-report"
+              href="/research"
               className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
             >
-              Get Your Competitive Report
+              Read the studies
             </Link>
             <Link
-              href="/ai-visibility-audit"
+              href="/research/stats"
               className="inline-block border border-light-border hover:border-orange text-text-dark font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
             >
-              Single Audit
+              Read the studies
             </Link>
           </div>
           <p className="text-text-muted text-sm mt-4">

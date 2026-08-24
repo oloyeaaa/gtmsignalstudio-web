@@ -133,10 +133,10 @@ export default async function ToolsPage() {
               Run Free Scan
             </Link>
             <Link
-              href="/ai-visibility-audit"
+              href="/research/stats"
               className="border border-white/20 text-white hover:bg-white/5 px-6 py-3 rounded-lg font-semibold transition-colors"
             >
-              Full AI Visibility Audit
+              Browse the data
             </Link>
           </div>
         </div>

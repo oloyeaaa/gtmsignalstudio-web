@@ -33,7 +33,7 @@ const tools = [
     description: "4-dimension AI visibility scanner. Checks Google AI Mode, Perplexity, and ChatGPT citation presence. Scores 0-100 with a prioritised fix list and branded PDF report.",
     tech: ["Python", "Perplexity API", "Claude Code"],
     github: "https://github.com/oloyeaaa/gss-open-tools/tree/master/agents/ri-ai-presence-audit",
-    note: "Powers the £297 AI Visibility Audit service. 150+ companies benchmarked across 3 published studies.",
+    note: "Powers the AI visibility research. 150+ companies benchmarked across 3 published studies.",
   },
   {
     name: "Blog Agent",
@@ -150,7 +150,7 @@ const tools = [
     description: "Branded PDF generator for AI Visibility audit reports. Takes the markdown audit output and renders a professional document with scores, findings, and recommendations.",
     tech: ["Python"],
     github: "https://github.com/oloyeaaa/gss-open-tools/blob/master/python-tools/ai_presence_report_pdf.py",
-    note: "Deliverable for the £297 AI Visibility Audit.",
+    note: "Built for the AI visibility research.",
   },
   {
     name: "Infographic Builder",

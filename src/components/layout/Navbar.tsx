@@ -10,7 +10,6 @@ const navLinks = [
   { href: "/toolkit", label: "Toolkit" },
   { href: "/resources", label: "Resources" },
   { href: "/blog", label: "Blog" },
-  { href: "/work-with-me", label: "Work With Me" },
 ];
 
 const aboutLinks = [
@@ -70,10 +69,10 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/ai-visibility-audit"
+              href="/research/stats"
               className="bg-orange hover:bg-orange-hover text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors"
             >
-              AI Visibility Audit
+              The Data
             </Link>
           </div>
 
@@ -119,11 +118,11 @@ export default function Navbar() {
               ))}
             </div>
             <Link
-              href="/ai-visibility-audit"
+              href="/research/stats"
               className="block mt-3 bg-orange hover:bg-orange-hover text-white px-4 py-2 rounded-lg font-semibold text-sm text-center transition-colors"
               onClick={() => setMobileOpen(false)}
             >
-              AI Visibility Audit
+              The Data
             </Link>
           </div>
         )}

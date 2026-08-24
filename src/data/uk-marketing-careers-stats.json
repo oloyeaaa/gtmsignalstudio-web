@@ -1,0 +1,262 @@
+{
+  "_meta": {
+    "title": "UK marketing careers and salaries — citable stats",
+    "created": "2026-08-24",
+    "purpose": "Seed data for the GSS stats database. Extends GTM Signal Studio from AI visibility into the second go-to-market signal: what the market actually pays for marketing skills, and what AI is doing to each job. Built to be cited by search engines and by AI, which is the same discipline this site already researches, pointed at itself.",
+    "rule": "Every row carries a named source. Nothing estimated, nothing rounded up, nothing from a search summary that was not read at source. One stat was rejected during collection for failing that test and is recorded at the bottom.",
+    "canonical_source_of_truth": "Oloye-OS/1-Foundation/proof/stat-library.md"
+  },
+
+  "category": {
+    "id": "marketing-careers",
+    "title": "UK Marketing Careers & Salaries",
+    "description": "What every marketing job actually pays in the UK, who is hiring, how hard each is to get into, and what AI is doing to it. Salary data from sources that publish their method; demand data from job-ad counts and recruiter reporting.",
+    "is_gss": false,
+    "status": "published",
+    "sort_order": 10
+  },
+
+  "stats": [
+    {
+      "stat_value": "£65,000",
+      "label": "UK median salary for a Product Marketing Manager, down 7.14% year on year from £70,000",
+      "source": "IT Jobs Watch, 6 months to 24 August 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["product-marketing", "salary", "uk", "median"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "£45,000",
+      "label": "UK median salary for a Campaign Manager, down 5.26% year on year from £47,500",
+      "source": "IT Jobs Watch, 6 months to 24 August 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["campaign-management", "salary", "uk", "median"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "50 vs 56",
+      "label": "Permanent UK job ads over six months: 50 for Product Marketing Manager against 56 for Campaign Manager. Nearly identical demand, £20,000 apart in pay — the gap is scarcity of people, not scarcity of jobs",
+      "source": "IT Jobs Watch, 6 months to 24 August 2026",
+      "source_type": "gss-aggregate",
+      "year": 2026,
+      "tags": ["product-marketing", "campaign-management", "demand", "uk"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "£9,500",
+      "label": "The gap between a Marketing Automation Specialist (£35,500 median) and a Marketing Automation Manager (£45,000 median) in the same salary guide, for heavily overlapping work. The job title is worth £9,500",
+      "source": "Robert Half 2026 UK Salary Guide",
+      "source_type": "gss-aggregate",
+      "year": 2026,
+      "tags": ["marketing-automation", "salary", "job-titles", "uk", "negotiation"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "£61,330",
+      "label": "UK median salary for an SEO Manager — the highest-paid craft role on the board, and the one with the most uncertain outlook as AI changes search",
+      "source": "Ashdown Group Marketing Salary Guide, July 2025",
+      "source_type": "external",
+      "year": 2025,
+      "tags": ["seo", "salary", "uk", "median", "ai-risk"]
+    },
+    {
+      "stat_value": "£56,950",
+      "label": "UK median salary for a PPC Manager. Demand generation is named by recruiters as one of the two most sought-after skill sets in 2026",
+      "source": "Ashdown Group Marketing Salary Guide, July 2025",
+      "source_type": "external",
+      "year": 2025,
+      "tags": ["ppc", "demand-generation", "salary", "uk", "median"]
+    },
+    {
+      "stat_value": "£52,569",
+      "label": "UK median salary for a CRM Manager. Lifecycle and marketing automation roles are among the least exposed to AI, because the job already is the automation",
+      "source": "Ashdown Group Marketing Salary Guide, July 2025",
+      "source_type": "external",
+      "year": 2025,
+      "tags": ["crm", "lifecycle", "salary", "uk", "median", "ai-risk"]
+    },
+    {
+      "stat_value": "£50,817",
+      "label": "UK median salary for a Brand Manager. Well paid, but far fewer roles than candidates, and concentrated in FMCG",
+      "source": "Ashdown Group Marketing Salary Guide, July 2025",
+      "source_type": "external",
+      "year": 2025,
+      "tags": ["brand", "salary", "uk", "median"]
+    },
+    {
+      "stat_value": "£46,436",
+      "label": "UK median salary for a Campaign Manager. The most realistic entry point into marketing for people coming from project management, operations or admin",
+      "source": "Ashdown Group Marketing Salary Guide, July 2025",
+      "source_type": "external",
+      "year": 2025,
+      "tags": ["campaign-management", "salary", "uk", "median", "career-change"]
+    },
+    {
+      "stat_value": "£42,055",
+      "label": "UK median salary for a Content Manager. Content creation is the marketing function AI is disrupting hardest",
+      "source": "Ashdown Group Marketing Salary Guide, July 2025",
+      "source_type": "external",
+      "year": 2025,
+      "tags": ["content-marketing", "salary", "uk", "median", "ai-risk"]
+    },
+    {
+      "stat_value": "£41,750",
+      "label": "UK median salary for a Digital/Insights Analyst, with a 75th percentile of £59,000 — the widest ceiling relative to median of any role measured",
+      "source": "Robert Half 2026 UK Salary Guide",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["analytics", "insights", "salary", "uk", "median"]
+    },
+    {
+      "stat_value": "£39,427",
+      "label": "UK median salary for a PPC Executive, against £56,950 for a PPC Manager — a £17,523 step, the largest single promotion jump measured across UK marketing roles",
+      "source": "Ashdown Group Marketing Salary Guide, July 2025",
+      "source_type": "gss-aggregate",
+      "year": 2025,
+      "tags": ["ppc", "salary", "uk", "promotion", "career-path"]
+    },
+    {
+      "stat_value": "£37,000",
+      "label": "UK median salary for a Social Media Manager — the lowest-paid role carrying the word Manager across UK marketing, despite recruiters reporting these roles are scaling quickly",
+      "source": "Robert Half 2026 UK Salary Guide",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["social-media", "salary", "uk", "median"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "£30,000",
+      "label": "UK median salary for a Digital Marketing Executive — the entry point into marketing, and the level where hiring has contracted most",
+      "source": "Robert Half 2026 UK Salary Guide",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["entry-level", "salary", "uk", "median"]
+    },
+    {
+      "stat_value": "No published median",
+      "label": "Neither of the two UK salary guides that publish quartile methodology lists a median for Copywriter any more. The absence is itself the finding: copywriting remains a core marketing skill while declining as a standalone job title",
+      "source": "Robert Half 2026 UK Salary Guide and Ashdown Group July 2025, both checked 24 August 2026",
+      "source_type": "gss-original",
+      "year": 2026,
+      "tags": ["copywriting", "job-titles", "ai-risk", "uk"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "Down ~£11,000",
+      "label": "Average UK marketing pay fell in 2026 across nearly every sector and level of seniority, by almost £11,000 in some cases",
+      "source": "Marketing Week Career & Salary Survey 2026, 2,350 respondents",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["salary", "uk", "market-conditions"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "51.2%",
+      "label": "Share of UK marketers reporting their role grew without a matching pay rise",
+      "source": "Marketing Week Career & Salary Survey 2026, 2,350 respondents",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["salary", "uk", "market-conditions", "workload"]
+    },
+    {
+      "stat_value": "£111,082",
+      "label": "Average UK salary for CMOs, marketing directors and VPs in 2026, down from £117,623 the year before",
+      "source": "Marketing Week Career & Salary Survey 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["leadership", "cmo", "salary", "uk"]
+    },
+    {
+      "stat_value": "£77,926",
+      "label": "FMCG remains the highest-paying UK marketing sector, but fell from £81,499. Entertainment was the only one of sixteen sectors where pay rose, from £65,420 to £67,342",
+      "source": "Marketing Week Career & Salary Survey 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["sector", "fmcg", "salary", "uk"]
+    },
+    {
+      "stat_value": "+87%",
+      "label": "Marketers actively looking for work rose from 16,000 in January 2025 to around 30,000 in January 2026 at a single UK recruiter — competition for the same roles nearly doubled in twelve months",
+      "source": "UpTalent, via Marketing Week, 23 January 2026",
+      "source_type": "gss-aggregate",
+      "year": 2026,
+      "tags": ["competition", "uk", "job-search", "market-conditions"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "28.8%",
+      "label": "Share of UK marketing leaders expecting to cut their teams in Q1 2026, up from 22.8% the previous quarter. In the same survey 20.9% expected to add headcount, up from 17.5% — the market is contracting and expanding at once",
+      "source": "IPA Bellwether, via Marketing Week, 23 January 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["hiring", "uk", "market-conditions"]
+    },
+    {
+      "stat_value": "−40.8%",
+      "label": "Open roles at IPA member agencies fell from 1,149 in 2024 to 680 in 2025. Agency headcount fell 6.8% year on year, from 26,787 to 24,963",
+      "source": "IPA 2025 Agency Census, published 12 February 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["agency", "hiring", "uk", "market-conditions"]
+    },
+    {
+      "stat_value": "Junior first",
+      "label": "AI is not removing marketing jobs evenly. Teams are flattening from pyramid structures into flatter ones, junior roles are being cut hardest, and content creation is the function most disrupted. The entry route into marketing is closing faster than the roles above it",
+      "source": "3Search and Major Players via Marketing Week 23 January 2026; Michael Page UK Marketing Trends 2026",
+      "source_type": "gss-original",
+      "year": 2026,
+      "tags": ["ai-impact", "junior", "uk", "career-path"],
+      "is_featured": true
+    },
+    {
+      "stat_value": "Least exposed",
+      "label": "Product marketing is the UK marketing role least exposed to AI. The work is judgment built on direct customer contact and internal business knowledge, which is the hardest input in marketing to automate",
+      "source": "GTM Signal Studio analysis of role requirements, August 2026, against Michael Page UK Marketing Trends 2026",
+      "source_type": "gss-original",
+      "year": 2026,
+      "tags": ["ai-impact", "product-marketing", "uk"]
+    },
+    {
+      "stat_value": "Most exposed",
+      "label": "Content production is the UK marketing function most exposed to AI. The role shifts from producing to commissioning, editing and judging, which changes the skill required rather than removing the job",
+      "source": "Michael Page UK Marketing Trends 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["ai-impact", "content-marketing", "uk"]
+    },
+    {
+      "stat_value": "Demand gen and e-commerce",
+      "label": "The two most sought-after UK marketing skill sets in 2026, per recruiter reporting. Growth areas also include creative strategists inside performance teams, creator and influencer specialists, and hands-on Amazon Marketplace and TikTok Shop experience",
+      "source": "Michael Page UK Marketing Trends 2026; 3Search and Major Players via Marketing Week",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["demand-generation", "ecommerce", "skills", "uk", "hiring"]
+    },
+    {
+      "stat_value": "3 to 5 years",
+      "label": "Typical experience UK employers ask for in a Campaign Manager. A CIM qualification is commonly listed as desirable rather than essential, which makes it one of the more open routes into marketing from adjacent fields",
+      "source": "Indeed UK and Campaign Live role requirements, August 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["campaign-management", "entry-requirements", "uk", "career-change"]
+    },
+    {
+      "stat_value": "2 to 4 years",
+      "label": "Product marketing is almost never an entry-level role. Practitioners typically arrive after two to four years in content, campaigns or sales, because the job depends on customer and business knowledge that cannot be held on day one",
+      "source": "Product Marketing Alliance and Indeed UK role descriptions, August 2026",
+      "source_type": "external",
+      "year": 2026,
+      "tags": ["product-marketing", "entry-requirements", "uk", "career-path"]
+    }
+  ],
+
+  "_rejected": [
+    {
+      "claim": "Graduate job postings in marketing and media dropped by as much as 66% (Indeed)",
+      "why_rejected": "Attributed by a web-search summary to a Marketing Week article of 23 January 2026. The full article was retrieved and does not contain the figure. Not used, and not to be used unless found at source.",
+      "date_rejected": "2026-08-24"
+    }
+  ]
+}

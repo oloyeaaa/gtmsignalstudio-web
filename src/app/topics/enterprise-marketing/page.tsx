@@ -471,10 +471,10 @@ export default async function EnterpriseMarketingPillar() {
             with an AI Visibility Audit.
           </p>
           <Link
-            href="/ai-visibility-audit"
+            href="/research/stats"
             className="inline-block bg-orange hover:bg-orange-hover text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg"
           >
-            Get Your AI Visibility Audit
+            Browse the data
           </Link>
         </div>
       </section>
