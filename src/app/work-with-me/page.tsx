@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  // Noindexed 2026-08-24. Nothing on this site is for sale any more, so this page is
+  // kept only so its live URL does not 404 for anyone holding a link. It is unlinked
+  // from the site and must not be indexed or followed.
+  robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   title: "Work With Me | AI Visibility Services — GTM Signal Studio",
   description:
     "Two ways to understand your AI visibility: the £297 single-company audit or the £997 competitive report with 10 competitors benchmarked.",

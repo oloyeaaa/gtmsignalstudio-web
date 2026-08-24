@@ -3,6 +3,10 @@ import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 
 export const metadata: Metadata = {
+  // Noindexed 2026-08-24. Nothing on this site is for sale any more, so this page is
+  // kept only so its live URL does not 404 for anyone holding a link. It is unlinked
+  // from the site and must not be indexed or followed.
+  robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   title: "Competitive AI Visibility Report — GTM Signal Studio",
   description:
     "See where your company ranks against 10 direct competitors on AI visibility. Scored across 4 dimensions with competitive positioning map and priority fixes. Delivered in 7 days.",

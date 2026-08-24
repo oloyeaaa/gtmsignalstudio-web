@@ -12,10 +12,13 @@ export const dynamic = "force-dynamic"; // Fetch fresh from Supabase on every re
 
 export const metadata: Metadata = {
   title:
-    "AI Visibility & B2B Buyer Behaviour Stats | GTM Signal Studio",
+    "Citable Stats: UK Marketing Salaries, AI Visibility & B2B Buyer Behaviour",
   description:
-    "50+ citable stats on how AI is changing B2B buyer behaviour and vendor discovery. Original research from GTM Signal Studio plus verified external data. Updated regularly.",
+    "Citable stats on UK marketing salaries and careers, on how AI is changing B2B buyer behaviour, and on AI vendor discovery. Original research plus verified external data. Every figure carries its source. Free to cite.",
   keywords: [
+    "UK marketing salary statistics",
+    "marketing careers data UK",
+    "AI impact on marketing jobs",
     "AI visibility statistics",
     "B2B buyer behaviour AI",
     "AI search statistics 2026",
@@ -25,9 +28,9 @@ export const metadata: Metadata = {
     "AI visibility benchmark data",
   ],
   openGraph: {
-    title: "AI Visibility & B2B Buyer Behaviour Stats",
+    title: "Citable Stats: UK Marketing Salaries & AI Visibility",
     description:
-      "50+ citable stats on AI visibility and B2B buyer behaviour. Original research + verified external data. Updated regularly.",
+      "Citable stats on UK marketing salaries and careers, and on AI visibility. Original research plus verified external data. Every figure carries its source.",
     type: "website",
     url: "https://gtmsignalstudio.com/research/stats",
   },
