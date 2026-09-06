@@ -37,98 +37,130 @@ export type Page = {
 // ---- POSTS ----
 
 export async function getPublishedPostCount() {
-  const { count, error } = await supabase
-    .from("posts")
-    .select("*", { count: "exact", head: true })
-    .eq("status", "published");
+  try {
+    const { count, error } = await supabase
+      .from("posts")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "published");
 
-  if (error) throw error;
-  return count ?? 0;
+    if (error) return 0;
+    return count ?? 0;
+  } catch {
+    return 0;
+  }
 }
 
 export async function getPublishedPosts(limit = 50, offset = 0) {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("status", "published")
-    .order("published_at", { ascending: false })
-    .range(offset, offset + limit - 1);
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("*")
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .range(offset, offset + limit - 1);
 
-  if (error) throw error;
-  return data as Post[];
+    if (error || !data) return [];
+    return data as Post[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getPostBySlug(slug: string) {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("slug", slug)
-    .eq("status", "published")
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("*")
+      .eq("slug", slug)
+      .eq("status", "published")
+      .single();
 
-  if (error) return null;
-  return data as Post;
+    if (error) return null;
+    return data as Post;
+  } catch {
+    return null;
+  }
 }
 
 export async function getPostsByCategory(category: string, limit = 20) {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("status", "published")
-    .eq("category", category)
-    .order("published_at", { ascending: false })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("*")
+      .eq("status", "published")
+      .eq("category", category)
+      .order("published_at", { ascending: false })
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Post[];
+    if (error || !data) return [];
+    return data as Post[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getRelatedPosts(postId: string, category: string, limit = 3) {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
-    .eq("status", "published")
-    .eq("category", category)
-    .neq("id", postId)
-    .order("published_at", { ascending: false })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
+      .eq("status", "published")
+      .eq("category", category)
+      .neq("id", postId)
+      .order("published_at", { ascending: false })
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Partial<Post>[];
+    if (error || !data) return [];
+    return data as Partial<Post>[];
+  } catch {
+    return [];
+  }
 }
 
 export async function searchPosts(query: string, limit = 20) {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("status", "published")
-    .textSearch("fts", query, { type: "websearch" })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("*")
+      .eq("status", "published")
+      .textSearch("fts", query, { type: "websearch" })
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Post[];
+    if (error || !data) return [];
+    return data as Post[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getAllPostSlugs() {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("slug, updated_at")
-    .eq("status", "published");
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("slug, updated_at")
+      .eq("status", "published");
 
-  if (error) throw error;
-  return data as { slug: string; updated_at: string }[];
+    if (error || !data) return [];
+    return data as { slug: string; updated_at: string }[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getRecentPosts(limit = 3) {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
-    .eq("status", "published")
-    .order("published_at", { ascending: false })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
+      .eq("status", "published")
+      .order("published_at", { ascending: false })
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Partial<Post>[];
+    if (error || !data) return [];
+    return data as Partial<Post>[];
+  } catch {
+    return [];
+  }
 }
 
 // ---- TOPIC CLUSTERS ----
@@ -159,125 +191,156 @@ export type ClusterPost = {
 };
 
 export async function getAllTopicClusters() {
-  const { data, error } = await supabase
-    .from("topic_clusters")
-    .select("*")
-    .order("name");
+  try {
+    const { data, error } = await supabase
+      .from("topic_clusters")
+      .select("*")
+      .order("name");
 
-  if (error) throw error;
-  return data as TopicCluster[];
+    if (error || !data) return [];
+    return data as TopicCluster[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getTopicClusterBySlug(slug: string) {
-  const { data, error } = await supabase
-    .from("topic_clusters")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from("topic_clusters")
+      .select("*")
+      .eq("slug", slug)
+      .single();
 
-  if (error) return null;
-  return data as TopicCluster;
+    if (error) return null;
+    return data as TopicCluster;
+  } catch {
+    return null;
+  }
 }
 
 export async function getAllClusterSlugs() {
-  const { data, error } = await supabase
-    .from("topic_clusters")
-    .select("slug");
+  try {
+    const { data, error } = await supabase
+      .from("topic_clusters")
+      .select("slug");
 
-  if (error) throw error;
-  return data as { slug: string }[];
+    if (error || !data) return [];
+    return data as { slug: string }[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getClusterPosts(clusterId: string) {
-  const { data, error } = await supabase
-    .from("cluster_posts")
-    .select("post_id, sort_order, is_pillar")
-    .eq("cluster_id", clusterId)
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("cluster_posts")
+      .select("post_id, sort_order, is_pillar")
+      .eq("cluster_id", clusterId)
+      .order("sort_order");
 
-  if (error) throw error;
+    if (error || !data) return [];
 
-  // Fetch full post data for each
-  const posts: (Partial<Post> & { sort_order: number; is_pillar: boolean })[] = [];
-  for (const cp of data) {
-    const { data: post } = await supabase
-      .from("posts")
-      .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
-      .eq("id", cp.post_id)
-      .single();
+    const posts: (Partial<Post> & { sort_order: number; is_pillar: boolean })[] = [];
+    for (const cp of data) {
+      const { data: post } = await supabase
+        .from("posts")
+        .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
+        .eq("id", cp.post_id)
+        .single();
 
-    if (post) {
-      posts.push({ ...post, sort_order: cp.sort_order, is_pillar: cp.is_pillar });
+      if (post) {
+        posts.push({ ...post, sort_order: cp.sort_order, is_pillar: cp.is_pillar });
+      }
     }
-  }
 
-  return posts;
+    return posts;
+  } catch {
+    return [];
+  }
 }
 
 export async function getClusterPostCount(clusterId: string) {
-  const { data, error } = await supabase
-    .from("cluster_posts")
-    .select("post_id")
-    .eq("cluster_id", clusterId);
+  try {
+    const { data, error } = await supabase
+      .from("cluster_posts")
+      .select("post_id")
+      .eq("cluster_id", clusterId);
 
-  if (error) return 0;
-  return data.length;
+    if (error || !data) return 0;
+    return data.length;
+  } catch {
+    return 0;
+  }
 }
 
 export async function getPostCluster(postId: string) {
-  const { data, error } = await supabase
-    .from("cluster_posts")
-    .select("cluster_id, sort_order, is_pillar")
-    .eq("post_id", postId)
-    .limit(1)
-    .maybeSingle();
+  try {
+    const { data, error } = await supabase
+      .from("cluster_posts")
+      .select("cluster_id, sort_order, is_pillar")
+      .eq("post_id", postId)
+      .limit(1)
+      .maybeSingle();
 
-  if (error || !data) return null;
+    if (error || !data) return null;
 
-  const { data: cluster } = await supabase
-    .from("topic_clusters")
-    .select("*")
-    .eq("id", data.cluster_id)
-    .single();
+    const { data: cluster } = await supabase
+      .from("topic_clusters")
+      .select("*")
+      .eq("id", data.cluster_id)
+      .single();
 
-  if (!cluster) return null;
+    if (!cluster) return null;
 
-  return {
-    cluster: cluster as TopicCluster,
-    sort_order: data.sort_order,
-    is_pillar: data.is_pillar,
-  };
+    return {
+      cluster: cluster as TopicCluster,
+      sort_order: data.sort_order,
+      is_pillar: data.is_pillar,
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function getClusterSiblings(postId: string, clusterId: string) {
-  const { data, error } = await supabase
-    .from("cluster_posts")
-    .select("post_id, sort_order")
-    .eq("cluster_id", clusterId)
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("cluster_posts")
+      .select("post_id, sort_order")
+      .eq("cluster_id", clusterId)
+      .order("sort_order");
 
-  if (error || !data) return { prev: null, next: null };
+    if (error || !data) return { prev: null, next: null };
 
-  const currentIdx = data.findIndex((d) => d.post_id === postId);
-  if (currentIdx === -1) return { prev: null, next: null };
+    const currentIdx = data.findIndex((d) => d.post_id === postId);
+    if (currentIdx === -1) return { prev: null, next: null };
 
-  const prevId = currentIdx > 0 ? data[currentIdx - 1].post_id : null;
-  const nextId = currentIdx < data.length - 1 ? data[currentIdx + 1].post_id : null;
+    const prevId = currentIdx > 0 ? data[currentIdx - 1].post_id : null;
+    const nextId = currentIdx < data.length - 1 ? data[currentIdx + 1].post_id : null;
 
-  const fetchPost = async (id: string | null) => {
-    if (!id) return null;
-    const { data: post } = await supabase
-      .from("posts")
-      .select("id, title, slug")
-      .eq("id", id)
-      .single();
-    return post as { id: string; title: string; slug: string } | null;
-  };
+    const fetchPost = async (id: string | null) => {
+      if (!id) return null;
+      try {
+        const { data: post } = await supabase
+          .from("posts")
+          .select("id, title, slug")
+          .eq("id", id)
+          .single();
+        return post as { id: string; title: string; slug: string } | null;
+      } catch {
+        return null;
+      }
+    };
 
-  return {
-    prev: await fetchPost(prevId),
-    next: await fetchPost(nextId),
-  };
+    return {
+      prev: await fetchPost(prevId),
+      next: await fetchPost(nextId),
+    };
+  } catch {
+    return { prev: null, next: null };
+  }
 }
 
 // ---- STATS ----
@@ -317,84 +380,112 @@ export type Stat = {
 };
 
 export async function getStatCategories() {
-  const { data, error } = await supabase
-    .from("stat_categories")
-    .select("*")
-    .eq("status", "published")
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("stat_categories")
+      .select("*")
+      .eq("status", "published")
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as StatCategory[];
+    if (error || !data) return [];
+    return data as StatCategory[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getPublishedStats() {
-  const { data, error } = await supabase
-    .from("stats")
-    .select("*")
-    .eq("status", "published")
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("stats")
+      .select("*")
+      .eq("status", "published")
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as Stat[];
+    if (error || !data) return [];
+    return data as Stat[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getStatsByCategory(categoryId: string) {
-  const { data, error } = await supabase
-    .from("stats")
-    .select("*")
-    .eq("status", "published")
-    .eq("category", categoryId)
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("stats")
+      .select("*")
+      .eq("status", "published")
+      .eq("category", categoryId)
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as Stat[];
+    if (error || !data) return [];
+    return data as Stat[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getFeaturedStats(limit = 6) {
-  const { data, error } = await supabase
-    .from("stats")
-    .select("*")
-    .eq("status", "published")
-    .eq("is_featured", true)
-    .order("sort_order")
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("stats")
+      .select("*")
+      .eq("status", "published")
+      .eq("is_featured", true)
+      .order("sort_order")
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Stat[];
+    if (error || !data) return [];
+    return data as Stat[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getStatsBySector(sector: string) {
-  const { data, error } = await supabase
-    .from("stats")
-    .select("*")
-    .eq("status", "published")
-    .eq("sector", sector)
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("stats")
+      .select("*")
+      .eq("status", "published")
+      .eq("sector", sector)
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as Stat[];
+    if (error || !data) return [];
+    return data as Stat[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getStatsByTags(tags: string[]) {
-  const { data, error } = await supabase
-    .from("stats")
-    .select("*")
-    .eq("status", "published")
-    .overlaps("tags", tags)
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("stats")
+      .select("*")
+      .eq("status", "published")
+      .overlaps("tags", tags)
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as Stat[];
+    if (error || !data) return [];
+    return data as Stat[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getPublishedStatCount() {
-  const { count, error } = await supabase
-    .from("stats")
-    .select("*", { count: "exact", head: true })
-    .eq("status", "published");
+  try {
+    const { count, error } = await supabase
+      .from("stats")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "published");
 
-  if (error) throw error;
-  return count ?? 0;
+    if (error) return 0;
+    return count ?? 0;
+  } catch {
+    return 0;
+  }
 }
 
 // ---- STAT HISTORY ----
@@ -410,27 +501,35 @@ export type StatHistoryEntry = {
 };
 
 export async function getStatHistory(slug: string, limit = 20) {
-  const { data, error } = await supabase
-    .from("stat_history")
-    .select("*")
-    .eq("stat_slug", slug)
-    .order("recorded_at", { ascending: true })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("stat_history")
+      .select("*")
+      .eq("stat_slug", slug)
+      .order("recorded_at", { ascending: true })
+      .limit(limit);
 
-  if (error) throw error;
-  return data as StatHistoryEntry[];
+    if (error || !data) return [];
+    return data as StatHistoryEntry[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getStatTrend(metricType: string, limit = 10) {
-  const { data, error } = await supabase
-    .from("stat_history")
-    .select("stat_slug, stat_value, edition, recorded_at")
-    .like("stat_slug", `%-${metricType}`)
-    .order("recorded_at", { ascending: true })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("stat_history")
+      .select("stat_slug, stat_value, edition, recorded_at")
+      .like("stat_slug", `%-${metricType}`)
+      .order("recorded_at", { ascending: true })
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Partial<StatHistoryEntry>[];
+    if (error || !data) return [];
+    return data as Partial<StatHistoryEntry>[];
+  } catch {
+    return [];
+  }
 }
 
 // ---- TOOLS ----
@@ -467,135 +566,179 @@ export type Tool = {
 };
 
 export async function getPublishedTools() {
-  const { data, error } = await supabase
-    .from("tools")
-    .select("*")
-    .eq("status", "published")
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("tools")
+      .select("*")
+      .eq("status", "published")
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as Tool[];
+    if (error || !data) return [];
+    return data as Tool[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getToolBySlug(slug: string) {
-  const { data, error } = await supabase
-    .from("tools")
-    .select("*")
-    .eq("slug", slug)
-    .eq("status", "published")
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from("tools")
+      .select("*")
+      .eq("slug", slug)
+      .eq("status", "published")
+      .single();
 
-  if (error) return null;
-  return data as Tool;
+    if (error) return null;
+    return data as Tool;
+  } catch {
+    return null;
+  }
 }
 
 export async function getFeaturedTools(limit = 6) {
-  const { data, error } = await supabase
-    .from("tools")
-    .select("*")
-    .eq("status", "published")
-    .eq("is_featured", true)
-    .order("sort_order")
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("tools")
+      .select("*")
+      .eq("status", "published")
+      .eq("is_featured", true)
+      .order("sort_order")
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Tool[];
+    if (error || !data) return [];
+    return data as Tool[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getToolsByCategory(category: string) {
-  const { data, error } = await supabase
-    .from("tools")
-    .select("*")
-    .eq("status", "published")
-    .eq("category", category)
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("tools")
+      .select("*")
+      .eq("status", "published")
+      .eq("category", category)
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as Tool[];
+    if (error || !data) return [];
+    return data as Tool[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getToolsByDimension(dimension: string) {
-  const { data, error } = await supabase
-    .from("tools")
-    .select("*")
-    .eq("status", "published")
-    .contains("dimensions", [dimension])
-    .order("sort_order");
+  try {
+    const { data, error } = await supabase
+      .from("tools")
+      .select("*")
+      .eq("status", "published")
+      .contains("dimensions", [dimension])
+      .order("sort_order");
 
-  if (error) throw error;
-  return data as Tool[];
+    if (error || !data) return [];
+    return data as Tool[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getAllToolSlugs() {
-  const { data, error } = await supabase
-    .from("tools")
-    .select("slug, updated_at")
-    .eq("status", "published");
+  try {
+    const { data, error } = await supabase
+      .from("tools")
+      .select("slug, updated_at")
+      .eq("status", "published");
 
-  if (error) throw error;
-  return data as { slug: string; updated_at: string }[];
+    if (error || !data) return [];
+    return data as { slug: string; updated_at: string }[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getToolReviewPosts(toolSlug: string, limit = 5) {
-  const { data, error } = await supabase
-    .from("posts")
-    .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
-    .eq("status", "published")
-    .eq("tool_slug", toolSlug)
-    .order("published_at", { ascending: false })
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("posts")
+      .select("id, title, slug, excerpt, category, published_at, reading_time, featured_image")
+      .eq("status", "published")
+      .eq("tool_slug", toolSlug)
+      .order("published_at", { ascending: false })
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Partial<Post>[];
+    if (error || !data) return [];
+    return data as Partial<Post>[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getRelatedTools(toolSlug: string, dimensions: string[], limit = 3) {
-  const { data, error } = await supabase
-    .from("tools")
-    .select("*")
-    .eq("status", "published")
-    .neq("slug", toolSlug)
-    .overlaps("dimensions", dimensions)
-    .order("sort_order")
-    .limit(limit);
+  try {
+    const { data, error } = await supabase
+      .from("tools")
+      .select("*")
+      .eq("status", "published")
+      .neq("slug", toolSlug)
+      .overlaps("dimensions", dimensions)
+      .order("sort_order")
+      .limit(limit);
 
-  if (error) throw error;
-  return data as Tool[];
+    if (error || !data) return [];
+    return data as Tool[];
+  } catch {
+    return [];
+  }
 }
 
 export async function getPublishedToolCount() {
-  const { count, error } = await supabase
-    .from("tools")
-    .select("*", { count: "exact", head: true })
-    .eq("status", "published");
+  try {
+    const { count, error } = await supabase
+      .from("tools")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "published");
 
-  if (error) throw error;
-  return count ?? 0;
+    if (error) return 0;
+    return count ?? 0;
+  } catch {
+    return 0;
+  }
 }
 
 // ---- PAGES ----
 
 export async function getPageBySlug(slug: string) {
-  const { data, error } = await supabase
-    .from("pages")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from("pages")
+      .select("*")
+      .eq("slug", slug)
+      .single();
 
-  if (error) return null;
-  return data as Page;
+    if (error) return null;
+    return data as Page;
+  } catch {
+    return null;
+  }
 }
 
 // ---- REDIRECTS ----
 
 export async function getRedirects() {
-  const { data, error } = await supabase
-    .from("redirects")
-    .select("*")
-    .eq("active", true);
+  try {
+    const { data, error } = await supabase
+      .from("redirects")
+      .select("*")
+      .eq("active", true);
 
-  if (error) throw error;
-  return data;
+    if (error || !data) return [];
+    return data;
+  } catch {
+    return [];
+  }
 }
 
 // ---- ANALYTICS ----
@@ -606,12 +749,16 @@ export async function trackEvent(
   metadata: Record<string, unknown> = {},
   sessionId = ""
 ) {
-  const { error } = await supabase.from("analytics_events").insert({
-    event_type: eventType,
-    page_path: pagePath,
-    metadata,
-    session_id: sessionId,
-  });
+  try {
+    const { error } = await supabase.from("analytics_events").insert({
+      event_type: eventType,
+      page_path: pagePath,
+      metadata,
+      session_id: sessionId,
+    });
 
-  if (error) console.error("Analytics error:", error);
+    if (error) console.error("Analytics error:", error);
+  } catch (err) {
+    console.error("Analytics exception:", err);
+  }
 }
